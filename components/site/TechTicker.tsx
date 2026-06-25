@@ -16,12 +16,12 @@ export function TechTicker() {
   return (
     <section className="bg-void py-16 marquee-pause">
       <p className="text-center font-mono text-[11px] uppercase tracking-[0.2em] text-muted mb-6">Built with</p>
-      <div className="overflow-hidden" style={{ maskImage: "linear-gradient(to right, transparent, black 8%, black 92%, transparent)" }}>
+      <div className="overflow-hidden" style={{ maskImage: "linear-gradient(to right, transparent, black 8%, black 92%, transparent)", WebkitMaskImage: "linear-gradient(to right, transparent, black 8%, black 92%, transparent)" }}>
         <div className="marquee flex gap-3 w-max">
           {[...techs, ...techs].map((t, i) => <Pill key={"a"+i} label={t} />)}
         </div>
       </div>
-      <div className="overflow-hidden mt-3" style={{ maskImage: "linear-gradient(to right, transparent, black 8%, black 92%, transparent)" }}>
+      <div className="overflow-hidden mt-3" style={{ maskImage: "linear-gradient(to right, transparent, black 8%, black 92%, transparent)", WebkitMaskImage: "linear-gradient(to right, transparent, black 8%, black 92%, transparent)" }}>
         <div className="marquee-reverse flex gap-3 w-max">
           {[...techs, ...techs].map((t, i) => <Pill key={"b"+i} label={t} />)}
         </div>

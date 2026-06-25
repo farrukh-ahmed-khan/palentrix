@@ -54,7 +54,7 @@ export function Hero() {
         </motion.div>
 
         <h1 className="mt-8 font-display font-extrabold text-[36px] md:text-[54px] leading-[1.1] tracking-normal">
-          <span className="flex flex-wrap justify-center lg:justify-start gap-x-4">
+          <span className="flex flex-wrap justify-center lg:justify-start gap-x-4 gap-y-2">
             {headlineWords.map((w, i) => (
               <span key={i} className="inline-block overflow-hidden pb-1">
                 <motion.span
