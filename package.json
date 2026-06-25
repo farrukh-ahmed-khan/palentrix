@@ -64,15 +64,12 @@
     "zod": "^3.24.2"
   },
   "devDependencies": {
-    "@next/swc-win32-x64-msvc": "^16.2.9",
-    "@tailwindcss/oxide-win32-x64-msvc": "^4.3.1",
     "@types/node": "^22.16.5",
     "@types/react": "^19.2.0",
     "@types/react-dom": "^19.2.0",
     "@types/three": "^0.184.1",
     "eslint": "^9.32.0",
     "eslint-config-next": "^16.0.10",
-    "lightningcss-win32-x64-msvc": "^1.32.0",
     "typescript": "^5.8.3"
   }
 }
