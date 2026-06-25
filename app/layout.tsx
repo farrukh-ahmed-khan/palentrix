@@ -1,6 +1,5 @@
 import type { Metadata, Viewport } from "next";
 import Script from "next/script";
-import { CursorDot } from "@/components/site/CursorDot";
 import { Footer } from "@/components/site/Footer";
 import { Nav } from "@/components/site/Nav";
 import { ScrollProgress } from "@/components/site/ScrollProgress";
@@ -80,7 +79,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
         />
         <ScrollProgress />
-        <CursorDot />
         <Nav />
         {children}
         <Footer />

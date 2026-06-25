@@ -72,12 +72,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-@media (pointer: fine) {
-  .custom-cursor-enabled,
-  .custom-cursor-enabled * {
-    cursor: none !important;
-  }
-}
 
 h1,
 h2,
