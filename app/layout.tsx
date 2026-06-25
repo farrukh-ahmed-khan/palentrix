@@ -5,6 +5,7 @@ import { Nav } from "@/components/site/Nav";
 import { ScrollProgress } from "@/components/site/ScrollProgress";
 import { absoluteUrl, siteConfig } from "@/lib/site";
 import { Analytics } from "@vercel/analytics/next"
+import { SpeedInsights } from "@vercel/speed-insights/next"
 import "./globals.css";
 
 export const viewport: Viewport = {
@@ -81,6 +82,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
         <ScrollProgress />
         <Analytics/>
+        <SpeedInsights />
         <Nav />
         {children}
         <Footer />
