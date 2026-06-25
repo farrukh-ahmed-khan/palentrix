@@ -14,8 +14,8 @@ export function BlogIndexPage({ posts }: { posts: BlogPost[] }) {
     <PageShell>
       <PageHero
         label="Field Notes"
-        title="Honest Writing on Shipping Software."
-        subtitle="Lessons from real production builds: auth, billing, automation, and the things that nobody warns you about."
+        title="SaaS, MVP, AI and Full Stack Development Guides."
+        subtitle="Practical articles for founders and businesses planning SaaS products, MVP launches, AI automations, custom web apps, and SEO-ready software."
       />
 
       <section className="rb-section pt-16 pb-28 md:pt-20">

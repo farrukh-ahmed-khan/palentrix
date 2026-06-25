@@ -6,12 +6,14 @@ import { absoluteUrl } from "@/lib/site";
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
-  title: "Blog",
-  description: "Field notes on shipping production software: SaaS auth, billing, automation, and more.",
+  title: "SaaS, MVP, AI & Full Stack Development Blog",
+  description:
+    "Practical guides on SaaS development, MVP launches, AI automation, full stack development, Next.js SEO, and custom web apps.",
   alternates: { canonical: "/blog" },
   openGraph: {
-    title: "Blog - Palentrix",
-    description: "Notes from engineers shipping production software.",
+    title: "SaaS, MVP, AI & Full Stack Development Blog - Palentrix",
+    description:
+      "Actionable software development guides for founders and businesses planning SaaS products, MVPs, AI automations, and custom web apps.",
     url: "/blog",
   },
 };
