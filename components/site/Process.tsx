@@ -12,7 +12,6 @@ import {
 } from "lucide-react";
 import { Reveal, StaggerGroup, fadeUp } from "./Reveal";
 import { GridBg } from "./GridBg";
-import ElectricBorder from "../reactbits/ElectricBorder/ElectricBorder";
 
 const steps = [
   {
@@ -88,62 +87,54 @@ export function Process() {
 
         <div className="mt-14 grid gap-6 lg:grid-cols-[0.82fr_1.18fr] lg:items-start">
           <Reveal>
-            <ElectricBorder
-              color="#32C8FF"
-              speed={0.55}
-              chaos={0.08}
-              borderRadius={18}
-              className="rounded-2xl"
-            >
-              <div className="relative overflow-hidden rounded-2xl border border-[rgba(120,108,255,0.2)] bg-white p-7 md:p-8">
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_18%,rgba(120,108,255,0.06),transparent_34%),radial-gradient(circle_at_20%_70%,rgba(155,92,255,0.06),transparent_42%)]" />
-                <div className="absolute inset-x-8 top-28 h-px bg-gradient-to-r from-transparent via-indigo/30 to-transparent" />
+            <div className="relative overflow-hidden rounded-2xl border border-[rgba(120,108,255,0.24)] bg-white p-7 shadow-[0_24px_70px_-58px_rgba(120,108,255,0.55)] md:p-8">
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_18%,rgba(120,108,255,0.06),transparent_34%),radial-gradient(circle_at_20%_70%,rgba(155,92,255,0.06),transparent_42%)]" />
+              <div className="absolute inset-x-8 top-28 h-px bg-gradient-to-r from-transparent via-indigo/30 to-transparent" />
 
-                <div className="relative">
-                  <div className="inline-flex items-center gap-2 rounded-full border border-indigo/25 bg-indigo/5 px-3 py-1.5 font-mono text-[11px] uppercase tracking-[0.14em] text-indigo">
-                    <CheckCircle2 size={14} />
-                    Delivery map
-                  </div>
-                  <h3 className="mt-8 font-display text-[26px] md:text-[32px] leading-tight">
-                    Every phase has a decision, a deliverable, and a clear owner.
-                  </h3>
-                  <p className="mt-4 text-muted text-[15px] leading-[1.7]">
-                    You always know what is being built, why it matters, and what will be ready
-                    next.
-                  </p>
+              <div className="relative">
+                <div className="inline-flex items-center gap-2 rounded-full border border-indigo/25 bg-indigo/5 px-3 py-1.5 font-mono text-[11px] uppercase tracking-[0.14em] text-indigo">
+                  <CheckCircle2 size={14} />
+                  Delivery map
                 </div>
-
-                <div className="relative mt-10 grid grid-cols-5 gap-2">
-                  {steps.map((s, i) => (
-                    <div key={s.n} className="relative">
-                      {i < steps.length - 1 && (
-                        <div className="absolute left-[52%] right-[-48%] top-5 h-px bg-gradient-to-r from-indigo/50 to-violet/20" />
-                      )}
-                      <div
-                        className="relative z-10 mx-auto flex h-10 w-10 items-center justify-center rounded-full border bg-void font-mono text-[11px]"
-                        style={{ borderColor: `${s.accent}88`, color: s.accent }}
-                      >
-                        {s.n}
-                      </div>
-                    </div>
-                  ))}
-                </div>
-
-                <div className="relative mt-10 grid grid-cols-2 gap-3">
-                  {["Estimate", "Milestones", "QA", "Launch"].map((label) => (
-                    <div
-                      key={label}
-                      className="rounded-xl border border-[rgba(120,108,255,0.16)] bg-slate/60 px-4 py-3"
-                    >
-                      <div className="font-mono text-[10px] uppercase tracking-[0.16em] text-muted">
-                        {label}
-                      </div>
-                      <div className="mt-1 h-1.5 rounded-full bg-[linear-gradient(90deg,rgba(94,70,201,0.9),rgba(155,92,255,0.6))]" />
-                    </div>
-                  ))}
-                </div>
+                <h3 className="mt-8 font-display text-[26px] md:text-[32px] leading-tight">
+                  Every phase has a decision, a deliverable, and a clear owner.
+                </h3>
+                <p className="mt-4 text-muted text-[15px] leading-[1.7]">
+                  You always know what is being built, why it matters, and what will be ready
+                  next.
+                </p>
               </div>
-            </ElectricBorder>
+
+              <div className="relative mt-10 grid grid-cols-5 gap-2">
+                {steps.map((s, i) => (
+                  <div key={s.n} className="relative">
+                    {i < steps.length - 1 && (
+                      <div className="absolute left-[52%] right-[-48%] top-5 h-px bg-gradient-to-r from-indigo/50 to-violet/20" />
+                    )}
+                    <div
+                      className="relative z-10 mx-auto flex h-10 w-10 items-center justify-center rounded-full border bg-void font-mono text-[11px]"
+                      style={{ borderColor: `${s.accent}88`, color: s.accent }}
+                    >
+                      {s.n}
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <div className="relative mt-10 grid grid-cols-2 gap-3">
+                {["Estimate", "Milestones", "QA", "Launch"].map((label) => (
+                  <div
+                    key={label}
+                    className="rounded-xl border border-[rgba(120,108,255,0.16)] bg-slate/60 px-4 py-3"
+                  >
+                    <div className="font-mono text-[10px] uppercase tracking-[0.16em] text-muted">
+                      {label}
+                    </div>
+                    <div className="mt-1 h-1.5 rounded-full bg-[linear-gradient(90deg,rgba(94,70,201,0.9),rgba(155,92,255,0.6))]" />
+                  </div>
+                ))}
+              </div>
+            </div>
           </Reveal>
 
           <StaggerGroup className="grid gap-4 sm:grid-cols-2">

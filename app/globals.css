@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap");
 @import "tailwindcss" source(none);
 @source "../app";
 @source "../components";
@@ -46,6 +46,7 @@
 
   --font-display: "Orbitron", sans-serif;
   --font-sans: "Inter", sans-serif;
+  --font-nav: "Space Grotesk", sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, monospace;
 
   --radius-lg: var(--radius);
@@ -305,6 +306,11 @@ h6 {
   transform-origin: left;
 }
 
+@keyframes btn-shimmer {
+  0% { left: -80%; }
+  40%, 100% { left: 150%; }
+}
+
 .btn-teal {
   background: linear-gradient(135deg, var(--indigo-dim) 0%, var(--indigo) 40%, var(--violet) 100%);
   color: #ffffff;
@@ -315,6 +321,17 @@ h6 {
   transition:
     box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1),
     transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.btn-teal::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -80%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.22), transparent);
+  transform: skewX(-18deg);
+  animation: btn-shimmer 3.2s ease-in-out infinite;
 }
 .btn-teal::after {
   content: "";
