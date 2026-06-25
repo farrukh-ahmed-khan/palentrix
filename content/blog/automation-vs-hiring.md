@@ -1,6 +1,8 @@
 ---
 title: "When to Build an Automation vs When to Hire"
 excerpt: "Automation is strongest when the process is known, repetitive, measurable, and painful enough to justify ownership."
+imageUrl: "https://services-testbucket.s3.us-east-1.amazonaws.com/blog/covers/automation-vs-hiring.png"
+imageAlt: "Business operations workflow comparing manual work and automation through connected process dashboards."
 date: "2026-03-18"
 readTime: "6 min read"
 tag: "Operations"

@@ -1,6 +1,8 @@
 ---
 title: "Why Your SaaS Auth Will Fail in Production"
 excerpt: "The auth decisions that feel harmless during MVP week become painful once real teams, roles, sessions, and billing enter the room."
+imageUrl: "https://services-testbucket.s3.us-east-1.amazonaws.com/blog/covers/saas-auth-production.png"
+imageAlt: "Secure SaaS authentication architecture with identity hub, role permissions, and workspace access controls."
 date: "2026-05-10"
 readTime: "8 min read"
 tag: "SaaS"

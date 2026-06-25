@@ -1,6 +1,8 @@
 ---
 title: "Next.js SEO Checklist for Faster, Higher-Converting Websites"
 excerpt: "A practical Next.js SEO and performance checklist for business websites, SaaS landing pages, and content-driven tech companies."
+imageUrl: "https://services-testbucket.s3.us-east-1.amazonaws.com/blog/covers/nextjs-seo-performance-checklist.png"
+imageAlt: "SEO and web performance dashboard with optimized website panels, speed metrics, and structured data nodes."
 date: "2026-06-21"
 readTime: "8 min read"
 tag: "SEO"

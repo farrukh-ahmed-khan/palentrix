@@ -1,6 +1,8 @@
 ---
 title: "AI Chatbot for Your Business Website: What to Build Before You Add One"
 excerpt: "How to plan a useful AI chatbot that answers real customer questions, qualifies leads, and supports your team without hurting trust."
+imageUrl: "https://services-testbucket.s3.us-east-1.amazonaws.com/blog/covers/ai-chatbot-for-business-website.png"
+imageAlt: "Business website chatbot interface connected to lead qualification, CRM, calendar, and support workflows."
 date: "2026-06-22"
 readTime: "7 min read"
 tag: "AI"

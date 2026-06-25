@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import { Check, FilePlus, Loader2, Save, Trash2 } from "lucide-react";
+import { Check, FilePlus, Loader2, Save, Trash2, Upload } from "lucide-react";
 import type { BlogPost, BlogPostInput } from "@/lib/blog";
 import { RichTextEditor } from "@/components/cms/RichTextEditor";
 
@@ -15,6 +15,8 @@ const emptyPost: BlogPostInput = {
   slug: "",
   title: "",
   excerpt: "",
+  imageUrl: "",
+  imageAlt: "",
   date: new Date().toISOString().slice(0, 10),
   readTime: "5 min read",
   tag: "Insights",
@@ -79,6 +81,8 @@ export function BlogAdmin() {
       slug: post.slug,
       title: post.title,
       excerpt: post.excerpt,
+      imageUrl: post.imageUrl,
+      imageAlt: post.imageAlt,
       date: post.date,
       readTime: post.readTime,
       tag: post.tag,
@@ -112,6 +116,39 @@ export function BlogAdmin() {
       }
     } catch (error) {
       setMessage(error instanceof Error ? error.message : "Save failed.");
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  async function uploadCoverImage(file: File | null) {
+    if (!file) return;
+    if (!token) {
+      setMessage("Enter the admin token before uploading.");
+      return;
+    }
+
+    setLoading(true);
+    setMessage("");
+    try {
+      const formData = new FormData();
+      formData.append("file", file);
+      const response = await fetch("/api/cms/upload", {
+        method: "POST",
+        headers: { "x-cms-token": token },
+        body: formData,
+      });
+      const data = (await response.json()) as { url?: string; error?: string };
+      if (!response.ok || !data.url) throw new Error(data.error || "Upload failed.");
+
+      setDraft((prev) => ({
+        ...prev,
+        imageUrl: data.url || "",
+        imageAlt: prev.imageAlt || prev.title,
+      }));
+      setMessage("Cover image uploaded.");
+    } catch (error) {
+      setMessage(error instanceof Error ? error.message : "Upload failed.");
     } finally {
       setLoading(false);
     }
@@ -212,6 +249,41 @@ export function BlogAdmin() {
               <Field label="Read time" value={draft.readTime} onChange={(value) => setDraft({ ...draft, readTime: value })} />
               <Field label="Tag" value={draft.tag} onChange={(value) => setDraft({ ...draft, tag: value })} />
               <Field label="Author" value={draft.author} onChange={(value) => setDraft({ ...draft, author: value })} />
+              <Field label="Cover image URL" value={draft.imageUrl} onChange={(value) => setDraft({ ...draft, imageUrl: value })} />
+              <Field label="Cover image alt" value={draft.imageAlt} onChange={(value) => setDraft({ ...draft, imageAlt: value })} />
+            </div>
+
+            <div className="mt-5 rounded-xl border border-[var(--border-color)] bg-void/40 p-4">
+              <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+                <div>
+                  <span className={labelClass}>Cover image</span>
+                  {draft.imageUrl ? (
+                    <div className="mt-2 text-sm text-muted break-all">{draft.imageUrl}</div>
+                  ) : (
+                    <div className="mt-2 text-sm text-muted">No cover image selected.</div>
+                  )}
+                </div>
+                <label className="inline-flex cursor-pointer items-center justify-center gap-2 rounded-md border border-indigo/50 px-4 py-2.5 text-sm font-semibold text-indigo transition-colors hover:bg-indigo hover:text-white">
+                  <Upload size={16} />
+                  Upload cover
+                  <input
+                    type="file"
+                    accept="image/*"
+                    className="hidden"
+                    onChange={(event) => {
+                      void uploadCoverImage(event.target.files?.[0] || null);
+                      event.currentTarget.value = "";
+                    }}
+                  />
+                </label>
+              </div>
+              {draft.imageUrl && (
+                <img
+                  src={draft.imageUrl}
+                  alt={draft.imageAlt || draft.title || "Blog cover preview"}
+                  className="mt-4 aspect-[16/9] w-full rounded-lg border border-[var(--border-color)] object-cover"
+                />
+              )}
             </div>
 
             <label className="mt-5 block">

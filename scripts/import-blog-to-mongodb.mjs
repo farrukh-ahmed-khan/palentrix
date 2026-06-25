@@ -62,6 +62,8 @@ try {
           slug,
           title: String(parsed.data.title || "Untitled post").trim(),
           excerpt: String(parsed.data.excerpt || parsed.content.slice(0, 150)).trim(),
+          imageUrl: String(parsed.data.imageUrl || "").trim(),
+          imageAlt: String(parsed.data.imageAlt || "").trim(),
           date:
             typeof parsed.data.date === "string" && parsed.data.date.trim()
               ? parsed.data.date

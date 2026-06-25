@@ -10,6 +10,8 @@ export type BlogPost = {
   slug: string;
   title: string;
   excerpt: string;
+  imageUrl: string;
+  imageAlt: string;
   date: string;
   dateLabel: string;
   readTime: string;
@@ -67,6 +69,8 @@ function normalizePost(slug: string, data: Record<string, unknown>, body: string
     slug,
     title: typeof data.title === "string" ? data.title : "Untitled post",
     excerpt: typeof data.excerpt === "string" ? data.excerpt : body.slice(0, 150),
+    imageUrl: typeof data.imageUrl === "string" ? data.imageUrl : "",
+    imageAlt: typeof data.imageAlt === "string" ? data.imageAlt : "",
     date,
     dateLabel: getDateLabel(date),
     readTime: typeof data.readTime === "string" ? data.readTime : "5 min read",
@@ -85,6 +89,8 @@ function normalizeInput(input: BlogPostInput): BlogPostInput {
     slug,
     title: input.title.trim(),
     excerpt: input.excerpt.trim(),
+    imageUrl: typeof input.imageUrl === "string" ? input.imageUrl.trim() : "",
+    imageAlt: typeof input.imageAlt === "string" ? input.imageAlt.trim() : "",
     date: input.date || new Date().toISOString().slice(0, 10),
     readTime: input.readTime.trim() || "5 min read",
     tag: input.tag.trim() || "Insights",
@@ -99,6 +105,8 @@ function fromMongoDocument(doc: BlogPostDocument): BlogPost {
     slug: doc.slug,
     title: doc.title,
     excerpt: doc.excerpt,
+    imageUrl: doc.imageUrl || "",
+    imageAlt: doc.imageAlt || "",
     date: doc.date,
     dateLabel: getDateLabel(doc.date),
     readTime: doc.readTime,
@@ -197,8 +205,10 @@ export async function saveBlogPost(input: BlogPostInput) {
 
   const file = matter.stringify(postInput.body + "\n", {
     title: postInput.title,
-    excerpt: postInput.excerpt,
-    date: postInput.date,
+          excerpt: postInput.excerpt,
+          imageUrl: postInput.imageUrl,
+          imageAlt: postInput.imageAlt,
+          date: postInput.date,
     readTime: postInput.readTime,
     tag: postInput.tag,
     author: postInput.author,

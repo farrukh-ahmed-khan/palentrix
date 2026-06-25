@@ -21,6 +21,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     };
   }
 
+  const imageUrl = post.imageUrl || "/brand/palentrix-logo-dark.png";
+
   return {
     title: post.title,
     description: post.excerpt,
@@ -32,13 +34,13 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       url: `/blog/${post.slug}`,
       publishedTime: post.date,
       authors: [post.author],
-      images: [{ url: "/brand/palentrix-logo-dark.png", width: 1200, height: 630, alt: post.title }],
+      images: [{ url: imageUrl, width: 1200, height: 630, alt: post.imageAlt || post.title }],
     },
     twitter: {
       card: "summary_large_image",
       title: post.title,
       description: post.excerpt,
-      images: ["/brand/palentrix-logo-dark.png"],
+      images: [imageUrl],
     },
   };
 }
@@ -61,6 +63,7 @@ export default async function Page({ params }: PageProps) {
       name: siteConfig.name,
       logo: { "@type": "ImageObject", url: absoluteUrl("/brand/palentrix-logo-dark.png") },
     },
+    image: post.imageUrl ? absoluteUrl(post.imageUrl) : absoluteUrl("/brand/palentrix-logo-dark.png"),
     mainEntityOfPage: absoluteUrl(`/blog/${post.slug}`),
   };
 

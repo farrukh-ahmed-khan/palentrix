@@ -1,6 +1,8 @@
 ---
 title: "Full Stack Development: What a Good Agency Actually Builds for Your Business"
 excerpt: "A clear guide to full stack development services, from frontend and backend to integrations, dashboards, performance, and launch support."
+imageUrl: "https://services-testbucket.s3.us-east-1.amazonaws.com/blog/covers/full-stack-development-agency-guide.png"
+imageAlt: "Layered full stack software architecture with frontend screens, backend services, APIs, and database systems."
 date: "2026-06-23"
 readTime: "8 min read"
 tag: "Full Stack"

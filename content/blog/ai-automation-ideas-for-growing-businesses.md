@@ -1,6 +1,8 @@
 ---
 title: "AI Automation Ideas That Can Save Time for Growing Businesses"
 excerpt: "Practical AI automation use cases for companies that want faster operations, better customer response, and less manual work."
+imageUrl: "https://services-testbucket.s3.us-east-1.amazonaws.com/blog/covers/ai-automation-ideas-for-growing-businesses.png"
+imageAlt: "AI automation hub routing business workflows through connected dashboards and operations panels."
 date: "2026-06-24"
 readTime: "9 min read"
 tag: "AI"

@@ -1,6 +1,8 @@
 ---
 title: "Next.js + Supabase: The Setup Nobody Tells You About"
 excerpt: "The happy path is quick. The production path needs careful boundaries between server clients, browser clients, policies, and migrations."
+imageUrl: "https://services-testbucket.s3.us-east-1.amazonaws.com/blog/covers/nextjs-supabase-setup.png"
+imageAlt: "Production web app setup connecting frontend panels, database policies, auth boundaries, and migrations."
 date: "2026-04-04"
 readTime: "10 min read"
 tag: "Stack"

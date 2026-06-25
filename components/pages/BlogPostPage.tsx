@@ -36,6 +36,16 @@ export function BlogPostPage({ post }: { post: BlogPost }) {
             Written by {post.author}
           </div>
 
+          {post.imageUrl && (
+            <div className="mt-10 overflow-hidden rounded-2xl border border-[var(--border-color)] bg-slate">
+              <img
+                src={post.imageUrl}
+                alt={post.imageAlt || post.title}
+                className="aspect-[16/9] w-full object-cover"
+              />
+            </div>
+          )}
+
           <div className="mt-12 rb-card rounded-2xl border border-[var(--border-color)] bg-slate p-7 md:p-10">
             <BlogBody body={post.body} />
           </div>
