@@ -6,7 +6,8 @@
     "dev": "next dev --webpack",
     "build": "next build --webpack",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "blog:import": "node scripts/import-blog-to-mongodb.mjs"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",
@@ -47,6 +48,7 @@
     "gray-matter": "^4.0.3",
     "input-otp": "^1.4.2",
     "lucide-react": "^0.575.0",
+    "mongodb": "^7.3.0",
     "next": "^16.0.10",
     "ogl": "^1.0.11",
     "react": "^19.2.0",

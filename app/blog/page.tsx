@@ -3,6 +3,8 @@ import { BlogIndexPage } from "@/components/pages/BlogIndexPage";
 import { getBlogPosts } from "@/lib/blog";
 import { absoluteUrl } from "@/lib/site";
 
+export const dynamic = "force-dynamic";
+
 export const metadata: Metadata = {
   title: "Blog",
   description: "Field notes on shipping production software: SaaS auth, billing, automation, and more.",

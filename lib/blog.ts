@@ -3,6 +3,8 @@ import "server-only";
 import fs from "node:fs/promises";
 import path from "node:path";
 import matter from "gray-matter";
+import type { Collection } from "mongodb";
+import { getMongoDb, isMongoConfigured } from "./mongodb";
 
 export type BlogPost = {
   slug: string;
@@ -19,7 +21,14 @@ export type BlogPost = {
 
 export type BlogPostInput = Omit<BlogPost, "dateLabel">;
 
+type BlogPostDocument = BlogPostInput & {
+  createdAt: Date;
+  updatedAt: Date;
+};
+
 const blogDirectory = path.join(process.cwd(), "content", "blog");
+const blogCollectionName = process.env.MONGODB_BLOG_COLLECTION || "blog_posts";
+let blogIndexPromise: Promise<string> | null = null;
 
 function slugify(value: string) {
   return value
@@ -68,7 +77,63 @@ function normalizePost(slug: string, data: Record<string, unknown>, body: string
   };
 }
 
+function normalizeInput(input: BlogPostInput): BlogPostInput {
+  const slug = slugify(input.slug || input.title);
+  if (!slug) throw new Error("A slug or title is required.");
+
+  return {
+    slug,
+    title: input.title.trim(),
+    excerpt: input.excerpt.trim(),
+    date: input.date || new Date().toISOString().slice(0, 10),
+    readTime: input.readTime.trim() || "5 min read",
+    tag: input.tag.trim() || "Insights",
+    author: input.author.trim() || "Palentrix",
+    body: input.body.trim(),
+    published: input.published,
+  };
+}
+
+function fromMongoDocument(doc: BlogPostDocument): BlogPost {
+  return {
+    ...doc,
+    dateLabel: getDateLabel(doc.date),
+  };
+}
+
+async function getBlogCollection(): Promise<Collection<BlogPostDocument>> {
+  const db = await getMongoDb();
+  const collection = db.collection<BlogPostDocument>(blogCollectionName);
+
+  blogIndexPromise ??= collection.createIndex({ slug: 1 }, { unique: true });
+  await blogIndexPromise;
+
+  return collection;
+}
+
+async function getMongoBlogPosts({ includeDrafts = false } = {}) {
+  const collection = await getBlogCollection();
+  const query = includeDrafts ? {} : { published: true };
+  const posts = await collection.find(query).sort({ date: -1 }).toArray();
+
+  return posts.map(fromMongoDocument);
+}
+
+async function getMongoBlogPost(slug: string, { includeDrafts = false } = {}) {
+  const collection = await getBlogCollection();
+  const query = includeDrafts
+    ? { slug: slugify(slug) }
+    : { slug: slugify(slug), published: true };
+  const post = await collection.findOne(query);
+
+  return post ? fromMongoDocument(post) : null;
+}
+
 export async function getBlogPosts({ includeDrafts = false } = {}) {
+  if (isMongoConfigured()) {
+    return getMongoBlogPosts({ includeDrafts });
+  }
+
   await ensureBlogDirectory();
   const files = await fs.readdir(blogDirectory);
   const posts = await Promise.all(
@@ -88,29 +153,60 @@ export async function getBlogPosts({ includeDrafts = false } = {}) {
 }
 
 export async function getBlogPost(slug: string, { includeDrafts = false } = {}) {
+  if (isMongoConfigured()) {
+    return getMongoBlogPost(slug, { includeDrafts });
+  }
+
   const posts = await getBlogPosts({ includeDrafts });
   return posts.find((post) => post.slug === slugify(slug)) ?? null;
 }
 
 export async function saveBlogPost(input: BlogPostInput) {
-  await ensureBlogDirectory();
-  const slug = slugify(input.slug || input.title);
-  if (!slug) throw new Error("A slug or title is required.");
+  const postInput = normalizeInput(input);
 
-  const file = matter.stringify(input.body.trim() + "\n", {
-    title: input.title.trim(),
-    excerpt: input.excerpt.trim(),
-    date: input.date,
-    readTime: input.readTime.trim() || "5 min read",
-    tag: input.tag.trim() || "Insights",
-    author: input.author.trim() || "Palentrix",
-    published: input.published,
+  if (isMongoConfigured()) {
+    const collection = await getBlogCollection();
+    const now = new Date();
+
+    await collection.updateOne(
+      { slug: postInput.slug },
+      {
+        $set: {
+          ...postInput,
+          updatedAt: now,
+        },
+        $setOnInsert: {
+          createdAt: now,
+        },
+      },
+      { upsert: true },
+    );
+
+    return getMongoBlogPost(postInput.slug, { includeDrafts: true });
+  }
+
+  await ensureBlogDirectory();
+
+  const file = matter.stringify(postInput.body + "\n", {
+    title: postInput.title,
+    excerpt: postInput.excerpt,
+    date: postInput.date,
+    readTime: postInput.readTime,
+    tag: postInput.tag,
+    author: postInput.author,
+    published: postInput.published,
   });
 
-  await fs.writeFile(postPath(slug), file, "utf8");
-  return getBlogPost(slug, { includeDrafts: true });
+  await fs.writeFile(postPath(postInput.slug), file, "utf8");
+  return getBlogPost(postInput.slug, { includeDrafts: true });
 }
 
 export async function deleteBlogPost(slug: string) {
+  if (isMongoConfigured()) {
+    const collection = await getBlogCollection();
+    await collection.deleteOne({ slug: slugify(slug) });
+    return;
+  }
+
   await fs.unlink(postPath(slugify(slug)));
 }
