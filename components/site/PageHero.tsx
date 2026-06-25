@@ -21,19 +21,21 @@ export function PageHero({ label, title, subtitle }: { label: string; title: str
           fieldStrength={6}
         />
       </div>
-      <div className="absolute inset-y-0 right-0 hidden w-[62%] opacity-30 md:block">
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_38%_34%,rgba(120,108,255,0.08)_0%,rgba(244,242,253,0.6)_54%,rgba(255,255,255,0.9)_100%)]" />
+      <div className="absolute right-[8%] top-[25%] hidden h-[320px] w-[420px] rounded-full bg-[radial-gradient(ellipse_at_center,rgba(50,200,255,0.16),rgba(120,108,255,0.12)_42%,transparent_72%)] blur-3xl md:block" />
+      <div className="absolute inset-y-0 right-0 hidden w-[62%] opacity-45 md:block">
         <LaserFlow
-          color="#32C8FF"
+          color="#786CFF"
           horizontalBeamOffset={0.08}
           verticalBeamOffset={-0.34}
           horizontalSizing={0.62}
           verticalSizing={1.75}
           wispDensity={0.85}
           wispSpeed={12}
-          wispIntensity={3.2}
+          wispIntensity={2.5}
           flowSpeed={0.28}
-          flowStrength={0.22}
-          fogIntensity={0.32}
+          flowStrength={0.18}
+          fogIntensity={0.24}
           fogScale={0.38}
           fogFallSpeed={0.42}
           decay={1.05}
@@ -41,7 +43,6 @@ export function PageHero({ label, title, subtitle }: { label: string; title: str
           mouseTiltStrength={0.018}
         />
       </div>
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_38%_34%,rgba(120,108,255,0.08)_0%,rgba(244,242,253,0.6)_54%,rgba(255,255,255,0.9)_100%)]" />
       <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-white to-transparent" />
       <Noise />
       <div className="relative mx-auto max-w-[1200px] px-6 text-center md:text-left">
