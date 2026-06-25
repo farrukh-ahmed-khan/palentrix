@@ -97,10 +97,10 @@ export function Process() {
             >
               <div className="relative overflow-hidden rounded-2xl border border-[rgba(120,108,255,0.2)] bg-white p-7 md:p-8">
                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_18%,rgba(120,108,255,0.06),transparent_34%),radial-gradient(circle_at_20%_70%,rgba(155,92,255,0.06),transparent_42%)]" />
-                <div className="absolute inset-x-8 top-28 h-px bg-gradient-to-r from-transparent via-teal/50 to-transparent" />
+                <div className="absolute inset-x-8 top-28 h-px bg-gradient-to-r from-transparent via-indigo/30 to-transparent" />
 
                 <div className="relative">
-                  <div className="inline-flex items-center gap-2 rounded-full border border-teal/25 bg-teal/5 px-3 py-1.5 font-mono text-[11px] uppercase tracking-[0.14em] text-teal">
+                  <div className="inline-flex items-center gap-2 rounded-full border border-indigo/25 bg-indigo/5 px-3 py-1.5 font-mono text-[11px] uppercase tracking-[0.14em] text-indigo">
                     <CheckCircle2 size={14} />
                     Delivery map
                   </div>
@@ -117,7 +117,7 @@ export function Process() {
                   {steps.map((s, i) => (
                     <div key={s.n} className="relative">
                       {i < steps.length - 1 && (
-                        <div className="absolute left-[52%] right-[-48%] top-5 h-px bg-gradient-to-r from-teal/60 to-indigo/30" />
+                        <div className="absolute left-[52%] right-[-48%] top-5 h-px bg-gradient-to-r from-indigo/50 to-violet/20" />
                       )}
                       <div
                         className="relative z-10 mx-auto flex h-10 w-10 items-center justify-center rounded-full border bg-void font-mono text-[11px]"
@@ -138,7 +138,7 @@ export function Process() {
                       <div className="font-mono text-[10px] uppercase tracking-[0.16em] text-muted">
                         {label}
                       </div>
-                      <div className="mt-1 h-1.5 rounded-full bg-[linear-gradient(90deg,rgba(50,200,255,0.85),rgba(120,108,255,0.45))]" />
+                      <div className="mt-1 h-1.5 rounded-full bg-[linear-gradient(90deg,rgba(94,70,201,0.9),rgba(155,92,255,0.6))]" />
                     </div>
                   ))}
                 </div>
@@ -183,7 +183,7 @@ export function Process() {
                     </span>
                     <ArrowRight
                       size={16}
-                      className="text-teal opacity-60 transition-transform group-hover:translate-x-1 group-hover:opacity-100"
+                      className="text-indigo opacity-60 transition-transform group-hover:translate-x-1 group-hover:opacity-100"
                     />
                   </div>
                 </div>

@@ -71,13 +71,13 @@ export function ProcessPage() {
                 <p className="mt-6 text-[17px] leading-[1.7] text-muted">{step.what}</p>
                 <div className="mt-10 grid gap-8 md:grid-cols-2">
                   <div>
-                    <h4 className="font-mono text-[12px] uppercase tracking-wider mb-2 text-teal">
+                    <h4 className="font-mono text-[12px] uppercase tracking-wider mb-2 text-indigo">
                       What you do
                     </h4>
                     <p className="text-[15px] leading-relaxed">{step.you}</p>
                   </div>
                   <div>
-                    <h4 className="font-mono text-[12px] uppercase tracking-wider mb-2 text-teal">
+                    <h4 className="font-mono text-[12px] uppercase tracking-wider mb-2 text-indigo">
                       What we deliver
                     </h4>
                     <p className="text-[15px] leading-relaxed">{step.we}</p>

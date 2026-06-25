@@ -16,7 +16,7 @@ export function CTAButton({ to, href, children, variant = "teal" }: CTAButtonPro
   const base = "inline-flex items-center justify-center gap-1.5 px-6 py-3 rounded-lg font-semibold text-[14px] tracking-wide";
   const cls = variant === "teal"
     ? `${base} btn-teal`
-    : `${base} border border-ink/20 text-ink/70 hover:border-indigo hover:text-indigo hover:bg-indigo/5 hover:shadow-[0_0_0_3px_rgba(120,108,255,0.1)] transition-all duration-300`;
+    : `${base} border border-ink/30 text-ink/80 hover:border-indigo hover:text-indigo hover:bg-indigo/5 hover:shadow-[0_0_0_3px_rgba(120,108,255,0.12)] transition-all duration-300`;
 
   return (
     <motion.span whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.97 }} className="inline-block">

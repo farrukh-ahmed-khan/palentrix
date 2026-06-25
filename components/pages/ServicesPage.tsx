@@ -80,7 +80,7 @@ export function ServicesPage() {
               <div className="font-mono text-[12px] uppercase tracking-[0.15em] mb-6 rb-section-label">
                 [ 0{index + 1} Service ]
               </div>
-              <block.Icon size={32} className="text-teal" />
+              <block.Icon size={32} className="text-indigo" />
               <h2 className="mt-6 font-display font-bold text-2xl md:text-4xl tracking-normal leading-tight">
                 {block.title}
               </h2>
@@ -88,20 +88,20 @@ export function ServicesPage() {
             </Reveal>
             <StaggerGroup className="space-y-5">
               <motion.div variants={fadeUp} className="rb-panel rounded-2xl p-7">
-                <h4 className="font-mono text-[12px] uppercase tracking-wider mb-4 text-teal">
+                <h4 className="font-mono text-[12px] uppercase tracking-wider mb-4 text-indigo">
                   What's included
                 </h4>
                 <ul className="space-y-2.5">
                   {block.includes.map((item) => (
                     <li key={item} className="flex gap-3 text-[15px]">
-                      <Check size={18} className="text-teal mt-0.5 shrink-0" />
+                      <Check size={18} className="text-indigo mt-0.5 shrink-0" />
                       <span>{item}</span>
                     </li>
                   ))}
                 </ul>
               </motion.div>
               <motion.div variants={fadeUp} className="rb-panel rounded-2xl p-7">
-                <h4 className="font-mono text-[12px] uppercase tracking-wider mb-4 text-teal">
+                <h4 className="font-mono text-[12px] uppercase tracking-wider mb-4 text-indigo">
                   Tech stack
                 </h4>
                 <div className="flex flex-wrap gap-2">
@@ -116,7 +116,7 @@ export function ServicesPage() {
                 </div>
               </motion.div>
               <motion.div variants={fadeUp} className="rb-panel rounded-2xl p-7">
-                <h4 className="font-mono text-[12px] uppercase tracking-wider mb-4 text-teal">
+                <h4 className="font-mono text-[12px] uppercase tracking-wider mb-4 text-indigo">
                   Who it's for
                 </h4>
                 <p className="text-[15px] leading-relaxed text-muted">{block.audience}</p>

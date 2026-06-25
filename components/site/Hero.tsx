@@ -48,7 +48,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, ease }}
-          className="inline-block font-mono text-[11px] uppercase tracking-[0.2em] text-teal border border-[var(--border-teal)] rounded-full px-4 py-1.5"
+          className="inline-block font-mono text-[11px] uppercase tracking-[0.2em] text-indigo border border-indigo/30 rounded-full px-4 py-1.5 bg-indigo/5"
         >
           [ Software Studio - Karachi, PK ]
         </motion.div>

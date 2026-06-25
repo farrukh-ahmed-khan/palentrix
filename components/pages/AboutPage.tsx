@@ -84,7 +84,7 @@ export function AboutPage() {
                   {member.initials}
                 </div>
                 <h3 className="mt-6 font-display font-bold text-[20px]">{member.name}</h3>
-                <p className="mt-1 font-mono text-[11px] uppercase tracking-wider text-teal">
+                <p className="mt-1 font-mono text-[11px] uppercase tracking-wider text-indigo">
                   {member.role}
                 </p>
                 <p className="mt-4 text-muted text-[15px] leading-[1.7]">{member.bio}</p>
@@ -111,7 +111,7 @@ export function AboutPage() {
                 variants={fadeUp}
                 className="rb-card rounded-2xl p-8 border border-[rgba(120,108,255,0.18)]"
               >
-                <value.Icon size={28} className="text-teal" />
+                <value.Icon size={28} className="text-indigo" />
                 <h3 className="mt-5 font-display font-bold text-[20px]">{value.title}</h3>
                 <p className="mt-3 text-muted text-[15px] leading-[1.7]">{value.desc}</p>
               </motion.div>

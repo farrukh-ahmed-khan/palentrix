@@ -87,6 +87,7 @@ h5,
 h6 {
   font-family: "Orbitron", sans-serif;
   font-weight: 700;
+  color: var(--ink);
 }
 
 ::selection {
@@ -300,7 +301,7 @@ h6 {
   bottom: -4px;
   height: 1px;
   width: 100%;
-  background: linear-gradient(90deg, var(--x-blue), var(--violet));
+  background: linear-gradient(90deg, var(--indigo), var(--violet));
   transform: scaleX(0);
   transform-origin: right;
   transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
@@ -311,8 +312,8 @@ h6 {
 }
 
 .btn-teal {
-  background: linear-gradient(135deg, var(--white) 0%, var(--x-blue) 38%, var(--indigo) 68%, var(--violet) 100%);
-  color: #05050a;
+  background: linear-gradient(135deg, var(--indigo-dim) 0%, var(--indigo) 40%, var(--violet) 100%);
+  color: #ffffff;
   font-weight: 600;
   letter-spacing: 0.02em;
   position: relative;
@@ -331,8 +332,8 @@ h6 {
 }
 .btn-teal:hover {
   box-shadow:
-    0 0 0 3px rgba(155, 92, 255, 0.24),
-    0 18px 46px -12px rgba(120, 108, 255, 0.62);
+    0 0 0 3px rgba(120, 108, 255, 0.2),
+    0 12px 32px -8px rgba(120, 108, 255, 0.45);
   transform: translateY(-1px);
 }
 .btn-teal:hover::after {
@@ -464,7 +465,7 @@ h6 {
 }
 
 .rb-section-label {
-  color: var(--x-blue);
+  color: var(--indigo);
 }
 
 .lightfall-bg {

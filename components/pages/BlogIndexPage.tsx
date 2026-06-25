@@ -32,7 +32,7 @@ export function BlogIndexPage({ posts }: { posts: BlogPost[] }) {
               >
                 <Link href={`/blog/${post.slug}`} className="block h-full p-10">
                   <div className="flex items-center gap-3 flex-wrap">
-                    <span className="font-mono text-[11px] uppercase tracking-[0.15em] text-teal border border-[var(--border-teal)] rounded-full px-3 py-1">
+                    <span className="font-mono text-[11px] uppercase tracking-[0.15em] text-indigo border border-indigo/30 bg-indigo/5 rounded-full px-3 py-1">
                       {post.tag}
                     </span>
                     <span className="font-mono text-[11px] text-muted">{post.dateLabel}</span>
@@ -42,7 +42,7 @@ export function BlogIndexPage({ posts }: { posts: BlogPost[] }) {
                     {post.title}
                   </h2>
                   <p className="mt-4 text-muted text-[15px] leading-[1.7]">{post.excerpt}</p>
-                  <div className="mt-6 inline-flex items-center gap-2 text-teal text-[14px] font-medium">
+                  <div className="mt-6 inline-flex items-center gap-2 text-indigo text-[14px] font-medium">
                     Read article
                     <ArrowRight
                       size={16}

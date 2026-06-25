@@ -21,7 +21,7 @@ export function BlogPostPage({ post }: { post: BlogPost }) {
           </Link>
 
           <div className="mt-10 flex items-center gap-3 flex-wrap">
-            <span className="font-mono text-[11px] uppercase tracking-[0.15em] text-teal border border-[var(--border-teal)] rounded-full px-3 py-1">
+            <span className="font-mono text-[11px] uppercase tracking-[0.15em] text-indigo border border-indigo/30 bg-indigo/5 rounded-full px-3 py-1">
               {post.tag}
             </span>
             <span className="font-mono text-[11px] text-muted">{post.dateLabel}</span>

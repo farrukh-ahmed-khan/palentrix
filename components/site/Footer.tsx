@@ -15,7 +15,7 @@ export function Footer() {
             </p>
             <a
               href="mailto:hello@palentrix.com"
-              className="mt-4 inline-flex items-center gap-2 text-[13px] text-muted hover:text-teal transition-colors"
+              className="mt-4 inline-flex items-center gap-2 text-[13px] text-muted hover:text-indigo transition-colors"
             >
               <Mail size={14} />
               hello@palentrix.com
@@ -24,7 +24,7 @@ export function Footer() {
               href={calendlyUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-2 block text-[13px] text-muted hover:text-teal transition-colors"
+              className="mt-2 block text-[13px] text-muted hover:text-indigo transition-colors"
             >
               Book a free 30-min discovery call
             </a>
@@ -49,9 +49,9 @@ export function Footer() {
         <div className="mt-12 pt-6 border-t border-[rgba(120,108,255,0.1)] flex flex-col md:flex-row md:items-center md:justify-between gap-4">
           <p className="text-muted text-[13px]">(c) 2024 Palentrix. All rights reserved. Karachi, Pakistan</p>
           <div className="flex items-center gap-4 text-muted">
-            <a href="#" aria-label="LinkedIn" className="hover:text-teal transition-colors"><Linkedin size={18} /></a>
-            <a href="https://github.com/farrukh-ahmed-khan" target="_blank" rel="noopener noreferrer" aria-label="GitHub" className="hover:text-teal transition-colors"><Github size={18} /></a>
-            <a href="#" aria-label="Twitter" className="hover:text-teal transition-colors"><Twitter size={18} /></a>
+            <a href="#" aria-label="LinkedIn" className="hover:text-indigo transition-colors"><Linkedin size={18} /></a>
+            <a href="https://github.com/farrukh-ahmed-khan" target="_blank" rel="noopener noreferrer" aria-label="GitHub" className="hover:text-indigo transition-colors"><Github size={18} /></a>
+            <a href="#" aria-label="Twitter" className="hover:text-indigo transition-colors"><Twitter size={18} /></a>
           </div>
         </div>
       </div>

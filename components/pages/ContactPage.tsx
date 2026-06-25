@@ -60,7 +60,7 @@ export function ContactPage() {
             >
               {sent ? (
                 <div className="text-center py-12">
-                  <div className="font-display font-bold text-3xl text-teal">Message received.</div>
+                  <div className="font-display font-bold text-3xl text-indigo">Message received.</div>
                   <p className="mt-4 text-muted">We'll reply within 4 hours.</p>
                 </div>
               ) : (
@@ -125,7 +125,7 @@ function ContactRow({
   return (
     <div className="flex items-start gap-4">
       <div className="w-10 h-10 rounded-md bg-slate border border-[var(--border-color)] flex items-center justify-center shrink-0">
-        <Icon size={16} className="text-teal" />
+        <Icon size={16} className="text-indigo" />
       </div>
       <div>
         <div className="font-mono text-[11px] uppercase tracking-wider text-muted">{label}</div>
@@ -134,7 +134,7 @@ function ContactRow({
             href={href}
             target={external ? "_blank" : undefined}
             rel={external ? "noopener noreferrer" : undefined}
-            className="mt-1 text-[15px] hover:text-teal transition-colors"
+            className="mt-1 text-[15px] hover:text-indigo transition-colors"
           >
             {value}
           </a>

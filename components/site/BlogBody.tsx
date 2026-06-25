@@ -39,7 +39,7 @@ export function BlogBody({ body }: { body: string }) {
           return (
             <ul key={index} className="space-y-3 pl-5">
               {block.split("\n").map((item) => (
-                <li key={item} className="list-disc marker:text-teal">
+                <li key={item} className="list-disc marker:text-indigo">
                   {renderInline(item.replace(/^- /, ""))}
                 </li>
               ))}

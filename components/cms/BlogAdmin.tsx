@@ -141,7 +141,7 @@ export function BlogAdmin() {
       <div className="mx-auto max-w-[1280px]">
         <div className="flex flex-col gap-6 border-b border-[var(--border-color)] pb-8 md:flex-row md:items-end md:justify-between">
           <div>
-            <div className="font-mono text-[12px] uppercase tracking-[0.15em] text-teal">
+            <div className="font-mono text-[12px] uppercase tracking-[0.15em] text-indigo">
               Palentrix CMS
             </div>
             <h1 className="mt-3 font-display text-3xl font-bold md:text-5xl">Blog editor</h1>
@@ -177,7 +177,7 @@ export function BlogAdmin() {
           <aside className="rb-panel rounded-2xl p-4">
             <button
               onClick={newPost}
-              className="mb-4 inline-flex w-full items-center justify-center gap-2 rounded-md border border-teal/60 px-4 py-2.5 text-sm font-semibold text-teal transition-colors hover:bg-teal hover:text-void"
+              className="mb-4 inline-flex w-full items-center justify-center gap-2 rounded-md border border-indigo/50 px-4 py-2.5 text-sm font-semibold text-indigo transition-colors hover:bg-indigo hover:text-white"
             >
               <FilePlus size={16} />
               New post
