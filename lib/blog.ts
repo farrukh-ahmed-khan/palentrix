@@ -96,8 +96,16 @@ function normalizeInput(input: BlogPostInput): BlogPostInput {
 
 function fromMongoDocument(doc: BlogPostDocument): BlogPost {
   return {
-    ...doc,
+    slug: doc.slug,
+    title: doc.title,
+    excerpt: doc.excerpt,
+    date: doc.date,
     dateLabel: getDateLabel(doc.date),
+    readTime: doc.readTime,
+    tag: doc.tag,
+    author: doc.author,
+    body: doc.body,
+    published: doc.published,
   };
 }
 

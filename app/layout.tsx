@@ -4,6 +4,7 @@ import { Footer } from "@/components/site/Footer";
 import { Nav } from "@/components/site/Nav";
 import { ScrollProgress } from "@/components/site/ScrollProgress";
 import { absoluteUrl, siteConfig } from "@/lib/site";
+import { Analytics } from "@vercel/analytics/next"
 import "./globals.css";
 
 export const viewport: Viewport = {
@@ -79,6 +80,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
         />
         <ScrollProgress />
+        <Analytics/>
         <Nav />
         {children}
         <Footer />
