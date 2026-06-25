@@ -1,3 +1,7 @@
+function isHtml(content: string) {
+  return /^<[a-z]/i.test(content.trim());
+}
+
 function renderInline(text: string) {
   const parts = text.split(/(\*\*[^*]+\*\*)/g);
 
@@ -10,7 +14,7 @@ function renderInline(text: string) {
   });
 }
 
-export function BlogBody({ body }: { body: string }) {
+function MarkdownBody({ body }: { body: string }) {
   const blocks = body
     .split(/\n{2,}/)
     .map((block) => block.trim())
@@ -70,4 +74,17 @@ export function BlogBody({ body }: { body: string }) {
       })}
     </div>
   );
+}
+
+export function BlogBody({ body }: { body: string }) {
+  if (isHtml(body)) {
+    return (
+      <div
+        className="blog-content"
+        dangerouslySetInnerHTML={{ __html: body }}
+      />
+    );
+  }
+
+  return <MarkdownBody body={body} />;
 }

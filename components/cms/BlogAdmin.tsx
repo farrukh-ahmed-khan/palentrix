@@ -3,6 +3,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { Check, FilePlus, Loader2, Save, Trash2 } from "lucide-react";
 import type { BlogPost, BlogPostInput } from "@/lib/blog";
+import { RichTextEditor } from "@/components/cms/RichTextEditor";
 
 type CmsResponse = {
   posts?: BlogPost[];
@@ -233,20 +234,19 @@ export function BlogAdmin() {
               Published
             </label>
 
-            <label className="mt-5 block">
-              <span className={labelClass}>Markdown body</span>
-              <textarea
+            <div className="mt-5">
+              <span className={labelClass}>Content</span>
+              <RichTextEditor
                 value={draft.body}
-                onChange={(event) => setDraft({ ...draft, body: event.target.value })}
-                rows={18}
-                className={`${inputClass} font-mono leading-relaxed`}
+                onChange={(html) => setDraft((prev) => ({ ...prev, body: html }))}
+                token={token}
               />
-            </label>
+            </div>
 
             <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:justify-between">
               <button
                 onClick={savePost}
-                disabled={loading || !token || !draft.title || !draft.body}
+                disabled={loading || !token || !draft.title || !draft.body || draft.body === "<p></p>"}
                 className="inline-flex items-center justify-center gap-2 rounded-md btn-teal px-5 py-3 text-sm font-semibold disabled:opacity-50"
               >
                 {loading ? <Loader2 size={16} className="animate-spin" /> : <Save size={16} />}
