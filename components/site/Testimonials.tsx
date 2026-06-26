@@ -1,31 +1,50 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { ExternalLink, Star } from "lucide-react";
 import { Reveal, StaggerGroup, fadeUp } from "./Reveal";
 import { OrbsBg } from "./OrbsBg";
 import { SectionLabel } from "./SectionLabel";
 
+const upworkProfileUrl = "https://www.upwork.com/freelancers/~01274935b3fd67609d?mp_source=share";
+
 const items = [
   {
     quote:
-      "Palentrix didn't just build what we asked for  they told us what we actually needed. The SaaS they delivered handled our launch week without a single outage.",
-    name: "Alex R.",
-    role: "Founder, TechStartup",
-    initials: "AR",
+      "I have been very impressed with Farrukh's attention to detail. He was able to create a solid sandbox for future iterations and design considerations.",
+    name: "Chris Hill",
+    company: "CueClub",
+    project: "Production Website Sandbox & Staging Environment",
+    tags: ["Detail Oriented", "Solution Oriented", "Committed to Quality"],
+    initials: "CH",
+  },
+  {
+    quote: "Great developer to work with. Highly recommend.",
+    name: "Ria Kumar",
+    company: "OutfitIQ",
+    project: "AI Fashion Styling Platform + Speaker Kit + Wardrobe Feature",
+    tags: ["Clear Communicator", "Detail Oriented", "Committed to Quality"],
+    initials: "RK",
   },
   {
     quote:
-      "We'd worked with three agencies before. Palentrix was the first one that read our brief properly. Fast, communicative, and the code was clean.",
-    name: "Sarah M.",
-    role: "Product Lead, GrowthCo",
-    initials: "SM",
+      "Farrukh is a true professional. He delivered exactly what I expected on time and handled the project with great attention to detail. Very easy to communicate with.",
+    name: "SamuelJediael Bautista Sosa",
+    company: "Upwork Client",
+    project: "Next.js & NestJS Authentication Refactor & Security Hardening",
+    tags: ["On Time", "Clear Communication", "Security Hardening"],
+    initials: "SB",
+    value: "$100",
   },
   {
     quote:
-      "The automation pipeline they built replaced two full-time manual processes. ROI within the first month.",
-    name: "David K.",
-    role: "Ops Director, ScaleUp Inc.",
-    initials: "DK",
+      "The seller's expertise and attention to detail resulted in a top-notch deliverable. Highly recommended for quality work.",
+    name: "Baynton Jesse",
+    company: "Upwork Client",
+    project: "Redux State Sync & API Latency Optimization",
+    tags: ["Expertise", "Attention to Detail", "Quality Work"],
+    initials: "BJ",
+    value: "$110",
   },
 ];
 
@@ -42,7 +61,7 @@ export function Testimonials() {
           </h2>
         </Reveal>
 
-        <StaggerGroup className="mt-14 grid gap-6 md:grid-cols-3">
+        <StaggerGroup className="mt-14 grid gap-6 md:grid-cols-2">
           {items.map((t) => (
             <motion.div
               key={t.name}
@@ -69,9 +88,37 @@ export function Testimonials() {
                 "
               </div>
 
+              <div className="relative flex items-center gap-1 text-indigo">
+                {Array.from({ length: 5 }).map((_, index) => (
+                  <Star key={index} size={15} fill="currentColor" strokeWidth={1.5} />
+                ))}
+                {t.value ? (
+                  <span className="ml-2 font-mono text-[11px] uppercase tracking-[0.12em] text-muted">
+                    {t.value}
+                  </span>
+                ) : null}
+              </div>
+
               <p className="relative pt-8 text-[15px] leading-[1.8] text-ink/75 font-light">
                 {t.quote}
               </p>
+
+              <div className="relative mt-6 rounded-xl border border-[rgba(120,108,255,0.16)] bg-slate/55 p-4">
+                <div className="font-mono text-[10px] uppercase tracking-[0.15em] text-indigo">
+                  Project
+                </div>
+                <div className="mt-2 text-[13px] leading-relaxed text-ink/75">{t.project}</div>
+                <div className="mt-4 flex flex-wrap gap-2">
+                  {t.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="rounded-full border border-indigo/15 bg-white/70 px-3 py-1 font-mono text-[10px] uppercase tracking-[0.1em] text-muted"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </div>
 
               <div className="mt-8 flex items-center gap-3">
                 <div
@@ -87,9 +134,20 @@ export function Testimonials() {
                 </div>
                 <div>
                   <div className="font-medium text-[14px] text-ink">{t.name}</div>
-                  <div className="text-[12px] text-muted">{t.role}</div>
+                  <div className="text-[12px] text-muted">{t.company}</div>
                 </div>
               </div>
+
+              <a
+                href={upworkProfileUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="relative mt-7 inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.14em] text-indigo transition-colors hover:text-violet"
+                aria-label={`View ${t.name}'s testimonial on Upwork`}
+              >
+                View Upwork profile
+                <ExternalLink size={13} />
+              </a>
             </motion.div>
           ))}
         </StaggerGroup>
