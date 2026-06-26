@@ -43,6 +43,8 @@ export function Footer() {
           <FooterCol title="Company" items={[
             { label: "About", to: "/about" },
             { label: "Process", to: "/process" },
+            { label: "Privacy Policy", to: "/privacy-policy" },
+            { label: "Terms", to: "/terms" },
           ]} />
         </div>
 
