@@ -9,7 +9,16 @@ export function Footer() {
       <div className="mx-auto max-w-[1200px] px-6 py-16">
         <div className="grid gap-12 md:grid-cols-4">
           <div className="md:col-span-1">
-            <img src="/brand/palentrix-logo-dark.png" alt="Palentrix" className="w-[200px] max-w-full" />
+            <img
+              src="/brand/palentrix-logo-footer-400.png"
+              alt="Palentrix"
+              width={400}
+              height={286}
+              loading="lazy"
+              decoding="async"
+              fetchPriority="low"
+              className="w-[200px] max-w-full"
+            />
             <p className="mt-4 text-muted text-[14px] leading-relaxed max-w-[240px]">
               We Engineer Products People Rely On.
             </p>

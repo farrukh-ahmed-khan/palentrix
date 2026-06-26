@@ -45,8 +45,10 @@ export function Nav() {
           {/* Logo with subtle spring on hover */}
           <Link href="/" className="flex items-center">
             <motion.img
-              src="/brand/palentrix-logo-dark.png"
+              src="/brand/palentrix-logo-nav.png"
               alt="Palentrix"
+              width={112}
+              height={80}
               className="h-10 w-auto object-contain"
               whileHover={{ scale: 1.05 }}
               transition={{ type: "spring", stiffness: 400, damping: 20 }}
@@ -118,8 +120,10 @@ export function Nav() {
             <div className="flex items-center justify-between h-[72px] px-6">
               <Link href="/" onClick={() => setOpen(false)} className="flex items-center">
                 <img
-                  src="/brand/palentrix-logo-dark.png"
+                  src="/brand/palentrix-logo-nav.png"
                   alt="Palentrix"
+                  width={112}
+                  height={80}
                   className="h-10 w-auto object-contain"
                 />
               </Link>
