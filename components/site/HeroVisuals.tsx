@@ -39,9 +39,9 @@ export function HeroVisuals() {
         <div className="mt-3 flex justify-between items-end">
           <div>
             <div className="font-mono text-[9px]" style={{ color: "var(--indigo-dim)" }}>MRR</div>
-            <div className="font-display font-bold text-[18px]" style={{ color: "var(--teal)" }}>$24k</div>
+            <div className="font-display font-bold text-[18px]" style={{ color: "var(--indigo-dim)" }}>$24k</div>
           </div>
-          <span className="font-mono text-[11px] font-semibold" style={{ color: "var(--teal)" }}>+18%</span>
+          <span className="font-mono text-[11px] font-semibold" style={{ color: "var(--indigo-dim)" }}>+18%</span>
         </div>
       </div>
 
@@ -63,7 +63,7 @@ export function HeroVisuals() {
           </svg>
           <span className="font-mono text-[10px]" style={{ color: "var(--muted)" }}>auth.service.ts</span>
         </div>
-        <div style={{ background: "var(--void)", borderRadius: 6, padding: 10, fontFamily: "var(--font-mono)", fontSize: 10, lineHeight: 1.8 }}>
+        <div style={{ background: "var(--ink)", borderRadius: 6, padding: 10, fontFamily: "var(--font-mono)", fontSize: 10, lineHeight: 1.8 }}>
           <div><span style={{ color: "#786CFF" }}>const</span> <span style={{ color: "#F4F5F9" }}>token</span> <span style={{ color: "#8B95B0" }}>= await</span></div>
           <div><span style={{ color: "#32C8FF" }}>jwt</span><span style={{ color: "#8B95B0" }}>.</span><span style={{ color: "#F4F5F9" }}>sign</span><span style={{ color: "#8B95B0" }}>(</span></div>
           <div style={{ paddingLeft: 10 }}><span style={{ color: "#F4F5F9" }}>payload</span><span style={{ color: "#8B95B0" }}>,</span></div>

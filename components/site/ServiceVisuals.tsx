@@ -12,7 +12,7 @@ export function SaasVisual() {
       ))}
       <div className="flex-1 rounded-md ml-1 flex flex-col justify-center px-2 py-1" style={{ background: "rgba(50,200,255,0.06)", border: "1px solid rgba(50,200,255,0.18)" }}>
         <div className="font-mono text-[8px]" style={{ color: "var(--indigo-dim)" }}>MRR</div>
-        <div className="font-display font-bold text-[14px]" style={{ color: "var(--teal)" }}>$24k</div>
+        <div className="font-display font-bold text-[14px]" style={{ color: "var(--indigo-dim)" }}>$24k</div>
         <div className="text-[8px]" style={{ color: "var(--indigo-dim)" }}>+18%</div>
       </div>
       <div className="absolute bottom-0 left-0 right-0 h-[2px]" style={{ background: "rgba(120,108,255,0.1)" }} />
