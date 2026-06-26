@@ -1,4 +1,5 @@
 import Script from "next/script";
+import { AdSenseLoader } from "./AdSenseLoader";
 
 const gaMeasurementId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
 const googleAdsId = process.env.NEXT_PUBLIC_GOOGLE_ADS_ID;
@@ -27,13 +28,7 @@ export function GoogleTags() {
         </>
       ) : null}
 
-      {adsenseClientId ? (
-        <script
-          async
-          src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${adsenseClientId}`}
-          crossOrigin="anonymous"
-        />
-      ) : null}
+      {adsenseClientId ? <AdSenseLoader clientId={adsenseClientId} /> : null}
     </>
   );
 }

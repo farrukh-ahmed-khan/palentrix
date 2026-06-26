@@ -5,10 +5,13 @@ import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { CTAButton } from "./CTAButton";
 import { Noise } from "./Noise";
-import { HeroVisuals } from "./HeroVisuals";
 import { CountUp } from "./CountUp";
 
 const Prism = dynamic(() => import("@/components/reactbits/Prism/Prism"), {
+  ssr: false,
+});
+
+const HeroVisuals = dynamic(() => import("./HeroVisuals").then((mod) => mod.HeroVisuals), {
   ssr: false,
 });
 
@@ -25,14 +28,20 @@ const heroStats = [
 
 export function Hero() {
   const [showPrism, setShowPrism] = useState(false);
+  const [showHeroVisuals, setShowHeroVisuals] = useState(false);
 
   useEffect(() => {
+    const revealDeferredEffects = () => {
+      setShowPrism(true);
+      setShowHeroVisuals(window.matchMedia("(min-width: 1024px)").matches);
+    };
+
     if ("requestIdleCallback" in window) {
-      const idleId = window.requestIdleCallback(() => setShowPrism(true), { timeout: 2500 });
+      const idleId = window.requestIdleCallback(revealDeferredEffects, { timeout: 2500 });
       return () => window.cancelIdleCallback(idleId);
     }
 
-    const timerId = globalThis.setTimeout(() => setShowPrism(true), 1500);
+    const timerId = globalThis.setTimeout(revealDeferredEffects, 1500);
     return () => globalThis.clearTimeout(timerId);
   }, []);
 
@@ -101,7 +110,7 @@ export function Hero() {
           transition={{ duration: 0.8, ease, delay: 0.7 }}
           className="hidden lg:block"
         >
-          <HeroVisuals />
+          {showHeroVisuals ? <HeroVisuals /> : null}
         </motion.div>
         </div>
       </div>
