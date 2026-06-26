@@ -75,7 +75,7 @@ export function Footer() {
 function FooterCol({ title, items }: { title: string; items: { label: string; to: string }[] }) {
   return (
     <div>
-      <p className="font-mono text-[12px] text-indigo uppercase tracking-wider mb-4">{title}</p>
+      <p className="font-mono text-[12px] text-indigo-dim uppercase tracking-wider mb-4">{title}</p>
       <ul className="space-y-2">
         {items.map((it) => (
           <li key={it.label}>
