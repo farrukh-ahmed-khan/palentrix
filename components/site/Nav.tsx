@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 
 const links = [
@@ -42,47 +41,39 @@ export function Nav() {
         }}
       >
         <div className="mx-auto max-w-[1200px] px-6 h-[72px] flex items-center justify-between">
-          {/* Logo with subtle spring on hover */}
           <Link href="/" className="flex items-center">
-            <motion.img
+            <img
               src="/brand/palentrix-logo-nav.png"
               alt="Palentrix"
               width={112}
               height={80}
-              className="h-10 w-auto object-contain"
-              whileHover={{ scale: 1.05 }}
-              transition={{ type: "spring", stiffness: 400, damping: 20 }}
+              className="h-10 w-auto object-contain transition-transform duration-200 hover:scale-[1.04]"
             />
           </Link>
 
-          {/* Desktop nav — animated sliding pill for active link */}
           <nav className="hidden md:flex items-center gap-1">
-            {links.map((l) => {
-              const isActive =
-                pathname === l.to || (l.to !== "/" && pathname.startsWith(l.to));
+            {links.map((link) => {
+              const isActive = pathname === link.to || (link.to !== "/" && pathname.startsWith(link.to));
+
               return (
                 <Link
-                  key={l.to}
-                  href={l.to}
+                  key={link.to}
+                  href={link.to}
                   className={`relative px-3.5 py-1.5 rounded-lg text-[14px] font-medium tracking-wide transition-colors duration-200 ${
-                    isActive
-                      ? "text-indigo"
-                      : "nav-link text-ink/60 hover:text-ink"
+                    isActive ? "text-indigo" : "nav-link text-ink/60 hover:text-ink"
                   }`}
                   style={{ fontFamily: "var(--font-nav)" }}
                 >
-                  {isActive && (
-                    <motion.span
-                      layoutId="nav-pill"
+                  {isActive ? (
+                    <span
                       className="absolute inset-0 rounded-lg"
                       style={{
                         background: "rgba(120,108,255,0.08)",
                         border: "1px solid rgba(120,108,255,0.16)",
                       }}
-                      transition={{ type: "spring", stiffness: 380, damping: 30 }}
                     />
-                  )}
-                  <span className="relative z-10">{l.label}</span>
+                  ) : null}
+                  <span className="relative z-10">{link.label}</span>
                 </Link>
               );
             })}
@@ -97,95 +88,60 @@ export function Nav() {
             Book a call
           </a>
 
-          <button
-            aria-label="Menu"
-            className="md:hidden text-ink"
-            onClick={() => setOpen(true)}
-          >
+          <button aria-label="Menu" className="md:hidden text-ink" onClick={() => setOpen(true)}>
             <Menu size={22} />
           </button>
         </div>
       </header>
 
-      {/* Mobile menu — slides in from right with staggered links */}
-      <AnimatePresence>
-        {open && (
-          <motion.div
-            initial={{ x: "100%", opacity: 0 }}
-            animate={{ x: 0, opacity: 1 }}
-            exit={{ x: "100%", opacity: 0 }}
-            transition={{ type: "spring", stiffness: 320, damping: 32 }}
-            className="fixed inset-0 z-[100] bg-white md:hidden"
-          >
-            <div className="flex items-center justify-between h-[72px] px-6">
-              <Link href="/" onClick={() => setOpen(false)} className="flex items-center">
-                <img
-                  src="/brand/palentrix-logo-nav.png"
-                  alt="Palentrix"
-                  width={112}
-                  height={80}
-                  className="h-10 w-auto object-contain"
-                />
-              </Link>
-              <button onClick={() => setOpen(false)} aria-label="Close">
-                <X size={22} />
-              </button>
-            </div>
+      {open ? (
+        <div className="fixed inset-0 z-[100] bg-white md:hidden">
+          <div className="flex items-center justify-between h-[72px] px-6">
+            <Link href="/" onClick={() => setOpen(false)} className="flex items-center">
+              <img
+                src="/brand/palentrix-logo-nav.png"
+                alt="Palentrix"
+                width={112}
+                height={80}
+                className="h-10 w-auto object-contain"
+              />
+            </Link>
+            <button onClick={() => setOpen(false)} aria-label="Close">
+              <X size={22} />
+            </button>
+          </div>
 
-            <div className="flex flex-col gap-2 px-6 pt-8">
-              {links.map((l, i) => {
-                const isActive =
-                  pathname === l.to || (l.to !== "/" && pathname.startsWith(l.to));
-                return (
-                  <motion.div
-                    key={l.to}
-                    initial={{ x: 40, opacity: 0 }}
-                    animate={{ x: 0, opacity: 1 }}
-                    transition={{
-                      delay: i * 0.055 + 0.08,
-                      type: "spring",
-                      stiffness: 340,
-                      damping: 28,
-                    }}
-                  >
-                    <Link
-                      href={l.to}
-                      onClick={() => setOpen(false)}
-                      className={`block text-3xl font-semibold tracking-tight py-2 ${
-                        isActive ? "text-indigo" : "text-ink"
-                      }`}
-                      style={{ fontFamily: "var(--font-nav)" }}
-                    >
-                      {l.label}
-                    </Link>
-                  </motion.div>
-                );
-              })}
+          <div className="flex flex-col gap-2 px-6 pt-8">
+            {links.map((link) => {
+              const isActive = pathname === link.to || (link.to !== "/" && pathname.startsWith(link.to));
 
-              <motion.div
-                initial={{ x: 40, opacity: 0 }}
-                animate={{ x: 0, opacity: 1 }}
-                transition={{
-                  delay: links.length * 0.055 + 0.08,
-                  type: "spring",
-                  stiffness: 340,
-                  damping: 28,
-                }}
-              >
-                <a
-                  href={calendlyUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
+              return (
+                <Link
+                  key={link.to}
+                  href={link.to}
                   onClick={() => setOpen(false)}
-                  className="mt-6 inline-flex items-center justify-center px-6 py-3.5 rounded-lg btn-teal font-semibold tracking-wide text-[15px]"
+                  className={`block text-3xl font-semibold tracking-tight py-2 ${
+                    isActive ? "text-indigo" : "text-ink"
+                  }`}
+                  style={{ fontFamily: "var(--font-nav)" }}
                 >
-                  Book a call
-                </a>
-              </motion.div>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+                  {link.label}
+                </Link>
+              );
+            })}
+
+            <a
+              href={calendlyUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => setOpen(false)}
+              className="mt-6 inline-flex items-center justify-center px-6 py-3.5 rounded-lg btn-teal font-semibold tracking-wide text-[15px]"
+            >
+              Book a call
+            </a>
+          </div>
+        </div>
+      ) : null}
     </>
   );
 }

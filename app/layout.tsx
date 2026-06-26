@@ -1,13 +1,10 @@
 import type { Metadata, Viewport } from "next";
 import { Inter, JetBrains_Mono, Orbitron, Space_Grotesk } from "next/font/google";
-import Script from "next/script";
 import { Footer } from "@/components/site/Footer";
 import { GoogleTags } from "@/components/site/GoogleTags";
 import { Nav } from "@/components/site/Nav";
 import { ScrollProgress } from "@/components/site/ScrollProgress";
 import { absoluteUrl, siteConfig } from "@/lib/site";
-import { Analytics } from "@vercel/analytics/next"
-import { SpeedInsights } from "@vercel/speed-insights/next"
 import "./globals.css";
 
 const inter = Inter({
@@ -123,7 +120,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         className={`${inter.variable} ${orbitron.variable} ${spaceGrotesk.variable} ${jetBrainsMono.variable}`}
       >
         <GoogleTags />
-        <Script
+        <script
           id="palentrix-organization-jsonld"
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
@@ -131,8 +128,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
    
         
         <ScrollProgress />
-        <Analytics />
-        <SpeedInsights />
         <Nav />
         {children}
         <Footer />
