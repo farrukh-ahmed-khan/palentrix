@@ -4,6 +4,8 @@ import { Linkedin, Github, Twitter, Mail } from "lucide-react";
 const calendlyUrl = "https://calendly.com/d/cvsh-jw5-d8x";
 
 export function Footer() {
+  const currentYear = new Date().getFullYear();
+
   return (
     <footer className="bg-slate border-t border-[rgba(120,108,255,0.15)]">
       <div className="mx-auto max-w-[1200px] px-6 py-16">
@@ -58,7 +60,7 @@ export function Footer() {
         </div>
 
         <div className="mt-12 pt-6 border-t border-[rgba(120,108,255,0.1)] flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-          <p className="text-muted text-[13px]">(c) 2024 Palentrix. All rights reserved. Karachi, Pakistan</p>
+          <p className="text-muted text-[13px]">(c) {currentYear} Palentrix. All rights reserved. Karachi, Pakistan</p>
           <div className="flex items-center gap-4 text-muted">
             <a href="#" aria-label="LinkedIn" className="hover:text-indigo transition-colors"><Linkedin size={18} /></a>
             <a href="https://github.com/farrukh-ahmed-khan" target="_blank" rel="noopener noreferrer" aria-label="GitHub" className="hover:text-indigo transition-colors"><Github size={18} /></a>
