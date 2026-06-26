@@ -79,7 +79,7 @@ export function CTABanner() {
         </Reveal>
         <Reveal delay={0.3}>
           <p className="mt-8 font-mono text-[12px] text-muted uppercase tracking-wider">
-            No contracts· No retainers· Pay per project
+            No contracts - No retainers - Pay per project
           </p>
         </Reveal>
       </div>
