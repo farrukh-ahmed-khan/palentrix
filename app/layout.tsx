@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import Script from "next/script";
 import { Footer } from "@/components/site/Footer";
+import { GoogleTags } from "@/components/site/GoogleTags";
 import { Nav } from "@/components/site/Nav";
 import { ScrollProgress } from "@/components/site/ScrollProgress";
 import { absoluteUrl, siteConfig } from "@/lib/site";
@@ -21,10 +22,24 @@ export const metadata: Metadata = {
     template: "%s - Palentrix",
   },
   description: siteConfig.description,
+  keywords: siteConfig.keywords,
   applicationName: "Palentrix",
   authors: [{ name: "Palentrix" }],
   creator: "Palentrix",
   publisher: "Palentrix",
+  category: "Software Development",
+  classification: "Software development studio",
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
+  verification: {
+    google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || undefined,
+  },
+  other: process.env.NEXT_PUBLIC_GOOGLE_ADSENSE_CLIENT
+    ? { "google-adsense-account": process.env.NEXT_PUBLIC_GOOGLE_ADSENSE_CLIENT }
+    : undefined,
   alternates: {
     canonical: "/",
   },
@@ -75,13 +90,16 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <body>
+        <GoogleTags />
         <Script
           id="palentrix-organization-jsonld"
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
         />
+   
+        
         <ScrollProgress />
-        <Analytics/>
+        <Analytics />
         <SpeedInsights />
         <Nav />
         {children}

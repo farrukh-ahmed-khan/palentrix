@@ -4,6 +4,18 @@ export const siteConfig = {
   title: "Palentrix - We Engineer Products People Rely On",
   description:
     "Palentrix is a software studio in Karachi building SaaS products, web and mobile apps, and business automations for startups and enterprises.",
+  keywords: [
+    "Palentrix",
+    "software development company Karachi",
+    "SaaS development agency",
+    "MVP development services",
+    "custom web app development",
+    "mobile app development",
+    "AI automation agency",
+    "business automation services",
+    "Next.js development",
+    "full stack development agency",
+  ],
   email: "hello@palentrix.com",
   calendlyUrl: "https://calendly.com/d/cvsh-jw5-d8x",
 };
