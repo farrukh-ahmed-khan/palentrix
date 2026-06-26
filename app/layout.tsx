@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import { Inter, JetBrains_Mono, Orbitron, Space_Grotesk } from "next/font/google";
 import Script from "next/script";
 import { Footer } from "@/components/site/Footer";
 import { GoogleTags } from "@/components/site/GoogleTags";
@@ -8,6 +9,34 @@ import { absoluteUrl, siteConfig } from "@/lib/site";
 import { Analytics } from "@vercel/analytics/next"
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import "./globals.css";
+
+const inter = Inter({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
+  display: "swap",
+  variable: "--font-inter",
+});
+
+const orbitron = Orbitron({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800", "900"],
+  display: "swap",
+  variable: "--font-orbitron",
+});
+
+const spaceGrotesk = Space_Grotesk({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  display: "swap",
+  variable: "--font-space-grotesk",
+});
+
+const jetBrainsMono = JetBrains_Mono({
+  subsets: ["latin"],
+  weight: ["400", "500"],
+  display: "swap",
+  variable: "--font-jetbrains-mono",
+});
 
 export const viewport: Viewport = {
   width: "device-width",
@@ -89,7 +118,7 @@ const organizationJsonLd = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body>
+      <body className={`${inter.variable} ${orbitron.variable} ${spaceGrotesk.variable} ${jetBrainsMono.variable}`}>
         <GoogleTags />
         <Script
           id="palentrix-organization-jsonld"
