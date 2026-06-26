@@ -1,57 +1,14 @@
 "use client";
 
-import dynamic from "next/dynamic";
 import { motion } from "framer-motion";
-import { useEffect, useRef, useState } from "react";
 import { Reveal } from "./Reveal";
 import { CTAButton } from "./CTAButton";
-
-const LiquidEther = dynamic(() => import("@/components/reactbits/LiquidEther/LiquidEther"), {
-  ssr: false,
-});
 
 const calendlyUrl = "https://calendly.com/d/cvsh-jw5-d8x";
 
 export function CTABanner() {
-  const sectionRef = useRef<HTMLElement | null>(null);
-  const [showLiquidEther, setShowLiquidEther] = useState(false);
-
-  useEffect(() => {
-    const section = sectionRef.current;
-    if (!section || showLiquidEther) {
-      return;
-    }
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setShowLiquidEther(true);
-          observer.disconnect();
-        }
-      },
-      { rootMargin: "600px 0px" },
-    );
-
-    observer.observe(section);
-    return () => observer.disconnect();
-  }, [showLiquidEther]);
-
   return (
-    <section ref={sectionRef} className="relative bg-void py-32 overflow-hidden">
-      <div className="absolute inset-0 opacity-55">
-        {showLiquidEther ? (
-          <LiquidEther
-            colors={["#32C8FF", "#786CFF", "#F4F5F9"]}
-            mouseForce={24}
-            cursorSize={120}
-            resolution={0.36}
-            autoDemo
-            autoSpeed={0.36}
-            autoIntensity={1.7}
-            autoResumeDelay={900}
-          />
-        ) : null}
-      </div>
+    <section className="relative bg-void py-32 overflow-hidden">
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_70%_60%_at_50%_50%,rgba(255,255,255,0.08)_0%,rgba(244,242,253,0.7)_52%,rgba(255,255,255,0.92)_100%)]" />
       <div className="relative mx-auto max-w-[1200px] px-6 text-center">
         <Reveal>
