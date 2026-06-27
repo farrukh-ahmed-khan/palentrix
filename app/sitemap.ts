@@ -1,6 +1,8 @@
 import type { MetadataRoute } from "next";
 import { getBlogPosts } from "@/lib/blog";
 import { absoluteUrl } from "@/lib/site";
+import { seoPages } from "@/lib/seo-pages";
+import { caseStudies } from "@/lib/case-studies";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const posts = await getBlogPosts();
@@ -14,6 +16,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     "/contact",
     "/privacy-policy",
     "/terms",
+    ...seoPages.map((page) => `/${page.slug}`),
+    ...caseStudies.map((study) => `/work/${study.slug}`),
   ];
 
   return [

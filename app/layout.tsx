@@ -97,19 +97,65 @@ export const metadata: Metadata = {
   },
 };
 
-const organizationJsonLd = {
+const siteJsonLd = {
   "@context": "https://schema.org",
-  "@type": "Organization",
-  name: siteConfig.name,
-  url: siteConfig.url,
-  logo: absoluteUrl("/brand/palentrix-logo-dark.png"),
-  email: siteConfig.email,
-  address: {
-    "@type": "PostalAddress",
-    addressLocality: "Karachi",
-    addressCountry: "PK",
-  },
-  sameAs: ["https://github.com/farrukh-ahmed-khan"],
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": absoluteUrl("/#organization"),
+      name: siteConfig.name,
+      url: siteConfig.url,
+      logo: absoluteUrl("/brand/palentrix-logo-dark.png"),
+      email: siteConfig.emails.contact,
+      sameAs: ["https://github.com/farrukh-ahmed-khan"],
+    },
+    {
+      "@type": "LocalBusiness",
+      "@id": absoluteUrl("/#localbusiness"),
+      name: siteConfig.name,
+      url: siteConfig.url,
+      image: absoluteUrl("/brand/palentrix-logo-dark.png"),
+      email: siteConfig.emails.contact,
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: "Karachi",
+        addressRegion: "Sindh",
+        addressCountry: "PK",
+      },
+      areaServed: [
+        { "@type": "City", name: "Karachi" },
+        { "@type": "Country", name: "Pakistan" },
+      ],
+      priceRange: "$$",
+    },
+    {
+      "@type": "ProfessionalService",
+      "@id": absoluteUrl("/#professionalservice"),
+      name: siteConfig.name,
+      url: siteConfig.url,
+      description: siteConfig.description,
+      email: siteConfig.emails.contact,
+      serviceType: [
+        "Software Development",
+        "SaaS MVP Development",
+        "Next.js Development",
+        "AI Web App Development",
+        "Custom Software Development",
+      ],
+      areaServed: [
+        { "@type": "City", name: "Karachi" },
+        { "@type": "Country", name: "Pakistan" },
+        { "@type": "Place", name: "Worldwide" },
+      ],
+    },
+    {
+      "@type": "WebSite",
+      "@id": absoluteUrl("/#website"),
+      name: siteConfig.name,
+      url: siteConfig.url,
+      publisher: { "@id": absoluteUrl("/#organization") },
+    },
+  ],
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -121,9 +167,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       >
         <GoogleTags />
         <script
-          id="palentrix-organization-jsonld"
+          id="palentrix-site-jsonld"
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(siteJsonLd) }}
         />
    
         

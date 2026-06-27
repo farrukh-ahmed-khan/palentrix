@@ -4,9 +4,16 @@ import { CTAButton } from "./CTAButton";
 import { Noise } from "./Noise";
 import { CountUp } from "./CountUp";
 import { HeroVisuals } from "./HeroVisuals";
+import Link from "next/link";
 
-const headlineWords = ["We", "Engineer", "Products", "People", "Rely", "On."];
+const headlineWords = ["Software", "Development", "Company", "in", "Pakistan."];
 const calendlyUrl = "https://calendly.com/palentrix/30min";
+const seoLinks = [
+  { href: "/software-house-pakistan", label: "Software House Pakistan" },
+  { href: "/saas-mvp-development", label: "SaaS MVP Development" },
+  { href: "/nextjs-development", label: "Next.js Agency" },
+  { href: "/ai-web-app-development", label: "AI App Development" },
+];
 
 const heroStats = [
   { n: 50, suf: "+", label: "Projects shipped" },
@@ -27,14 +34,14 @@ export function Hero() {
         <div className="mx-auto max-w-[1240px] px-6 w-full py-28 grid lg:grid-cols-[1.15fr_1fr] gap-16 items-center">
           <div className="text-center lg:text-left">
             <div className="inline-block font-mono text-[11px] uppercase tracking-[0.2em] text-indigo border border-indigo/30 rounded-full px-4 py-1.5 bg-indigo/5">
-              [ Software Studio - Karachi, PK ]
+              [ Software House - Karachi, Pakistan ]
             </div>
 
             <h1 className="mt-8 font-display font-extrabold text-[36px] md:text-[54px] leading-[1.1] tracking-normal">
               <span className="flex flex-wrap justify-center lg:justify-start gap-x-4 gap-y-2">
                 {headlineWords.map((word, index) => (
                   <span key={word} className="inline-block overflow-hidden pb-1">
-                    <span className={`inline-block ${index === 2 || index === 5 ? "text-gradient-indigo" : ""}`}>
+                    <span className={`inline-block ${index === 0 || index === 4 ? "text-gradient-indigo" : ""}`}>
                       {word}
                     </span>
                   </span>
@@ -43,7 +50,7 @@ export function Hero() {
             </h1>
 
             <p className="mt-8 text-muted text-[16px] md:text-[18px] max-w-[560px] mx-auto lg:mx-0 leading-relaxed">
-              Palentrix builds SaaS products, web & mobile applications, and business automations - shipped on time, built to scale, with zero shortcuts.
+              Palentrix is a software development company and software house in Karachi, Pakistan building SaaS MVPs, custom web apps, AI products, dashboards, and business automation systems for clients worldwide.
             </p>
 
             <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
@@ -51,6 +58,18 @@ export function Hero() {
               <CTAButton to="/work" variant="ghost">
                 See our work
               </CTAButton>
+            </div>
+
+            <div className="mt-8 flex flex-wrap justify-center gap-2 lg:justify-start">
+              {seoLinks.map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className="rounded-full border border-indigo/15 bg-white/70 px-3 py-1.5 text-[12px] text-muted transition-colors hover:border-indigo hover:text-indigo"
+                >
+                  {link.label}
+                </Link>
+              ))}
             </div>
           </div>
 
