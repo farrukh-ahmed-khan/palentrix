@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { LegalPage } from "@/components/pages/LegalPage";
+import { siteConfig } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Privacy Policy",
@@ -17,7 +18,7 @@ const sections = [
   {
     title: "Who we are",
     body: [
-      "Palentrix is a software studio based in Karachi, Pakistan. Our website address is palentrix.com, and our contact email is hello@palentrix.com.",
+      `Palentrix is a software studio based in Karachi, Pakistan. Our website address is palentrix.com, and our contact email is ${siteConfig.emails.info}.`,
       "This Privacy Policy explains what information we collect when people visit our website, read our blog, contact us, or interact with services connected to the site.",
     ],
   },

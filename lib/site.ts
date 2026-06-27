@@ -16,8 +16,14 @@ export const siteConfig = {
     "Next.js development",
     "full stack development agency",
   ],
-  email: "hello@palentrix.com",
-  calendlyUrl: "https://calendly.com/d/cvsh-jw5-d8x",
+  email: "contact@palentrix.com",
+  emails: {
+    contact: "contact@palentrix.com",
+    info: "info@palentrix.com",
+    billing: "billing@palentrix.com",
+    support: "support@palentrix.com",
+  },
+  calendlyUrl: "https://calendly.com/palentrix/30min",
 };
 
 export function absoluteUrl(path = "/") {

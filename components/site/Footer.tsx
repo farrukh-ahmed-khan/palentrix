@@ -1,7 +1,8 @@
 import Link from "next/link";
 import { Linkedin, Github, Twitter, Mail } from "lucide-react";
+import { siteConfig } from "@/lib/site";
 
-const calendlyUrl = "https://calendly.com/d/cvsh-jw5-d8x";
+const calendlyUrl = "https://calendly.com/palentrix/30min";
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
@@ -25,11 +26,11 @@ export function Footer() {
               We Engineer Products People Rely On.
             </p>
             <a
-              href="mailto:hello@palentrix.com"
+              href={`mailto:${siteConfig.emails.contact}`}
               className="mt-4 inline-flex items-center gap-2 text-[13px] text-muted hover:text-indigo transition-colors"
             >
               <Mail size={14} />
-              hello@palentrix.com
+              {siteConfig.emails.contact}
             </a>
             <a
               href={calendlyUrl}

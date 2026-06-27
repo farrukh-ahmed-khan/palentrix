@@ -14,7 +14,7 @@ const links = [
   { to: "/blog", label: "Blog" },
 ] as const;
 
-const calendlyUrl = "https://calendly.com/d/cvsh-jw5-d8x";
+const calendlyUrl = "https://calendly.com/palentrix/30min";
 
 export function Nav() {
   const pathname = usePathname();

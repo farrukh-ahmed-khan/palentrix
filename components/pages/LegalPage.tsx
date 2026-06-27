@@ -4,6 +4,7 @@ import Link from "next/link";
 import { PageHero } from "@/components/site/PageHero";
 import { PageShell } from "@/components/site/PageShell";
 import { Reveal } from "@/components/site/Reveal";
+import { siteConfig } from "@/lib/site";
 
 type LegalSection = {
   title: string;
@@ -55,8 +56,8 @@ export function LegalPage({
           <Reveal>
             <div className="mt-14 border-t border-[rgba(120,108,255,0.18)] pt-8 text-[15px] leading-relaxed text-muted">
               Questions about these terms or this policy? Email{" "}
-              <a className="text-indigo underline underline-offset-4" href="mailto:hello@palentrix.com">
-                hello@palentrix.com
+              <a className="text-indigo underline underline-offset-4" href={`mailto:${siteConfig.emails.info}`}>
+                {siteConfig.emails.info}
               </a>
               . You can also visit our{" "}
               <Link className="text-indigo underline underline-offset-4" href="/contact">

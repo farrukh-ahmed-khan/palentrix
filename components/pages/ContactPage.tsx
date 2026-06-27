@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Calendar, Clock, Mail } from "lucide-react";
+import { Calendar, Clock, CreditCard, LifeBuoy, Mail } from "lucide-react";
 import { Noise } from "@/components/site/Noise";
 import { PageShell } from "@/components/site/PageShell";
 import { Reveal } from "@/components/site/Reveal";
@@ -41,7 +41,24 @@ export function ContactPage() {
             </p>
 
             <div className="mt-12 space-y-5">
-              <ContactRow Icon={Mail} label="Email" value={siteConfig.email} href={`mailto:${siteConfig.email}`} />
+              <ContactRow
+                Icon={Mail}
+                label="Contact"
+                value={siteConfig.emails.contact}
+                href={`mailto:${siteConfig.emails.contact}`}
+              />
+              <ContactRow
+                Icon={LifeBuoy}
+                label="Support"
+                value={siteConfig.emails.support}
+                href={`mailto:${siteConfig.emails.support}`}
+              />
+              <ContactRow
+                Icon={CreditCard}
+                label="Billing"
+                value={siteConfig.emails.billing}
+                href={`mailto:${siteConfig.emails.billing}`}
+              />
               <ContactRow
                 Icon={Calendar}
                 label="Book a call"

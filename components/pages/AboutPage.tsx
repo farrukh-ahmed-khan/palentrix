@@ -9,22 +9,22 @@ import { Reveal, StaggerGroup, fadeUp } from "@/components/site/Reveal";
 
 const team = [
   {
-    name: "Hassan A.",
-    role: "Partner - Engineering Lead",
-    bio: "10+ years building SaaS and infrastructure. Owns architecture and backend systems.",
-    initials: "HA",
+    name: "Farrukh Ahmed Khan",
+    role: "Senior Full Stack Developer",
+    bio: "Leads architecture, backend systems, and production delivery for SaaS platforms, marketplaces, and complex web applications.",
+    initials: "FA",
   },
   {
-    name: "Bilal K.",
-    role: "Partner - Product Engineering",
-    bio: "Full-stack engineer with a designer's eye. Owns frontend, mobile, and product UX.",
-    initials: "BK",
+    name: "Muhammad Sarim Khan",
+    role: "Senior Full Stack Developer",
+    bio: "Builds polished full-stack products across Next.js, APIs, databases, and user-facing dashboards with a focus on speed and usability.",
+    initials: "MS",
   },
   {
-    name: "Omar S.",
-    role: "Partner - Automation & Data",
-    bio: "Python and data-pipeline specialist. Owns automation, integrations, and reliability.",
-    initials: "OS",
+    name: "Taimoor Abid",
+    role: "Senior Project Manager / QA",
+    bio: "Owns delivery flow, QA standards, client communication, and release readiness so every project ships with clarity and confidence.",
+    initials: "TA",
   },
 ];
 

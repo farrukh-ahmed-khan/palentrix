@@ -6,7 +6,7 @@ import { CountUp } from "./CountUp";
 import { HeroVisuals } from "./HeroVisuals";
 
 const headlineWords = ["We", "Engineer", "Products", "People", "Rely", "On."];
-const calendlyUrl = "https://calendly.com/d/cvsh-jw5-d8x";
+const calendlyUrl = "https://calendly.com/palentrix/30min";
 
 const heroStats = [
   { n: 50, suf: "+", label: "Projects shipped" },
