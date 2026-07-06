@@ -35,9 +35,10 @@ export function ContactPage() {
             <h1 className="font-display font-bold text-3xl md:text-5xl tracking-normal leading-[1.1]">
               Tell us what you're building.
             </h1>
-            <p className="mt-6 text-muted text-[17px] leading-relaxed max-w-[480px]">
-              We read every message and respond within 4 hours during working hours. No
-              autoresponders, no sales sequence: a real engineer replies.
+            <p className="mt-6 text-white/90 text-[17px] leading-relaxed max-w-[480px]">
+              We read every message and respond within 4 hours during working
+              hours. No autoresponders, no sales sequence: a real engineer
+              replies.
             </p>
 
             <div className="mt-12 space-y-5">
@@ -53,12 +54,7 @@ export function ContactPage() {
                 value={siteConfig.emails.support}
                 href={`mailto:${siteConfig.emails.support}`}
               />
-              <ContactRow
-                Icon={CreditCard}
-                label="Billing"
-                value={siteConfig.emails.billing}
-                href={`mailto:${siteConfig.emails.billing}`}
-              />
+
               <ContactRow
                 Icon={Calendar}
                 label="Book a call"
@@ -66,7 +62,11 @@ export function ContactPage() {
                 href={siteConfig.calendlyUrl}
                 external
               />
-              <ContactRow Icon={Clock} label="Response time" value="Within 4 hours - Mon-Fri - PKT" />
+              <ContactRow
+                Icon={Clock}
+                label="Response time"
+                value="Within 4 hours - Mon-Fri - PKT"
+              />
             </div>
           </Reveal>
 
@@ -77,7 +77,9 @@ export function ContactPage() {
             >
               {sent ? (
                 <div className="text-center py-12">
-                  <div className="font-display font-bold text-3xl text-indigo">Message received.</div>
+                  <div className="font-display font-bold text-3xl text-indigo">
+                    Message received.
+                  </div>
                   <p className="mt-4 text-muted">We'll reply within 4 hours.</p>
                 </div>
               ) : (
@@ -100,9 +102,17 @@ export function ContactPage() {
                   <Select
                     label="How soon?"
                     name="when"
-                    options={["ASAP", "In 1-2 months", "This quarter", "Exploring"]}
+                    options={[
+                      "ASAP",
+                      "In 1-2 months",
+                      "This quarter",
+                      "Exploring",
+                    ]}
                   />
-                  <button type="submit" className="w-full btn-teal py-3.5 rounded-md font-medium text-[14px]">
+                  <button
+                    type="submit"
+                    className="w-full btn-teal py-3.5 rounded-md font-medium text-[14px]"
+                  >
                     Send message
                   </button>
                   <p className="text-center text-[12px] text-muted pt-2">
@@ -145,7 +155,9 @@ function ContactRow({
         <Icon size={16} className="text-indigo" />
       </div>
       <div>
-        <div className="font-mono text-[11px] uppercase tracking-wider text-muted">{label}</div>
+        <div className="font-mono text-[11px] uppercase tracking-wider text-black/70">
+          {label}
+        </div>
         {href ? (
           <a
             href={href}
@@ -178,9 +190,17 @@ function Field({
     "w-full bg-white border border-[var(--border-color)] rounded-md px-4 py-3 text-[14px] text-ink placeholder:text-muted focus:outline-none focus:border-indigo/60 transition-colors";
   return (
     <label className="block">
-      <span className="block font-mono text-[11px] uppercase tracking-wider text-muted mb-2">{label}</span>
+      <span className="block font-mono text-[11px] uppercase tracking-wider text-muted mb-2">
+        {label}
+      </span>
       {textarea ? (
-        <textarea name={name} required rows={4} className={cls} placeholder="A few sentences is enough." />
+        <textarea
+          name={name}
+          required
+          rows={4}
+          className={cls}
+          placeholder="A few sentences is enough."
+        />
       ) : (
         <input name={name} type={type} required className={cls} />
       )}
@@ -188,10 +208,20 @@ function Field({
   );
 }
 
-function Select({ label, name, options }: { label: string; name: string; options: string[] }) {
+function Select({
+  label,
+  name,
+  options,
+}: {
+  label: string;
+  name: string;
+  options: string[];
+}) {
   return (
     <label className="block">
-      <span className="block font-mono text-[11px] uppercase tracking-wider text-muted mb-2">{label}</span>
+      <span className="block font-mono text-[11px] uppercase tracking-wider text-muted mb-2">
+        {label}
+      </span>
       <select
         name={name}
         required

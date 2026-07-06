@@ -41,31 +41,57 @@ export function Footer() {
               Book a free 30-min discovery call
             </a>
           </div>
-          <FooterCol title="Quick Links" items={[
-            { label: "Home", to: "/" },
-            { label: "Work", to: "/work" },
-            { label: "Blog", to: "/blog" },
-            { label: "Contact", to: "/contact" },
-          ]} />
-          <FooterCol title="Services" items={[
-            { label: "SaaS & MVP", to: "/services" },
-            { label: "Web & Mobile", to: "/services" },
-            { label: "Automation", to: "/services" },
-          ]} />
-          <FooterCol title="Company" items={[
-            { label: "About", to: "/about" },
-            { label: "Process", to: "/process" },
-            { label: "Privacy Policy", to: "/privacy-policy" },
-            { label: "Terms", to: "/terms" },
-          ]} />
+          <FooterCol
+            title="Quick Links"
+            items={[
+              { label: "Home", to: "/" },
+              { label: "Work", to: "/work" },
+              { label: "Blog", to: "/blog" },
+              { label: "Contact", to: "/contact" },
+            ]}
+          />
+          <FooterCol
+            title="Services"
+            items={[
+              { label: "SaaS & MVP", to: "/services" },
+              { label: "Web & Mobile", to: "/services" },
+              { label: "Automation", to: "/services" },
+            ]}
+          />
+          <FooterCol
+            title="Company"
+            items={[
+              { label: "About", to: "/about" },
+              { label: "Process", to: "/process" },
+              { label: "Privacy Policy", to: "/privacy-policy" },
+              { label: "Terms", to: "/terms" },
+            ]}
+          />
         </div>
 
         <div className="mt-12 pt-6 border-t border-[rgba(120,108,255,0.1)] flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-          <p className="text-muted text-[13px]">(c) {currentYear} Palentrix. All rights reserved. Karachi, Pakistan</p>
+          <p className="text-muted text-[13px]">
+            {" "}
+            &copy;{currentYear} Palentrix. All rights reserved. Karachi,
+            Pakistan
+          </p>
           <div className="flex items-center gap-4 text-muted">
-            <a href="#" aria-label="LinkedIn" className="hover:text-indigo transition-colors"><Linkedin size={18} /></a>
-            <a href="https://github.com/farrukh-ahmed-khan" target="_blank" rel="noopener noreferrer" aria-label="GitHub" className="hover:text-indigo transition-colors"><Github size={18} /></a>
-            <a href="#" aria-label="Twitter" className="hover:text-indigo transition-colors"><Twitter size={18} /></a>
+            <a
+              href="#"
+              aria-label="LinkedIn"
+              className="hover:text-indigo transition-colors"
+            >
+              <Linkedin size={18} />
+            </a>
+            <a
+              href="https://github.com/farrukh-ahmed-khan"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="GitHub"
+              className="hover:text-indigo transition-colors"
+            >
+              <Github size={18} />
+            </a>
           </div>
         </div>
       </div>
@@ -73,14 +99,27 @@ export function Footer() {
   );
 }
 
-function FooterCol({ title, items }: { title: string; items: { label: string; to: string }[] }) {
+function FooterCol({
+  title,
+  items,
+}: {
+  title: string;
+  items: { label: string; to: string }[];
+}) {
   return (
     <div>
-      <p className="font-mono text-[12px] text-indigo-dim uppercase tracking-wider mb-4">{title}</p>
+      <p className="font-mono text-[12px] text-indigo-dim uppercase tracking-wider mb-4">
+        {title}
+      </p>
       <ul className="space-y-2">
         {items.map((it) => (
           <li key={it.label}>
-            <Link href={it.to} className="text-[14px] text-ink/60 hover:text-indigo transition-colors">{it.label}</Link>
+            <Link
+              href={it.to}
+              className="text-[14px] text-ink/60 hover:text-indigo transition-colors"
+            >
+              {it.label}
+            </Link>
           </li>
         ))}
       </ul>

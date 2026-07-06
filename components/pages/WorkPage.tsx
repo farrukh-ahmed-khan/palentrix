@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { ArrowRight } from "lucide-react";
 import { CTABanner } from "@/components/site/CTABanner";
 import { PageHero } from "@/components/site/PageHero";
@@ -10,12 +10,18 @@ import { PageShell } from "@/components/site/PageShell";
 import { StaggerGroup, fadeUp } from "@/components/site/Reveal";
 import { caseStudies } from "@/lib/case-studies";
 
-const filters = ["All", "SaaS", "AI", "Healthcare", "E-commerce", "Web"] as const;
-type Filter = (typeof filters)[number];
+type Filter = "All" | (typeof caseStudies)[number]["category"];
 
 export function WorkPage() {
   const [filter, setFilter] = useState<Filter>("All");
-  const visible = caseStudies.filter((item) => filter === "All" || item.category === filter);
+  const filters = useMemo<Filter[]>(
+    () => ["All", ...Array.from(new Set(caseStudies.map((item) => item.category)))],
+    [],
+  );
+  const visible = useMemo(
+    () => caseStudies.filter((item) => filter === "All" || item.category === filter),
+    [filter],
+  );
 
   return (
     <PageShell>
@@ -27,10 +33,13 @@ export function WorkPage() {
 
       <section className="rb-section pb-28">
         <div className="mx-auto max-w-[1200px] px-6">
-          <div className="mb-12 flex flex-wrap gap-2">
+          <div className="mb-12 flex flex-wrap gap-2" role="tablist" aria-label="Filter case studies">
             {filters.map((item) => (
               <button
                 key={item}
+                type="button"
+                role="tab"
+                aria-selected={filter === item}
                 onClick={() => setFilter(item)}
                 className={`rounded-full border px-4 py-2 font-mono text-[13px] uppercase tracking-wider transition-colors ${
                   filter === item
@@ -43,7 +52,7 @@ export function WorkPage() {
             ))}
           </div>
 
-          <StaggerGroup className="grid gap-6 md:grid-cols-2">
+          <StaggerGroup key={filter} className="grid gap-6 md:grid-cols-2">
             {visible.map((item) => (
               <motion.div
                 key={item.slug}
