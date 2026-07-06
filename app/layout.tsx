@@ -53,6 +53,10 @@ export const metadata: Metadata = {
   authors: [{ name: "Palentrix" }],
   creator: "Palentrix",
   publisher: "Palentrix",
+  icons: {
+    icon: [{ url: "/favicon.ico", sizes: "any" }],
+    shortcut: "/favicon.ico",
+  },
   category: "Software Development",
   classification: "Software development studio",
   formatDetection: {
