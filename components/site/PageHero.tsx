@@ -10,7 +10,7 @@ export function PageHero({ label, title, subtitle }: { label: string; title: str
       <div className="absolute inset-0 opacity-55">
         <Antigravity
           count={160}
-          color="#786CFF"
+          color="#0B5FAA"
           particleShape="tetrahedron"
           particleSize={0.9}
           ringRadius={5.8}
@@ -21,11 +21,11 @@ export function PageHero({ label, title, subtitle }: { label: string; title: str
           fieldStrength={6}
         />
       </div>
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_38%_34%,rgba(120,108,255,0.08)_0%,rgba(244,242,253,0.6)_54%,rgba(255,255,255,0.9)_100%)]" />
-      <div className="absolute right-[8%] top-[25%] hidden h-[320px] w-[420px] rounded-full bg-[radial-gradient(ellipse_at_center,rgba(50,200,255,0.16),rgba(120,108,255,0.12)_42%,transparent_72%)] blur-3xl md:block" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_38%_34%,rgba(11,95,170,0.08)_0%,rgba(241,246,252,0.6)_54%,rgba(255,255,255,0.9)_100%)]" />
+      <div className="absolute right-[8%] top-[25%] hidden h-[320px] w-[420px] rounded-full bg-[radial-gradient(ellipse_at_center,rgba(67,180,255,0.16),rgba(11,95,170,0.12)_42%,transparent_72%)] blur-3xl md:block" />
       <div className="absolute inset-y-0 right-0 hidden w-[62%] opacity-45 md:block">
         <LaserFlow
-          color="#786CFF"
+          color="#0B5FAA"
           horizontalBeamOffset={0.08}
           verticalBeamOffset={-0.34}
           horizontalSizing={0.62}

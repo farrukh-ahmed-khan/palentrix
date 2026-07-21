@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 540 670" role="img" aria-labelledby="title desc">
+  <title id="title">Palentrix P mark</title>
+  <desc id="desc">A folded geometric P in layered deep-blue gradients.</desc>
+  <defs>
+    <linearGradient id="arm" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#00336f"/>
+      <stop offset="0.44" stop-color="#2d91d1"/>
+      <stop offset="0.72" stop-color="#075ba8"/>
+      <stop offset="1" stop-color="#001b50"/>
+    </linearGradient>
+    <linearGradient id="stem" x1="0" y1="0" x2="0.84" y2="1">
+      <stop offset="0" stop-color="#176eb4"/>
+      <stop offset="0.52" stop-color="#064b97"/>
+      <stop offset="1" stop-color="#001b50"/>
+    </linearGradient>
+    <linearGradient id="ribbon" x1="0" y1="0" x2="1" y2="0.8">
+      <stop offset="0" stop-color="#42a1dc"/>
+      <stop offset="0.5" stop-color="#176bb1"/>
+      <stop offset="1" stop-color="#063972"/>
+    </linearGradient>
+  </defs>
+
+  <path
+    d="M0 0h322c120 0 218 96 218 214S443 428 322 428H160l138-180h22c39 0 70-31 70-68s-31-69-70-69H145C69 111 9 63 0 0Z"
+    fill="url(#arm)"
+    stroke="#00132f"
+    stroke-width="1.5"
+  />
+  <path
+    d="M0 448c0-111 89-200 200-200h98L160 428h-15v242H0V448Z"
+    fill="url(#stem)"
+    stroke="#00132f"
+    stroke-width="1.5"
+  />
+  <path
+    d="M0 114c35 41 84 66 145 66v68c-60 0-110 27-145 74V114Z"
+    fill="url(#ribbon)"
+    stroke="#00132f"
+    stroke-width="1.5"
+  />
+</svg>

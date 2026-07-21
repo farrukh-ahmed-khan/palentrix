@@ -19,7 +19,7 @@ const steps = [
     title: "Discovery",
     desc: "We read everything. We ask the questions no one else does.",
     Icon: FileSearch,
-    accent: "#32C8FF",
+    accent: "#43B4FF",
     note: "Scope locked",
   },
   {
@@ -27,7 +27,7 @@ const steps = [
     title: "Architecture",
     desc: "We plan the system before writing a line of code.",
     Icon: GitBranch,
-    accent: "#786CFF",
+    accent: "#0B5FAA",
     note: "System map",
   },
   {
@@ -35,7 +35,7 @@ const steps = [
     title: "Build",
     desc: "Iterative delivery with you in the loop at every milestone.",
     Icon: Sparkles,
-    accent: "#9B5CFF",
+    accent: "#178BD2",
     note: "Weekly drops",
   },
   {
@@ -43,7 +43,7 @@ const steps = [
     title: "Review",
     desc: "You test it. We fix everything before it ships.",
     Icon: ShieldCheck,
-    accent: "#786CFF",
+    accent: "#0B5FAA",
     note: "QA pass",
   },
   {
@@ -51,7 +51,7 @@ const steps = [
     title: "Ship & Support",
     desc: "Deployed, monitored, and backed by us post-launch.",
     Icon: Rocket,
-    accent: "#32C8FF",
+    accent: "#43B4FF",
     note: "Launch ready",
   },
 ];
@@ -60,7 +60,7 @@ export function Process() {
   return (
     <section className="relative bg-void py-24 md:py-28 overflow-hidden">
       <GridBg />
-      <div className="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-[rgba(120,108,255,0.06)] to-transparent" />
+      <div className="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-[rgba(11,95,170,0.06)] to-transparent" />
       <div className="absolute left-1/2 top-28 h-[420px] w-[420px] -translate-x-1/2 rounded-full bg-indigo/5 blur-[120px]" />
 
       <div className="relative mx-auto max-w-[1200px] px-6">
@@ -87,8 +87,8 @@ export function Process() {
 
         <div className="mt-14 grid gap-6 lg:grid-cols-[0.82fr_1.18fr] lg:items-start">
           <Reveal>
-            <div className="relative overflow-hidden rounded-2xl border border-[rgba(120,108,255,0.24)] bg-white p-7 shadow-[0_24px_70px_-58px_rgba(120,108,255,0.55)] md:p-8">
-              <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_18%,rgba(120,108,255,0.06),transparent_34%),radial-gradient(circle_at_20%_70%,rgba(155,92,255,0.06),transparent_42%)]" />
+            <div className="relative overflow-hidden rounded-2xl border border-[rgba(11,95,170,0.24)] bg-white p-7 shadow-[0_24px_70px_-58px_rgba(11,95,170,0.55)] md:p-8">
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_18%,rgba(11,95,170,0.06),transparent_34%),radial-gradient(circle_at_20%_70%,rgba(23,139,210,0.06),transparent_42%)]" />
               <div className="absolute inset-x-8 top-28 h-px bg-gradient-to-r from-transparent via-indigo/30 to-transparent" />
 
               <div className="relative">
@@ -125,12 +125,12 @@ export function Process() {
                 {["Estimate", "Milestones", "QA", "Launch"].map((label) => (
                   <div
                     key={label}
-                    className="rounded-xl border border-[rgba(120,108,255,0.16)] bg-slate/60 px-4 py-3"
+                    className="rounded-xl border border-[rgba(11,95,170,0.16)] bg-slate/60 px-4 py-3"
                   >
                     <div className="font-mono text-[10px] uppercase tracking-[0.16em] text-muted">
                       {label}
                     </div>
-                    <div className="mt-1 h-1.5 rounded-full bg-[linear-gradient(90deg,rgba(94,70,201,0.9),rgba(155,92,255,0.6))]" />
+                    <div className="mt-1 h-1.5 rounded-full bg-[linear-gradient(90deg,rgba(94,70,201,0.9),rgba(23,139,210,0.6))]" />
                   </div>
                 ))}
               </div>
@@ -146,7 +146,7 @@ export function Process() {
                 transition={{ duration: 0.22 }}
                 className={i === steps.length - 1 ? "sm:col-span-2" : ""}
               >
-                <div className="rb-step group relative h-full overflow-hidden rounded-2xl border border-[rgba(120,108,255,0.16)] bg-white p-5 md:p-6">
+                <div className="rb-step group relative h-full overflow-hidden rounded-2xl border border-[rgba(11,95,170,0.16)] bg-white p-5 md:p-6">
                   <div
                     className="absolute inset-x-0 top-0 h-px opacity-70"
                     style={{
@@ -169,7 +169,7 @@ export function Process() {
                   <p className="mt-2 text-muted text-[14px] leading-[1.65]">{s.desc}</p>
 
                   <div className="mt-5 flex items-center justify-between gap-3">
-                    <span className="rounded-full border border-[rgba(120,108,255,0.16)] bg-slate-light/50 px-3 py-1 font-mono text-[11px] text-muted">
+                    <span className="rounded-full border border-[rgba(11,95,170,0.16)] bg-slate-light/50 px-3 py-1 font-mono text-[11px] text-muted">
                       {s.note}
                     </span>
                     <ArrowRight

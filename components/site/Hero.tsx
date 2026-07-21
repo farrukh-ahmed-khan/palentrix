@@ -25,8 +25,8 @@ const heroStats = [
 export function Hero() {
   return (
     <section className="relative min-h-screen flex flex-col bg-void overflow-hidden">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_22%_18%,rgba(50,200,255,0.12),transparent_30%),radial-gradient(circle_at_78%_20%,rgba(155,92,255,0.14),transparent_34%),linear-gradient(135deg,rgba(120,108,255,0.08),transparent_42%)]" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_42%,rgba(255,255,255,0.05)_0%,rgba(244,242,253,0.35)_40%,rgba(255,255,255,0.72)_72%,rgba(255,255,255,0.92)_100%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_22%_18%,rgba(67,180,255,0.12),transparent_30%),radial-gradient(circle_at_78%_20%,rgba(23,139,210,0.14),transparent_34%),linear-gradient(135deg,rgba(11,95,170,0.08),transparent_42%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_42%,rgba(255,255,255,0.05)_0%,rgba(241,246,252,0.35)_40%,rgba(255,255,255,0.72)_72%,rgba(255,255,255,0.92)_100%)]" />
       <div className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-white to-transparent" />
       <Noise />
 
@@ -79,12 +79,12 @@ export function Hero() {
         </div>
       </div>
 
-      <div className="relative w-full border-t border-[rgba(120,108,255,0.15)]">
+      <div className="relative w-full border-t border-[rgba(11,95,170,0.15)]">
         <div className="mx-auto max-w-[1240px] px-6 py-8 grid grid-cols-2 md:grid-cols-4">
           {heroStats.map((stat, index) => (
             <div
               key={stat.label}
-              className={`text-center md:px-6 ${index > 0 ? "md:border-l border-[rgba(120,108,255,0.25)]" : ""}`}
+              className={`text-center md:px-6 ${index > 0 ? "md:border-l border-[rgba(11,95,170,0.25)]" : ""}`}
             >
               <div className="font-display font-bold text-[32px] md:text-[40px] leading-none text-ink">
                 <CountUp to={stat.n} suffix={stat.suf} />

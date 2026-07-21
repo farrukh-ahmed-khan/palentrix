@@ -17,7 +17,7 @@ export function ContactPage() {
         <div className="absolute inset-0 opacity-50">
           <Antigravity
             count={140}
-            color="#32C8FF"
+            color="#43B4FF"
             particleShape="capsule"
             particleSize={0.8}
             ringRadius={5}
@@ -25,7 +25,7 @@ export function ContactPage() {
             autoAnimate
           />
         </div>
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_0%,rgba(120,108,255,0.14)_0%,rgba(11,15,26,0.74)_58%,var(--void)_100%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_0%,rgba(11,95,170,0.14)_0%,rgba(11,15,26,0.74)_58%,var(--void)_100%)]" />
         <Noise />
         <div className="relative mx-auto max-w-[1200px] px-6 grid gap-16 md:grid-cols-2 md:items-start">
           <Reveal>

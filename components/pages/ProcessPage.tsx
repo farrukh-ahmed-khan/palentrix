@@ -58,7 +58,7 @@ export function ProcessPage() {
             <Reveal>
               <div
                 className="font-display font-extrabold text-[120px] md:text-[180px] leading-none"
-                style={{ color: "rgba(120,108,255,0.15)" }}
+                style={{ color: "rgba(11,95,170,0.15)" }}
               >
                 {step.n}
               </div>

@@ -106,7 +106,7 @@ export function Testimonials() {
                 <motion.div
                   key={`${t.name}-${itemIndex}`}
                   variants={fadeUp}
-                  whileHover={{ y: -5, borderColor: "rgba(50,200,255,0.34)" }}
+                  whileHover={{ y: -5, borderColor: "rgba(67,180,255,0.34)" }}
                   transition={{ duration: 0.24 }}
                   className={`rb-card relative min-h-[370px] flex-col overflow-hidden rounded-2xl border bg-void p-6 group ${
                     itemIndex === 1 ? "hidden md:flex" : "flex"
@@ -119,7 +119,7 @@ export function Testimonials() {
                     className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
                     style={{
                       background:
-                        "radial-gradient(ellipse 72% 52% at 50% 0%, rgba(120,108,255,0.08) 0%, transparent 70%)",
+                        "radial-gradient(ellipse 72% 52% at 50% 0%, rgba(11,95,170,0.08) 0%, transparent 70%)",
                     }}
                   />
                   <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-indigo via-x-blue to-violet opacity-70" />
@@ -130,8 +130,8 @@ export function Testimonials() {
                         className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl font-mono text-[11px] font-semibold"
                         style={{
                           background:
-                            "linear-gradient(135deg, rgba(120,108,255,0.2) 0%, rgba(50,200,255,0.18) 100%)",
-                          border: "1px solid rgba(120,108,255,0.22)",
+                            "linear-gradient(135deg, rgba(11,95,170,0.2) 0%, rgba(67,180,255,0.18) 100%)",
+                          border: "1px solid rgba(11,95,170,0.22)",
                           color: "var(--indigo)",
                         }}
                       >

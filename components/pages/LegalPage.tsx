@@ -39,7 +39,7 @@ export function LegalPage({
           <div className="mt-10 space-y-12">
             {sections.map((section, index) => (
               <Reveal key={section.title} delay={index * 0.03}>
-                <section className="border-t border-[rgba(120,108,255,0.18)] pt-8">
+                <section className="border-t border-[rgba(11,95,170,0.18)] pt-8">
                   <h2 className="font-display text-2xl font-bold tracking-normal">
                     {section.title}
                   </h2>
@@ -54,7 +54,7 @@ export function LegalPage({
           </div>
 
           <Reveal>
-            <div className="mt-14 border-t border-[rgba(120,108,255,0.18)] pt-8 text-[15px] leading-relaxed text-muted">
+            <div className="mt-14 border-t border-[rgba(11,95,170,0.18)] pt-8 text-[15px] leading-relaxed text-muted">
               Questions about these terms or this policy? Email{" "}
               <a className="text-indigo underline underline-offset-4" href={`mailto:${siteConfig.emails.info}`}>
                 {siteConfig.emails.info}

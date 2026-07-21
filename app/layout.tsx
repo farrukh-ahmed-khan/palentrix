@@ -38,7 +38,7 @@ const jetBrainsMono = JetBrains_Mono({
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  themeColor: "#05050a",
+  themeColor: "#07172b",
 };
 
 export const metadata: Metadata = {
@@ -54,7 +54,10 @@ export const metadata: Metadata = {
   creator: "Palentrix",
   publisher: "Palentrix",
   icons: {
-    icon: [{ url: "/favicon.ico", sizes: "any" }],
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/favicon.png", type: "image/png", sizes: "512x512" },
+    ],
     shortcut: "/favicon.ico",
   },
   category: "Software Development",
@@ -109,7 +112,7 @@ const siteJsonLd = {
       "@id": absoluteUrl("/#organization"),
       name: siteConfig.name,
       url: siteConfig.url,
-      logo: absoluteUrl("/brand/palentrix-logo-dark.png"),
+      logo: absoluteUrl("/brand/palentrix-mark-blue.svg"),
       email: siteConfig.emails.contact,
       sameAs: ["https://github.com/farrukh-ahmed-khan"],
     },

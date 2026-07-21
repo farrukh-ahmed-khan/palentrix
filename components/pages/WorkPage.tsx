@@ -57,7 +57,7 @@ export function WorkPage() {
               <motion.div
                 key={item.slug}
                 variants={fadeUp}
-                whileHover={{ y: -4, borderColor: "rgba(50,200,255,0.35)" }}
+                whileHover={{ y: -4, borderColor: "rgba(67,180,255,0.35)" }}
                 transition={{ duration: 0.2 }}
                 className="rb-card group rounded-2xl border bg-slate p-8"
                 style={{ borderColor: "var(--border-color)" }}

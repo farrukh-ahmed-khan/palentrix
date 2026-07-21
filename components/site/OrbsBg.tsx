@@ -17,7 +17,7 @@ export function OrbsBg({ className = "" }: { className?: string }) {
           left: "-8%",
           top: "-12%",
           background:
-            "radial-gradient(circle, rgba(120,108,255,0.28) 0%, transparent 70%)",
+            "radial-gradient(circle, rgba(11,95,170,0.28) 0%, transparent 70%)",
           filter: "blur(70px)",
           animation: "aurora-b 20s ease-in-out infinite",
         }}
@@ -31,7 +31,7 @@ export function OrbsBg({ className = "" }: { className?: string }) {
           right: "-6%",
           top: "15%",
           background:
-            "radial-gradient(circle, rgba(50,200,255,0.18) 0%, transparent 70%)",
+            "radial-gradient(circle, rgba(67,180,255,0.18) 0%, transparent 70%)",
           filter: "blur(65px)",
           animation: "aurora-a 16s ease-in-out infinite",
           animationDelay: "-3s",

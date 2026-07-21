@@ -27,7 +27,7 @@ const services: Service[] = [
     desc: "Full-stack SaaS products engineered for real users from day one. Auth, billing, dashboards, and APIs - production-ready, no shortcuts.",
     tags: ["Next.js", "NestJS", "Supabase", "PostgreSQL", "Stripe"],
     Visual: SaasVisual,
-    borderColor: "#32C8FF",
+    borderColor: "#43B4FF",
   },
   {
     num: "02",
@@ -36,7 +36,7 @@ const services: Service[] = [
     desc: "Responsive web platforms and cross-platform mobile apps. Clean architecture, polished UI, and performance that holds under real-world load.",
     tags: ["React", "React Native", "Node.js", "Tailwind", "AWS"],
     Visual: MobileVisual,
-    borderColor: "#786CFF",
+    borderColor: "#0B5FAA",
   },
   {
     num: "03",
@@ -45,7 +45,7 @@ const services: Service[] = [
     desc: "Business processes automated end-to-end - integrations, webhooks, scheduled jobs, and pipelines that eliminate manual work and errors.",
     tags: ["Python", "Node.js", "REST APIs", "Webhooks", "PostgreSQL"],
     Visual: AutomationVisual,
-    borderColor: "#9b5cff",
+    borderColor: "#178bd2",
   },
 ];
 
@@ -79,7 +79,7 @@ export function Services() {
                   <div className="flex items-center justify-between">
                     <div
                       className="font-display font-extrabold text-[48px] leading-none"
-                      style={{ color: "rgba(120,108,255,0.15)" }}
+                      style={{ color: "rgba(11,95,170,0.15)" }}
                     >
                       {s.num}
                     </div>

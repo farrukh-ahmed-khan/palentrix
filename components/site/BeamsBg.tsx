@@ -25,10 +25,10 @@ export function BeamsBg({ className = "" }: { className?: string }) {
       >
         <defs>
           <linearGradient id={`bm-${uid}`} x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%"   stopColor="rgba(50,200,255,0)"    />
-            <stop offset="30%"  stopColor="rgba(120,108,255,0.45)" />
-            <stop offset="65%"  stopColor="rgba(50,200,255,0.18)"  />
-            <stop offset="100%" stopColor="rgba(50,200,255,0)"    />
+            <stop offset="0%"   stopColor="rgba(67,180,255,0)"    />
+            <stop offset="30%"  stopColor="rgba(11,95,170,0.45)" />
+            <stop offset="65%"  stopColor="rgba(67,180,255,0.18)"  />
+            <stop offset="100%" stopColor="rgba(67,180,255,0)"    />
           </linearGradient>
         </defs>
         {BEAMS.map((b, i) => (
@@ -51,7 +51,7 @@ export function BeamsBg({ className = "" }: { className?: string }) {
         className="absolute inset-0"
         style={{
           background:
-            "radial-gradient(ellipse 65% 55% at 50% 50%, rgba(120,108,255,0.13) 0%, transparent 70%)",
+            "radial-gradient(ellipse 65% 55% at 50% 50%, rgba(11,95,170,0.13) 0%, transparent 70%)",
         }}
       />
     </div>

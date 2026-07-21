@@ -134,7 +134,7 @@ export function CasesPreview() {
             <motion.div
               key={project.title}
               variants={fadeUp}
-              whileHover={{ y: -4, borderColor: "rgba(50,200,255,0.35)" }}
+              whileHover={{ y: -4, borderColor: "rgba(67,180,255,0.35)" }}
               transition={{ duration: 0.2 }}
               className="rb-card flex min-h-[360px] flex-col overflow-hidden rounded-2xl border bg-slate p-6 group"
               style={{ borderColor: "var(--border-color)" }}

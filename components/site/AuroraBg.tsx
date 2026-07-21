@@ -12,7 +12,7 @@ export function AuroraBg({ className = "" }: { className?: string }) {
           height: "65%",
           left: "-10%",
           top: "-15%",
-          background: "radial-gradient(circle, rgba(50,200,255,0.38) 0%, transparent 70%)",
+          background: "radial-gradient(circle, rgba(67,180,255,0.38) 0%, transparent 70%)",
           filter: "blur(72px)",
           animation: "aurora-a 16s ease-in-out infinite",
         }}
@@ -25,7 +25,7 @@ export function AuroraBg({ className = "" }: { className?: string }) {
           height: "68%",
           right: "-18%",
           top: "0%",
-          background: "radial-gradient(circle, rgba(120,108,255,0.45) 0%, transparent 70%)",
+          background: "radial-gradient(circle, rgba(11,95,170,0.45) 0%, transparent 70%)",
           filter: "blur(80px)",
           animation: "aurora-b 20s ease-in-out infinite",
         }}
@@ -51,7 +51,7 @@ export function AuroraBg({ className = "" }: { className?: string }) {
           height: "38%",
           right: "4%",
           bottom: "8%",
-          background: "radial-gradient(circle, rgba(50,200,255,0.22) 0%, transparent 70%)",
+          background: "radial-gradient(circle, rgba(67,180,255,0.22) 0%, transparent 70%)",
           filter: "blur(52px)",
           animation: "aurora-a 11s ease-in-out infinite reverse",
           animationDelay: "-5s",

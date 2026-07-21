@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
+import { PalentrixLogo } from "@/components/site/PalentrixLogo";
 
 const links = [
   { to: "/", label: "Home" },
@@ -34,7 +35,7 @@ export function Nav() {
         className="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
         style={{
           background: scrolled
-            ? "linear-gradient(90deg, rgba(255,255,255,0.97), rgba(248,246,255,0.96), rgba(255,255,255,0.97))"
+            ? "linear-gradient(90deg, rgba(255,255,255,0.97), rgba(246,250,255,0.96), rgba(255,255,255,0.97))"
             : "rgba(255,255,255,0)",
           backdropFilter: scrolled ? "blur(20px)" : "none",
           borderBottom: scrolled ? "1px solid var(--border-color)" : "1px solid transparent",
@@ -42,12 +43,10 @@ export function Nav() {
       >
         <div className="mx-auto max-w-[1200px] px-6 h-[72px] flex items-center justify-between">
           <Link href="/" className="flex items-center">
-            <img
-              src="/brand/palentrix-logo-nav.png"
-              alt="Palentrix"
-              width={112}
-              height={80}
-              className="h-10 w-auto object-contain transition-transform duration-200 hover:scale-[1.04]"
+            <PalentrixLogo
+              size={38}
+              showWordmark
+              className="transition-transform duration-200 hover:scale-[1.04]"
             />
           </Link>
 
@@ -68,8 +67,8 @@ export function Nav() {
                     <span
                       className="absolute inset-0 rounded-lg"
                       style={{
-                        background: "rgba(120,108,255,0.08)",
-                        border: "1px solid rgba(120,108,255,0.16)",
+                        background: "rgba(11,95,170,0.08)",
+                        border: "1px solid rgba(11,95,170,0.16)",
                       }}
                     />
                   ) : null}
@@ -83,7 +82,7 @@ export function Nav() {
             href={calendlyUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="hidden md:inline-flex items-center px-5 py-2 rounded-lg border border-indigo/50 text-indigo text-[13px] font-semibold tracking-wide hover:bg-indigo hover:border-indigo hover:text-white transition-all duration-300 hover:shadow-[0_0_0_3px_rgba(120,108,255,0.18)]"
+            className="hidden md:inline-flex items-center px-5 py-2 rounded-lg border border-indigo/50 text-indigo text-[13px] font-semibold tracking-wide hover:bg-indigo hover:border-indigo hover:text-white transition-all duration-300 hover:shadow-[0_0_0_3px_rgba(11,95,170,0.18)]"
           >
             Book a call
           </a>
@@ -98,13 +97,7 @@ export function Nav() {
         <div className="fixed inset-0 z-[100] bg-white md:hidden">
           <div className="flex items-center justify-between h-[72px] px-6">
             <Link href="/" onClick={() => setOpen(false)} className="flex items-center">
-              <img
-                src="/brand/palentrix-logo-nav.png"
-                alt="Palentrix"
-                width={112}
-                height={80}
-                className="h-10 w-auto object-contain"
-              />
+              <PalentrixLogo size={38} showWordmark />
             </Link>
             <button onClick={() => setOpen(false)} aria-label="Close">
               <X size={22} />

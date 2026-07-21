@@ -159,7 +159,7 @@ export function ServicesPage() {
                   {block.stack.map((tool) => (
                     <span
                       key={tool}
-                      className="rb-chip font-mono text-[12px] rounded-full px-3 py-1 border border-[rgba(120,108,255,0.25)]"
+                      className="rb-chip font-mono text-[12px] rounded-full px-3 py-1 border border-[rgba(11,95,170,0.25)]"
                     >
                       {tool}
                     </span>

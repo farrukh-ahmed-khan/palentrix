@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Linkedin, Github, Twitter, Mail } from "lucide-react";
 import { siteConfig } from "@/lib/site";
+import { PalentrixLogo } from "@/components/site/PalentrixLogo";
 
 const calendlyUrl = "https://calendly.com/palentrix/30min";
 
@@ -8,20 +9,11 @@ export function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-slate border-t border-[rgba(120,108,255,0.15)]">
+    <footer className="bg-slate border-t border-[rgba(11,95,170,0.15)]">
       <div className="mx-auto max-w-[1200px] px-6 py-16">
         <div className="grid gap-12 md:grid-cols-4">
           <div className="md:col-span-1">
-            <img
-              src="/brand/palentrix-logo-footer-400.png"
-              alt="Palentrix"
-              width={400}
-              height={286}
-              loading="lazy"
-              decoding="async"
-              fetchPriority="low"
-              className="w-[200px] max-w-full"
-            />
+            <PalentrixLogo size={92} showWordmark stacked />
             <p className="mt-4 text-muted text-[14px] leading-relaxed max-w-[240px]">
               We Engineer Products People Rely On.
             </p>
@@ -69,7 +61,7 @@ export function Footer() {
           />
         </div>
 
-        <div className="mt-12 pt-6 border-t border-[rgba(120,108,255,0.1)] flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+        <div className="mt-12 pt-6 border-t border-[rgba(11,95,170,0.1)] flex flex-col md:flex-row md:items-center md:justify-between gap-4">
           <p className="text-muted text-[13px]">
             {" "}
             &copy;{currentYear} Palentrix. All rights reserved. Karachi,

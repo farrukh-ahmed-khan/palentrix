@@ -75,7 +75,7 @@ export function AboutPage() {
               <motion.div
                 key={member.name}
                 variants={fadeUp}
-                whileHover={{ y: -4, borderColor: "rgba(50,200,255,0.35)" }}
+                whileHover={{ y: -4, borderColor: "rgba(67,180,255,0.35)" }}
                 transition={{ duration: 0.2 }}
                 className="rb-card bg-slate rounded-2xl p-8 border"
                 style={{ borderColor: "var(--border-color)" }}
@@ -109,7 +109,7 @@ export function AboutPage() {
               <motion.div
                 key={value.title}
                 variants={fadeUp}
-                className="rb-card rounded-2xl p-8 border border-[rgba(120,108,255,0.18)]"
+                className="rb-card rounded-2xl p-8 border border-[rgba(11,95,170,0.18)]"
               >
                 <value.Icon size={28} className="text-indigo" />
                 <h3 className="mt-5 font-display font-bold text-[20px]">{value.title}</h3>
