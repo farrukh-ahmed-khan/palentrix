@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Linkedin, Github, Twitter, Mail } from "lucide-react";
+import { Linkedin, Mail } from "lucide-react";
 import { siteConfig } from "@/lib/site";
 import { PalentrixLogo } from "@/components/site/PalentrixLogo";
 
@@ -74,15 +74,6 @@ export function Footer() {
               className="hover:text-indigo transition-colors"
             >
               <Linkedin size={18} />
-            </a>
-            <a
-              href="https://github.com/farrukh-ahmed-khan"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="GitHub"
-              className="hover:text-indigo transition-colors"
-            >
-              <Github size={18} />
             </a>
           </div>
         </div>

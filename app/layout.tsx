@@ -114,7 +114,6 @@ const siteJsonLd = {
       url: siteConfig.url,
       logo: absoluteUrl("/brand/palentrix-mark-blue.svg"),
       email: siteConfig.emails.contact,
-      sameAs: ["https://github.com/farrukh-ahmed-khan"],
     },
     {
       "@type": "LocalBusiness",
