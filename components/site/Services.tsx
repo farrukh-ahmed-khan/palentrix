@@ -59,39 +59,48 @@ export function Services() {
           <SectionLabel>01 - What We Build</SectionLabel>
         </Reveal>
         <Reveal delay={0.05}>
-          <h2 className="mt-4 font-display font-bold text-2xl md:text-4xl tracking-normal max-w-[720px]">
+          <h2 className="mt-4 font-display font-bold text-[30px] md:text-[44px] leading-[1.08] tracking-normal max-w-[720px]">
             Three Things We Do Exceptionally Well.
           </h2>
         </Reveal>
 
-        <StaggerGroup className="mt-16 grid gap-6 md:grid-cols-3">
-          {services.map((s) => (
+        <StaggerGroup className="mt-14 grid gap-5 md:grid-cols-2 lg:grid-cols-3 lg:gap-6">
+          {services.map((s, i) => (
             <motion.div
               key={s.num}
               variants={fadeUp}
-              whileHover={{ y: -4 }}
-              transition={{ duration: 0.2 }}
-              className="rounded-2xl"
+              whileHover={{ y: -6 }}
+              transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+              className={`group rounded-2xl ${i === services.length - 1 ? "md:col-span-2 lg:col-span-1" : ""}`}
             >
-              <div className="rb-card service-card relative h-full overflow-hidden rounded-2xl bg-slate">
+              <div className="rb-card service-card relative h-full overflow-hidden rounded-2xl border border-[rgba(11,95,170,0.12)] bg-slate">
+                <div
+                  className="absolute inset-x-0 top-0 z-10 h-[2px] origin-left scale-x-0 transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-x-100"
+                  style={{ background: `linear-gradient(90deg, ${s.borderColor}, transparent)` }}
+                />
                 <s.Visual />
-                <div className="p-8">
+                <div className="p-7 md:p-8">
                   <div className="flex items-center justify-between">
                     <div
-                      className="font-display font-extrabold text-[48px] leading-none"
-                      style={{ color: "rgba(11,95,170,0.15)" }}
+                      className="flex h-11 w-11 items-center justify-center rounded-xl border bg-white shadow-[0_1px_2px_rgba(7,23,43,0.05)] transition-transform duration-300 group-hover:-rotate-6"
+                      style={{ borderColor: `${s.borderColor}40`, color: s.borderColor }}
+                    >
+                      <s.Icon size={20} strokeWidth={1.75} />
+                    </div>
+                    <div
+                      className="font-display font-extrabold text-[40px] leading-none tracking-normal"
+                      style={{ color: "rgba(11,95,170,0.12)" }}
                     >
                       {s.num}
                     </div>
-                    <s.Icon style={{ color: s.borderColor }} size={26} />
                   </div>
-                  <h3 className="mt-5 font-display font-bold text-[22px]">{s.title}</h3>
-                  <p className="mt-3 text-muted text-[15px] leading-[1.7] font-light">{s.desc}</p>
-                  <div className="mt-6 flex flex-wrap gap-2">
+                  <h3 className="mt-6 font-display font-bold text-[21px] leading-snug tracking-normal">{s.title}</h3>
+                  <p className="mt-3 text-muted text-[15px] leading-[1.7]">{s.desc}</p>
+                  <div className="mt-6 flex flex-wrap gap-1.5">
                     {s.tags.map((t) => (
                       <span
                         key={t}
-                        className="rb-chip font-mono text-[11px] text-muted bg-slate-light rounded-full px-3 py-1"
+                        className="rb-chip font-mono text-[11px] text-ink/60 bg-slate-light rounded-full border border-indigo/10 px-2.5 py-1"
                       >
                         {t}
                       </span>

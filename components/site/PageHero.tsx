@@ -48,7 +48,7 @@ export function PageHero({ label, title, subtitle }: { label: string; title: str
       <div className="relative mx-auto max-w-[1200px] px-6 text-center md:text-left">
         <Reveal><div className="flex justify-center md:justify-start"><SectionLabel>{label}</SectionLabel></div></Reveal>
         <Reveal delay={0.1}>
-          <h1 className="mt-6 max-w-[860px] font-display font-extrabold text-4xl md:text-6xl leading-[1.1] tracking-normal">{title}</h1>
+          <h1 className="mt-6 max-w-[860px] font-display font-extrabold text-[38px] md:text-[60px] leading-[1.05] tracking-normal">{title}</h1>
         </Reveal>
         {subtitle && (
           <Reveal delay={0.2}>

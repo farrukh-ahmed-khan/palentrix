@@ -43,9 +43,13 @@
   --color-background: var(--background);
   --color-foreground: var(--foreground);
 
-  --font-display: var(--font-orbitron), sans-serif;
-  --font-sans: var(--font-inter), sans-serif;
-  --font-nav: var(--font-space-grotesk), sans-serif;
+  --font-display: var(--font-manrope), var(--font-inter), system-ui, sans-serif;
+  --font-sans: var(--font-inter), system-ui, sans-serif;
+  --font-nav: var(--font-manrope), var(--font-inter), system-ui, sans-serif;
+  --font-brand: var(--font-orbitron), sans-serif;
+
+  /* Manrope reads best slightly tightened; most headings use tracking-normal. */
+  --tracking-normal: -0.022em;
   --font-mono: var(--font-jetbrains-mono), ui-monospace, monospace;
 
   --radius-lg: var(--radius);
@@ -66,12 +70,17 @@ body {
     radial-gradient(ellipse 74% 52% at 100% 4%, rgba(23, 139, 210, 0.08), transparent 62%),
     #ffffff;
   color: var(--ink);
-  font-family: var(--font-inter), sans-serif;
+  font-family: var(--font-inter), system-ui, sans-serif;
   font-weight: 400;
+  font-feature-settings: "cv11", "ss01";
+  text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
+html {
+  scroll-behavior: smooth;
+}
 
 h1,
 h2,
@@ -79,9 +88,36 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: var(--font-orbitron), sans-serif;
+  font-family: var(--font-manrope), var(--font-inter), system-ui, sans-serif;
   font-weight: 700;
   color: var(--ink);
+  letter-spacing: -0.022em;
+  text-wrap: balance;
+}
+
+h1 {
+  letter-spacing: -0.032em;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+/* Light body copy looks washed-out in Inter at small sizes; keep it readable. */
+p.font-light,
+.font-light p {
+  font-weight: 400;
+}
+
+.tabular-nums,
+.font-display {
+  font-variant-numeric: tabular-nums;
+}
+
+:focus-visible {
+  outline: 2px solid var(--indigo);
+  outline-offset: 3px;
+  border-radius: 6px;
 }
 
 ::selection {
@@ -210,7 +246,7 @@ h6 {
   animation-play-state: paused;
 }
 
-/* â”€â”€ Aurora background â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* -- Aurora background -- */
 @keyframes aurora-a {
   0%,
   100% {
@@ -245,7 +281,7 @@ h6 {
   }
 }
 
-/* â”€â”€ Beam background â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* -- Beam background -- */
 @keyframes beam-rise {
   0%,
   100% {
@@ -314,9 +350,13 @@ h6 {
   background: linear-gradient(135deg, var(--indigo-dim) 0%, var(--indigo) 40%, var(--violet) 100%);
   color: #ffffff;
   font-weight: 600;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.005em;
   position: relative;
   overflow: hidden;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.18),
+    0 1px 2px rgba(7, 23, 43, 0.12),
+    0 6px 18px -8px rgba(11, 95, 170, 0.5);
   transition:
     box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1),
     transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
@@ -330,7 +370,10 @@ h6 {
   height: 100%;
   background: linear-gradient(90deg, transparent, rgba(255,255,255,0.22), transparent);
   transform: skewX(-18deg);
-  animation: btn-shimmer 3.2s ease-in-out infinite;
+  pointer-events: none;
+}
+.btn-teal:hover::before {
+  animation: btn-shimmer 1.1s cubic-bezier(0.4, 0, 0.2, 1) 1;
 }
 .btn-teal::after {
   content: "";
@@ -342,8 +385,9 @@ h6 {
 }
 .btn-teal:hover {
   box-shadow:
-    0 0 0 3px rgba(11, 95, 170, 0.2),
-    0 12px 32px -8px rgba(11, 95, 170, 0.45);
+    inset 0 1px 0 rgba(255, 255, 255, 0.22),
+    0 0 0 3px rgba(11, 95, 170, 0.14),
+    0 14px 30px -10px rgba(11, 95, 170, 0.55);
   transform: translateY(-1px);
 }
 .btn-teal:hover::after {
@@ -373,8 +417,18 @@ h6 {
   position: relative;
   isolation: isolate;
   background: #ffffff;
-  box-shadow: 0 2px 20px -4px rgba(11, 95, 170, 0.1), 0 1px 4px rgba(0, 0, 0, 0.04);
-  backdrop-filter: blur(18px);
+  box-shadow:
+    0 1px 2px rgba(7, 23, 43, 0.04),
+    0 8px 24px -12px rgba(11, 95, 170, 0.14);
+  transition:
+    box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.3s ease;
+}
+
+.rb-card:hover {
+  box-shadow:
+    0 1px 2px rgba(7, 23, 43, 0.05),
+    0 24px 48px -24px rgba(11, 95, 170, 0.32);
 }
 
 .rb-card::before {
@@ -551,6 +605,57 @@ h6 {
   .lightfall-beam {
     animation: none;
     opacity: calc(var(--beam-opacity, 0.18) * 0.55);
+  }
+}
+
+/* ── Hero 3D canvas ──────────────────────────────────────────────────────── */
+@keyframes hero-canvas-in {
+  from { opacity: 0; transform: scale(0.96); }
+  to { opacity: 1; transform: scale(1); }
+}
+.hero-canvas {
+  animation: hero-canvas-in 1.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* Hero entrance — CSS only so it plays before hydration */
+@keyframes hero-rise {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.hero-rise {
+  animation: hero-rise 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* Portfolio card top accent */
+.case-card {
+  transition:
+    transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.3s ease;
+}
+.case-card::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--indigo), var(--x-blue), var(--violet));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 1;
+}
+.case-card:hover::before {
+  transform: scaleX(1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }
 

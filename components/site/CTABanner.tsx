@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { Reveal } from "./Reveal";
 import { CTAButton } from "./CTAButton";
 import { siteConfig } from "@/lib/site";
@@ -13,7 +12,7 @@ export function CTABanner() {
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_70%_60%_at_50%_50%,rgba(255,255,255,0.08)_0%,rgba(241,246,252,0.7)_52%,rgba(255,255,255,0.92)_100%)]" />
       <div className="relative mx-auto max-w-[1200px] px-6 text-center">
         <Reveal>
-          <h2 className="font-display font-extrabold text-3xl md:text-5xl leading-[1.1] tracking-normal">
+          <h2 className="mx-auto max-w-[820px] font-display font-extrabold text-[32px] md:text-[52px] leading-[1.06] tracking-normal">
             <span className="text-gradient-indigo">Ready to Build Something That Works?</span>
           </h2>
         </Reveal>
@@ -23,16 +22,16 @@ export function CTABanner() {
           </p>
         </Reveal>
         <Reveal delay={0.2}>
-          <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="mt-10 flex flex-col sm:flex-row gap-3 justify-center">
             <CTAButton href={calendlyUrl}>Book a free call </CTAButton>
-            <motion.span whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.97 }} className="inline-block">
+            <span className="inline-flex">
               <a
                 href={`mailto:${siteConfig.emails.contact}`}
-                className="inline-flex items-center justify-center gap-1.5 px-6 py-3 rounded-lg font-semibold text-[14px] tracking-wide border border-indigo/30 text-indigo/80 hover:border-indigo hover:text-indigo hover:bg-indigo/5 hover:shadow-[0_0_0_3px_rgba(11,95,170,0.1)] transition-all duration-300"
+                className="inline-flex h-12 w-full sm:w-auto items-center justify-center gap-1.5 px-6 rounded-xl font-display font-semibold text-[14.5px] border border-indigo/25 bg-white/80 text-indigo shadow-[0_1px_2px_rgba(7,23,43,0.05)] hover:-translate-y-px hover:border-indigo/50 hover:shadow-[0_0_0_3px_rgba(11,95,170,0.08),0_10px_24px_-14px_rgba(11,95,170,0.45)] transition-all duration-300"
               >
                 {siteConfig.emails.contact}
               </a>
-            </motion.span>
+            </span>
           </div>
         </Reveal>
         <Reveal delay={0.3}>

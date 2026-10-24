@@ -71,9 +71,9 @@ export function Testimonials() {
       <OrbsBg />
 
       <div className="relative mx-auto max-w-[1200px] px-6">
-        <Reveal><SectionLabel>04  What Clients Say</SectionLabel></Reveal>
+        <Reveal><SectionLabel>04 - What Clients Say</SectionLabel></Reveal>
         <Reveal delay={0.05}>
-          <h2 className="mt-4 font-display font-bold text-2xl md:text-4xl tracking-normal">
+          <h2 className="mt-4 font-display font-bold text-[30px] md:text-[44px] leading-[1.08] tracking-normal">
             Straight from the People We've Shipped For.
           </h2>
         </Reveal>
@@ -106,8 +106,8 @@ export function Testimonials() {
                 <motion.div
                   key={`${t.name}-${itemIndex}`}
                   variants={fadeUp}
-                  whileHover={{ y: -5, borderColor: "rgba(67,180,255,0.34)" }}
-                  transition={{ duration: 0.24 }}
+                  whileHover={{ y: -5, borderColor: "rgba(11,95,170,0.28)" }}
+                  transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
                   className={`rb-card relative min-h-[370px] flex-col overflow-hidden rounded-2xl border bg-void p-6 group ${
                     itemIndex === 1 ? "hidden md:flex" : "flex"
                   } ${
@@ -122,7 +122,7 @@ export function Testimonials() {
                         "radial-gradient(ellipse 72% 52% at 50% 0%, rgba(11,95,170,0.08) 0%, transparent 70%)",
                     }}
                   />
-                  <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-indigo via-x-blue to-violet opacity-70" />
+                  <div className="absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-indigo via-x-blue to-violet opacity-80" />
 
                   <div className="relative flex items-start justify-between gap-4">
                     <div className="flex min-w-0 items-center gap-3">
@@ -138,7 +138,7 @@ export function Testimonials() {
                         {t.initials}
                       </div>
                       <div className="min-w-0">
-                        <div className="truncate font-medium text-[14px] text-ink">{t.name}</div>
+                        <div className="truncate font-display font-bold text-[14.5px] text-ink">{t.name}</div>
                         <div className="truncate text-[12px] text-muted">{t.company}</div>
                       </div>
                     </div>
@@ -161,7 +161,7 @@ export function Testimonials() {
                     <Quote size={17} />
                   </div>
 
-                  <p className="relative mt-4 text-[14px] leading-[1.75] text-ink/78 font-light">
+                  <p className="relative mt-4 text-[15px] leading-[1.7] text-ink/80">
                     {t.quote}
                   </p>
 

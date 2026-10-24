@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Inter, JetBrains_Mono, Orbitron, Space_Grotesk } from "next/font/google";
+import { Inter, JetBrains_Mono, Manrope, Orbitron } from "next/font/google";
 import { Footer } from "@/components/site/Footer";
 import { GoogleTags } from "@/components/site/GoogleTags";
 import { Nav } from "@/components/site/Nav";
@@ -14,18 +14,19 @@ const inter = Inter({
   variable: "--font-inter",
 });
 
-const orbitron = Orbitron({
+const manrope = Manrope({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800", "900"],
+  weight: ["500", "600", "700", "800"],
   display: "swap",
-  variable: "--font-orbitron",
+  variable: "--font-manrope",
 });
 
-const spaceGrotesk = Space_Grotesk({
+// Orbitron is kept only for the PALENTRIX wordmark so the brand mark stays unchanged.
+const orbitron = Orbitron({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: ["600"],
   display: "swap",
-  variable: "--font-space-grotesk",
+  variable: "--font-orbitron",
 });
 
 const jetBrainsMono = JetBrains_Mono({
@@ -169,7 +170,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en">
       <body
         suppressHydrationWarning
-        className={`${inter.variable} ${orbitron.variable} ${spaceGrotesk.variable} ${jetBrainsMono.variable}`}
+        className={`${inter.variable} ${manrope.variable} ${orbitron.variable} ${jetBrainsMono.variable}`}
       >
         <GoogleTags />
         <script
@@ -177,8 +178,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(siteJsonLd) }}
         />
-   
-        
         <ScrollProgress />
         <Nav />
         {children}

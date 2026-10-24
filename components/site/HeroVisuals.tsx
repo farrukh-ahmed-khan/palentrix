@@ -1,21 +1,35 @@
+"use client";
+
+import dynamic from "next/dynamic";
+
+const HeroScene = dynamic(() => import("./HeroScene").then((mod) => mod.HeroScene), {
+  ssr: false,
+});
+
+const cardShadow =
+  "0 1px 2px rgba(7,23,43,0.05), 0 18px 40px -18px rgba(11,95,170,0.35), inset 0 1px 0 rgba(255,255,255,0.9)";
+
 export function HeroVisuals() {
   return (
-    <div className="relative h-[440px] w-full select-none">
-      {/* backdrop concentric circles */}
-      <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full"
-        style={{ width: 240, height: 240, background: "rgba(11,95,170,0.04)", border: "1px solid rgba(11,95,170,0.08)" }} />
-      <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full"
-        style={{ width: 360, height: 360, background: "rgba(67,180,255,0.02)", border: "1px solid rgba(67,180,255,0.06)" }} />
+    <div className="relative h-[460px] w-full select-none">
+      {/* soft glow behind the 3D lattice */}
+      <div
+        className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full blur-3xl"
+        style={{ width: 380, height: 380, background: "radial-gradient(circle, rgba(67,180,255,0.16), rgba(11,95,170,0.06) 55%, transparent 72%)" }}
+      />
+      <div className="absolute -inset-x-10 -inset-y-6">
+        <HeroScene />
+      </div>
 
-      {/* Card 1 â€” dashboard / bars */}
+      {/* Card 1 - dashboard / bars */}
       <div
         className="absolute z-30"
         style={{
           top: 30, left: 20, width: 230,
-          background: "var(--slate)", border: "1px solid rgba(11,95,170,0.25)",
-          borderRadius: 14, padding: 16,
+          background: "rgba(255,255,255,0.82)", border: "1px solid rgba(11,95,170,0.18)",
+          borderRadius: 16, padding: 16, backdropFilter: "blur(10px)",
           animation: "floatA 5s ease-in-out infinite",
-          boxShadow: "0 30px 60px -20px rgba(0,0,0,0.6)",
+          boxShadow: cardShadow,
         }}
       >
         <div className="flex items-center gap-2 mb-3">
@@ -45,15 +59,15 @@ export function HeroVisuals() {
         </div>
       </div>
 
-      {/* Card 2 â€” code block */}
+      {/* Card 2 - code block */}
       <div
         className="absolute z-20"
         style={{
           bottom: 30, right: 10, width: 210,
-          background: "var(--slate)", border: "1px solid rgba(67,180,255,0.25)",
-          borderRadius: 14, padding: 14,
+          background: "rgba(255,255,255,0.82)", border: "1px solid rgba(67,180,255,0.24)",
+          borderRadius: 16, padding: 14, backdropFilter: "blur(10px)",
           animation: "floatB 6s ease-in-out infinite",
-          boxShadow: "0 30px 60px -20px rgba(0,0,0,0.6)",
+          boxShadow: cardShadow,
         }}
       >
         <div className="flex items-center gap-2 mb-3">
@@ -72,15 +86,15 @@ export function HeroVisuals() {
         </div>
       </div>
 
-      {/* Card 3 â€” automation flow */}
+      {/* Card 3 - automation flow */}
       <div
         className="absolute z-10"
         style={{
           bottom: 50, left: 40, width: 180,
-          background: "var(--slate)", border: "1px solid rgba(11,95,170,0.25)",
-          borderRadius: 14, padding: 14,
+          background: "rgba(255,255,255,0.82)", border: "1px solid rgba(11,95,170,0.18)",
+          borderRadius: 16, padding: 14, backdropFilter: "blur(10px)",
           animation: "floatC 7s ease-in-out infinite",
-          boxShadow: "0 30px 60px -20px rgba(0,0,0,0.6)",
+          boxShadow: cardShadow,
         }}
       >
         <div className="font-mono text-[9px] mb-2" style={{ color: "var(--indigo-dim)" }}>AUTOMATION FLOW</div>

@@ -33,12 +33,19 @@ export function Hero() {
       <div className="relative flex-1 flex items-center w-full">
         <div className="mx-auto max-w-[1240px] px-6 w-full py-28 grid lg:grid-cols-[1.15fr_1fr] gap-16 items-center">
           <div className="text-center lg:text-left">
-            <div className="inline-block font-mono text-[11px] uppercase tracking-[0.2em] text-indigo border border-indigo/30 rounded-full px-4 py-1.5 bg-indigo/5">
-              [ Software House - Karachi, Pakistan ]
+            <div className="hero-rise inline-flex items-center gap-2.5 font-mono text-[11px] uppercase tracking-[0.18em] text-indigo border border-indigo/20 rounded-full pl-3 pr-4 py-1.5 bg-white/80 shadow-[0_1px_2px_rgba(7,23,43,0.04),0_6px_16px_-10px_rgba(11,95,170,0.35)] backdrop-blur">
+              <span className="relative flex h-1.5 w-1.5">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-x-blue opacity-60" />
+                <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-indigo" />
+              </span>
+              Software House - Karachi, Pakistan
             </div>
 
-            <h1 className="mt-8 font-display font-extrabold text-[36px] md:text-[54px] leading-[1.1] tracking-normal">
-              <span className="flex flex-wrap justify-center lg:justify-start gap-x-4 gap-y-2">
+            <h1
+              className="hero-rise mt-7 font-display font-extrabold text-[40px] sm:text-[48px] md:text-[60px] leading-[1.04] tracking-normal"
+              style={{ animationDelay: "80ms" }}
+            >
+              <span className="flex flex-wrap justify-center lg:justify-start gap-x-[0.24em] gap-y-0">
                 {headlineWords.map((word, index) => (
                   <span key={word} className="inline-block overflow-hidden pb-1">
                     <span className={`inline-block ${index === 0 || index === 4 ? "text-gradient-indigo" : ""}`}>
@@ -49,23 +56,32 @@ export function Hero() {
               </span>
             </h1>
 
-            <p className="mt-8 text-muted text-[16px] md:text-[18px] max-w-[560px] mx-auto lg:mx-0 leading-relaxed">
+            <p
+              className="hero-rise mt-7 text-muted text-[16px] md:text-[18px] max-w-[560px] mx-auto lg:mx-0 leading-[1.7]"
+              style={{ animationDelay: "160ms" }}
+            >
               Palentrix is a software development company and software house in Karachi, Pakistan building SaaS MVPs, custom web apps, AI products, dashboards, and business automation systems for clients worldwide.
             </p>
 
-            <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+            <div
+              className="hero-rise mt-10 flex flex-col sm:flex-row gap-3 justify-center lg:justify-start"
+              style={{ animationDelay: "240ms" }}
+            >
               <CTAButton href={calendlyUrl}>Book a free call </CTAButton>
               <CTAButton to="/work" variant="ghost">
                 See our work
               </CTAButton>
             </div>
 
-            <div className="mt-8 flex flex-wrap justify-center gap-2 lg:justify-start">
+            <div
+              className="hero-rise mt-8 flex flex-wrap justify-center gap-2 lg:justify-start"
+              style={{ animationDelay: "320ms" }}
+            >
               {seoLinks.map((link) => (
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="rounded-full border border-indigo/15 bg-white/70 px-3 py-1.5 text-[12px] text-muted transition-colors hover:border-indigo hover:text-indigo"
+                  className="rounded-full border border-indigo/15 bg-white/70 px-3 py-1.5 text-[12px] font-medium text-muted transition-all duration-200 hover:-translate-y-px hover:border-indigo/40 hover:bg-white hover:text-indigo"
                 >
                   {link.label}
                 </Link>
@@ -73,23 +89,26 @@ export function Hero() {
             </div>
           </div>
 
-          <div className="hidden lg:block">
+          <div className="hero-rise hidden lg:block" style={{ animationDelay: "200ms" }}>
             <HeroVisuals />
           </div>
         </div>
       </div>
 
-      <div className="relative w-full border-t border-[rgba(11,95,170,0.15)]">
-        <div className="mx-auto max-w-[1240px] px-6 py-8 grid grid-cols-2 md:grid-cols-4">
+      <div
+        className="hero-rise relative w-full border-t border-[rgba(11,95,170,0.12)] bg-white/60 backdrop-blur-sm"
+        style={{ animationDelay: "420ms" }}
+      >
+        <div className="mx-auto max-w-[1240px] px-6 py-7 md:py-8 grid grid-cols-2 gap-y-6 md:grid-cols-4">
           {heroStats.map((stat, index) => (
             <div
               key={stat.label}
-              className={`text-center md:px-6 ${index > 0 ? "md:border-l border-[rgba(11,95,170,0.25)]" : ""}`}
+              className={`text-center md:px-6 ${index > 0 ? "md:border-l border-[rgba(11,95,170,0.14)]" : ""}`}
             >
-              <div className="font-display font-bold text-[32px] md:text-[40px] leading-none text-ink">
+              <div className="font-display font-extrabold text-[30px] md:text-[40px] leading-none tracking-normal text-ink">
                 <CountUp to={stat.n} suffix={stat.suf} />
               </div>
-              <div className="mt-2 font-mono text-[11px] uppercase tracking-[0.15em] text-muted">
+              <div className="mt-2.5 font-mono text-[10.5px] md:text-[11px] uppercase tracking-[0.15em] text-muted">
                 {stat.label}
               </div>
             </div>

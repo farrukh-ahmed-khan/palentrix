@@ -23,7 +23,7 @@ export function PalentrixLogo({
         />
         <span
           aria-hidden="true"
-          className="font-display font-semibold leading-none tracking-[0.16em] text-ink"
+          className="font-brand font-semibold leading-none tracking-[0.16em] text-ink"
           style={{ fontSize: stacked ? Math.max(20, size * 0.3) : Math.max(14, size * 0.46) }}
         >
           PALENTRIX

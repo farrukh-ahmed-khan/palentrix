@@ -124,9 +124,9 @@ export function CasesPreview() {
     <section className="relative bg-void py-28 overflow-hidden">
       <AuroraBg className="opacity-40" />
       <div className="mx-auto max-w-[1200px] px-6">
-        <Reveal><SectionLabel>02  Our Work</SectionLabel></Reveal>
+        <Reveal><SectionLabel>02 - Our Work</SectionLabel></Reveal>
         <Reveal delay={0.05}>
-          <h2 className="mt-4 font-display font-bold text-2xl md:text-4xl tracking-normal">Portfolio Built Across SaaS, AI, Commerce, and Healthcare.</h2>
+          <h2 className="mt-4 font-display font-bold text-[30px] md:text-[44px] leading-[1.08] tracking-normal">Portfolio Built Across SaaS, AI, Commerce, and Healthcare.</h2>
         </Reveal>
 
         <StaggerGroup className="mt-14 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
@@ -134,53 +134,53 @@ export function CasesPreview() {
             <motion.div
               key={project.title}
               variants={fadeUp}
-              whileHover={{ y: -4, borderColor: "rgba(67,180,255,0.35)" }}
-              transition={{ duration: 0.2 }}
-              className="rb-card flex min-h-[360px] flex-col overflow-hidden rounded-2xl border bg-slate p-6 group"
-              style={{ borderColor: "var(--border-color)" }}
+              whileHover={{ y: -5, borderColor: "rgba(11,95,170,0.28)" }}
+              transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+              className="rb-card case-card flex min-h-[340px] flex-col overflow-hidden rounded-2xl border bg-white p-6 md:p-7 group"
+              style={{ borderColor: "rgba(11,95,170,0.12)" }}
             >
               <div className="flex items-start justify-between gap-4">
-                <div>
-                  <span className="font-mono text-[10px] uppercase tracking-[0.15em] text-indigo border border-indigo/30 bg-indigo/5 rounded-full px-3 py-1">
-                    {project.tag}
-                  </span>
-                  <h3 className="mt-6 font-display text-[20px] font-bold leading-snug">
-                    {project.title}
-                  </h3>
-                  {project.client ? (
-                    <div className="mt-1 text-[13px] text-muted">{project.client}</div>
-                  ) : null}
-                </div>
-                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-indigo/15 bg-white/65 text-indigo">
-                  {project.privateLink ? <Lock size={17} /> : <ExternalLink size={17} />}
+                <span className="inline-flex items-center rounded-full border border-indigo/20 bg-indigo/[0.05] px-2.5 py-1 font-mono text-[10px] uppercase tracking-[0.14em] text-indigo">
+                  {project.tag}
+                </span>
+                <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-indigo/12 bg-slate/70 text-indigo/80 transition-all duration-300 group-hover:border-indigo/30 group-hover:bg-indigo group-hover:text-white">
+                  {project.privateLink ? <Lock size={15} /> : <ExternalLink size={15} />}
                 </div>
               </div>
 
-              <p className="mt-5 text-[14px] leading-[1.75] text-muted font-light">
+              <h3 className="mt-6 font-display text-[21px] font-bold leading-snug tracking-normal">
+                {project.title}
+              </h3>
+              {project.client ? (
+                <div className="mt-1 text-[13px] font-medium text-muted">{project.client}</div>
+              ) : null}
+
+              <p className="mt-3 text-[14.5px] leading-[1.7] text-muted">
                 {project.desc}
               </p>
 
-              <div className="mt-6 flex flex-wrap gap-2">
+              <div className="mt-5 flex flex-wrap gap-1.5">
                 {project.stack.map((item) => (
                   <span
                     key={item}
-                    className="rounded-full border border-indigo/15 bg-white/70 px-3 py-1 font-mono text-[10px] uppercase tracking-[0.1em] text-muted"
+                    className="rounded-md border border-indigo/10 bg-slate/70 px-2 py-1 font-mono text-[10px] uppercase tracking-[0.08em] text-ink/60"
                   >
                     {item}
                   </span>
                 ))}
               </div>
 
-              <div className="mt-auto pt-8">
+              <div className="mt-auto pt-6">
+                <div className="mb-4 h-px bg-gradient-to-r from-indigo/15 via-indigo/10 to-transparent" />
                 {project.url ? (
                   <a
                     href={project.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 text-[13px] font-medium text-indigo transition-colors hover:text-violet"
+                    className="inline-flex items-center gap-2 text-[13px] font-semibold text-indigo transition-colors hover:text-violet"
                   >
                     {project.urlLabel}
-                    <ExternalLink size={14} className="transition-transform group-hover:translate-x-0.5" />
+                    <ExternalLink size={13} className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                   </a>
                 ) : (
                   <div className="inline-flex items-center gap-2 text-[13px] font-medium text-muted">
@@ -188,7 +188,7 @@ export function CasesPreview() {
                     {project.urlLabel}
                   </div>
                 )}
-                </div>
+              </div>
             </motion.div>
           ))}
         </StaggerGroup>

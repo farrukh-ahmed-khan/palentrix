@@ -44,7 +44,7 @@ export function CursorDot() {
       style={{ x: sx, y: sy }}
       animate={{ scale: active ? 1.28 : 1, rotate: active ? -8 : 0 }}
       transition={{ duration: 0.18, ease: [0.16, 1, 0.3, 1] }}
-      className="pointer-events-none fixed top-0 left-0 z-[300] flex h-7 w-7 items-center justify-center font-display text-[26px] font-black leading-none tracking-normal text-transparent mix-blend-screen"
+      className="pointer-events-none fixed top-0 left-0 z-[300] flex h-7 w-7 items-center justify-center font-brand text-[26px] font-semibold leading-none text-transparent mix-blend-screen"
       aria-hidden="true"
     >
       <span className="palentrix-x-cursor">X</span>

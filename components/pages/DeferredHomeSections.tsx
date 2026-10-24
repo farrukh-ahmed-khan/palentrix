@@ -45,7 +45,11 @@ export function DeferredHomeSections() {
       window.addEventListener(eventName, loadSections, { once: true, passive: true });
     });
 
+    // Fallback so sections still appear for visitors who don't interact.
+    const idleTimer = window.setTimeout(loadSections, 3500);
+
     return () => {
+      window.clearTimeout(idleTimer);
       interactionEvents.forEach((eventName) => {
         window.removeEventListener(eventName, loadSections);
       });

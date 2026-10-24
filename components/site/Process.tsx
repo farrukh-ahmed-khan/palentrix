@@ -12,6 +12,7 @@ import {
 } from "lucide-react";
 import { Reveal, StaggerGroup, fadeUp } from "./Reveal";
 import { GridBg } from "./GridBg";
+import { SectionLabel } from "./SectionLabel";
 
 const steps = [
   {
@@ -67,12 +68,10 @@ export function Process() {
         <div className="grid gap-8 md:grid-cols-[0.95fr_1fr] md:items-end">
           <div>
             <Reveal>
-              <div className="font-mono text-[12px] uppercase tracking-[0.15em] text-indigo">
-                [ 03 How We Work ]
-              </div>
+              <SectionLabel>03 - How We Work</SectionLabel>
             </Reveal>
             <Reveal delay={0.05}>
-              <h2 className="mt-4 max-w-[680px] font-display font-bold text-3xl md:text-5xl tracking-normal leading-[1.1]">
+              <h2 className="mt-4 max-w-[680px] font-display font-bold text-[30px] md:text-[44px] leading-[1.08] tracking-normal">
                 No Surprises. <span className="text-gradient-indigo">No Excuses.</span>
               </h2>
             </Reveal>
@@ -96,7 +95,7 @@ export function Process() {
                   <CheckCircle2 size={14} />
                   Delivery map
                 </div>
-                <h3 className="mt-8 font-display text-[26px] md:text-[32px] leading-tight">
+                <h3 className="mt-8 font-display font-bold text-[24px] md:text-[30px] leading-[1.2] tracking-normal">
                   Every phase has a decision, a deliverable, and a clear owner.
                 </h3>
                 <p className="mt-4 text-muted text-[15px] leading-[1.7]">
@@ -130,7 +129,7 @@ export function Process() {
                     <div className="font-mono text-[10px] uppercase tracking-[0.16em] text-muted">
                       {label}
                     </div>
-                    <div className="mt-1 h-1.5 rounded-full bg-[linear-gradient(90deg,rgba(94,70,201,0.9),rgba(23,139,210,0.6))]" />
+                    <div className="mt-1 h-1.5 rounded-full bg-[linear-gradient(90deg,rgba(11,95,170,0.9),rgba(67,180,255,0.6))]" />
                   </div>
                 ))}
               </div>
@@ -165,7 +164,7 @@ export function Process() {
                     </div>
                   </div>
 
-                  <h3 className="mt-5 font-display font-bold text-[19px] text-ink">{s.title}</h3>
+                  <h3 className="mt-5 font-display font-bold text-[19px] tracking-normal text-ink">{s.title}</h3>
                   <p className="mt-2 text-muted text-[14px] leading-[1.65]">{s.desc}</p>
 
                   <div className="mt-5 flex items-center justify-between gap-3">

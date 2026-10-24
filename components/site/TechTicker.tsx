@@ -6,7 +6,7 @@ const techs = [
 
 function Pill({ label }: { label: string }) {
   return (
-    <span className="shrink-0 font-mono text-[12px] text-muted rounded-full px-[14px] py-[6px]" style={{ background: "rgba(11,95,170,0.06)", border: "1px solid rgba(11,95,170,0.15)" }}>
+    <span className="shrink-0 font-mono text-[12px] text-ink/60 rounded-full bg-white px-[14px] py-[7px] shadow-[0_1px_2px_rgba(7,23,43,0.04)] transition-colors hover:text-indigo" style={{ border: "1px solid rgba(11,95,170,0.13)" }}>
       {label}
     </span>
   );
