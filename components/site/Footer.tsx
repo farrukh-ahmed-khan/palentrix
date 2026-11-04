@@ -64,8 +64,8 @@ export function Footer() {
         <div className="mt-12 pt-6 border-t border-[rgba(11,95,170,0.1)] flex flex-col md:flex-row md:items-center md:justify-between gap-4">
           <p className="text-muted text-[13px]">
             {" "}
-            &copy;{currentYear} Palentrix. All rights reserved. Karachi,
-            Pakistan
+            &copy;{currentYear} Palentrix. All rights reserved. 8 Campus Dr Suite # 105
+            Parsippany, NJ 07054
           </p>
           <div className="flex items-center gap-4 text-muted">
             <a

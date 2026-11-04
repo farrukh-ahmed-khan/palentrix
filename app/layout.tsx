@@ -125,9 +125,11 @@ const siteJsonLd = {
       email: siteConfig.emails.contact,
       address: {
         "@type": "PostalAddress",
-        addressLocality: "Karachi",
-        addressRegion: "Sindh",
-        addressCountry: "PK",
+        streetAddress: "8 Campus Dr Suite # 105",
+        addressLocality: "Parsippany",
+        addressRegion: "NJ",
+        postalCode: "07054",
+        addressCountry: "US",
       },
       areaServed: [
         { "@type": "City", name: "Karachi" },
