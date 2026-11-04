@@ -18,7 +18,7 @@ const sections = [
   {
     title: "Who we are",
     body: [
-      `Palentrix is a software studio based in Karachi, Pakistan. Our website address is palentrix.com, and our contact email is ${siteConfig.emails.info}.`,
+      `Palentrix is a software studio based in Parsippany, New Jersey, USA. Our website address is palentrix.com, and our contact email is ${siteConfig.emails.info}.`,
       "This Privacy Policy explains what information we collect when people visit our website, read our blog, contact us, or interact with services connected to the site.",
     ],
   },

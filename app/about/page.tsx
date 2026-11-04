@@ -3,7 +3,7 @@ import { AboutPage } from "@/components/pages/AboutPage";
 
 export const metadata: Metadata = {
   title: "About",
-  description: "Three engineers running a software studio out of Karachi. Honest, technical, and accountable.",
+  description: "Three engineers running a software studio out of Parsippany, New Jersey. Honest, technical, and accountable.",
   alternates: { canonical: "/about" },
   openGraph: {
     title: "About Palentrix",

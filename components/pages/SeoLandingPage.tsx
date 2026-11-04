@@ -5,7 +5,7 @@ import { PageShell } from "@/components/site/PageShell";
 import type { SeoPage } from "@/lib/seo-pages";
 
 const relatedLinks = [
-  { href: "/software-house-pakistan", label: "Software House Pakistan" },
+  { href: "/software-house-usa", label: "Software House USA" },
   { href: "/saas-mvp-development", label: "SaaS MVP Development" },
   { href: "/nextjs-development", label: "Next.js Development" },
   { href: "/ai-web-app-development", label: "AI Web App Development" },

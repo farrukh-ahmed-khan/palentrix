@@ -132,8 +132,8 @@ const siteJsonLd = {
         addressCountry: "US",
       },
       areaServed: [
-        { "@type": "City", name: "Karachi" },
-        { "@type": "Country", name: "Pakistan" },
+        { "@type": "City", name: "Parsippany" },
+        { "@type": "Country", name: "United States" },
       ],
       priceRange: "$$",
     },
@@ -152,8 +152,8 @@ const siteJsonLd = {
         "Custom Software Development",
       ],
       areaServed: [
-        { "@type": "City", name: "Karachi" },
-        { "@type": "Country", name: "Pakistan" },
+        { "@type": "City", name: "Parsippany" },
+        { "@type": "Country", name: "United States" },
         { "@type": "Place", name: "Worldwide" },
       ],
     },

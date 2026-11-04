@@ -40,7 +40,7 @@ const servicesJsonLd = {
         url: siteConfig.url,
       },
       serviceType: ["SaaS MVP Development", "Custom Software Development", "Next.js Development", "AI Web App Development"],
-      areaServed: [{ "@type": "Country", name: "Pakistan" }, { "@type": "Place", name: "Worldwide" }],
+      areaServed: [{ "@type": "Country", name: "United States" }, { "@type": "Place", name: "Worldwide" }],
     },
     {
       "@type": "FAQPage",
@@ -48,10 +48,10 @@ const servicesJsonLd = {
       mainEntity: [
         {
           "@type": "Question",
-          name: "Is Palentrix a software house in Pakistan?",
+          name: "Is Palentrix a software house in the USA?",
           acceptedAnswer: {
             "@type": "Answer",
-            text: "Yes. Palentrix is a Karachi-based software development company building SaaS MVPs, custom web apps, AI applications, dashboards, and automation systems.",
+            text: "Yes. Palentrix is a New Jersey-based software development company building SaaS MVPs, custom web apps, AI applications, dashboards, and automation systems.",
           },
         },
         {

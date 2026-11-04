@@ -6,10 +6,10 @@ import { CountUp } from "./CountUp";
 import { HeroVisuals } from "./HeroVisuals";
 import Link from "next/link";
 
-const headlineWords = ["Software", "Development", "Company", "in", "Pakistan."];
+const headlineWords = ["Software", "Development", "Company", "in", "the", "USA."];
 const calendlyUrl = "https://calendly.com/palentrix/30min";
 const seoLinks = [
-  { href: "/software-house-pakistan", label: "Software House Pakistan" },
+  { href: "/software-house-usa", label: "Software House USA" },
   { href: "/saas-mvp-development", label: "SaaS MVP Development" },
   { href: "/nextjs-development", label: "Next.js Agency" },
   { href: "/ai-web-app-development", label: "AI App Development" },
@@ -38,7 +38,7 @@ export function Hero() {
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-x-blue opacity-60" />
                 <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-indigo" />
               </span>
-              Software House - Karachi, Pakistan
+              Software House - Parsippany, NJ, USA
             </div>
 
             <h1
@@ -60,7 +60,7 @@ export function Hero() {
               className="hero-rise mt-7 text-muted text-[16px] md:text-[18px] max-w-[560px] mx-auto lg:mx-0 leading-[1.7]"
               style={{ animationDelay: "160ms" }}
             >
-              Palentrix is a software development company and software house in Karachi, Pakistan building SaaS MVPs, custom web apps, AI products, dashboards, and business automation systems for clients worldwide.
+              Palentrix is a software development company and software house in Parsippany, New Jersey, USA building SaaS MVPs, custom web apps, AI products, dashboards, and business automation systems for clients worldwide.
             </p>
 
             <div

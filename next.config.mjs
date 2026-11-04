@@ -6,6 +6,11 @@ const nextConfig = {
   experimental: {
     inlineCss: true,
   },
+  async redirects() {
+    return [
+      { source: "/software-house-pakistan", destination: "/software-house-usa", permanent: true },
+    ];
+  },
   turbopack: {
     root: import.meta.dirname,
   },

@@ -3,13 +3,13 @@ export const siteConfig = {
   url: process.env.NEXT_PUBLIC_SITE_URL || "https://palentrix.com",
   title: "Palentrix - We Engineer Products People Rely On",
   description:
-    "Palentrix is a software development company and software house in Karachi, Pakistan building SaaS MVPs, custom software, Next.js web apps, AI applications, and business automations.",
+    "Palentrix is a software development company and software house in Parsippany, New Jersey, USA building SaaS MVPs, custom software, Next.js web apps, AI applications, and business automations.",
   keywords: [
     "Palentrix",
-    "software house Pakistan",
-    "software house Karachi",
-    "software development company Pakistan",
-    "software development company Karachi",
+    "software house USA",
+    "software house New Jersey",
+    "software development company USA",
+    "software development company New Jersey",
     "SaaS development agency",
     "SaaS MVP development",
     "MVP development services",

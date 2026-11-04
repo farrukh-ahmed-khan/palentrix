@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { SeoLandingPage } from "@/components/pages/SeoLandingPage";
 import { getSeoPage, serviceJsonLd } from "@/lib/seo-pages";
 
-const page = getSeoPage("software-house-pakistan")!;
+const page = getSeoPage("software-house-usa")!;
 
 export const metadata: Metadata = {
   title: page.metaTitle,
@@ -25,7 +25,7 @@ export default function Page() {
   return (
     <>
       <script
-        id="software-house-pakistan-jsonld"
+        id="software-house-usa-jsonld"
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceJsonLd(page)) }}
       />

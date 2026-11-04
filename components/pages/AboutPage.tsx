@@ -57,7 +57,7 @@ export function AboutPage() {
       <PageHero
         label="About"
         title="Three Engineers. One Studio. Zero Excuses."
-        subtitle="Palentrix is a small, deliberately senior software studio in Karachi. We work directly with founders, product leaders, and operators."
+        subtitle="Palentrix is a small, deliberately senior software studio in Parsippany, New Jersey. We work directly with founders, product leaders, and operators."
       />
 
       <section className="rb-section py-24">

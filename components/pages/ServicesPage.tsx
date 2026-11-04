@@ -66,7 +66,7 @@ const blocks: Block[] = [
 ];
 
 const seoServiceLinks = [
-  { href: "/software-house-pakistan", label: "Software House Pakistan" },
+  { href: "/software-house-usa", label: "Software House USA" },
   { href: "/saas-mvp-development", label: "SaaS MVP Development" },
   { href: "/nextjs-development", label: "Next.js Development" },
   { href: "/ai-web-app-development", label: "AI Web App Development" },
@@ -75,9 +75,9 @@ const seoServiceLinks = [
 
 const faqs = [
   {
-    question: "Is Palentrix a software house in Pakistan?",
+    question: "Is Palentrix a software house in the USA?",
     answer:
-      "Yes. Palentrix is a Karachi-based software development company building SaaS MVPs, custom web apps, AI applications, dashboards, and automation systems.",
+      "Yes. Palentrix is a New Jersey-based software development company building SaaS MVPs, custom web apps, AI applications, dashboards, and automation systems.",
   },
   {
     question: "Do you build SaaS MVPs?",
@@ -107,7 +107,7 @@ export function ServicesPage() {
               SEO-focused software development services
             </h2>
             <p className="mt-3 max-w-[780px] text-[15px] leading-relaxed text-muted">
-              Explore dedicated service pages for software house Pakistan, SaaS MVP development, Next.js development, AI web app development, and custom software development.
+              Explore dedicated service pages for software house USA, SaaS MVP development, Next.js development, AI web app development, and custom software development.
             </p>
             <div className="mt-5 flex flex-wrap gap-3">
               {seoServiceLinks.map((link) => (

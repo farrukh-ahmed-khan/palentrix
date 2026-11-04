@@ -17,15 +17,15 @@ export type SeoPage = {
 
 export const seoPages: SeoPage[] = [
   {
-    slug: "software-house-pakistan",
-    title: "Software House Pakistan",
-    metaTitle: "Software House in Pakistan | Palentrix",
+    slug: "software-house-usa",
+    title: "Software House USA",
+    metaTitle: "Software House in the USA | Palentrix",
     description:
-      "Palentrix is a software house in Pakistan building SaaS products, custom web apps, AI applications, and business automation systems.",
-    eyebrow: "Software House in Pakistan",
-    h1: "Software House in Pakistan for SaaS, Web Apps, and Automation",
+      "Palentrix is a software house in the USA building SaaS products, custom web apps, AI applications, and business automation systems.",
+    eyebrow: "Software House in the USA",
+    h1: "Software House in the USA for SaaS, Web Apps, and Automation",
     intro:
-      "Palentrix is a Karachi-based software development company serving startups, SMBs, and international teams that need reliable production software. We build SaaS platforms, custom web applications, admin dashboards, portals, and automation systems with senior engineers involved from planning to launch.",
+      "Palentrix is a New Jersey-based software development company serving startups, SMBs, and international teams that need reliable production software. We build SaaS platforms, custom web applications, admin dashboards, portals, and automation systems with senior engineers involved from planning to launch.",
     services: [
       "Custom software development for startups and businesses",
       "SaaS MVP planning, design, development, and launch",
@@ -41,12 +41,12 @@ export const seoPages: SeoPage[] = [
     stack: ["Next.js", "NestJS", "React", "Node.js", "PostgreSQL", "MongoDB", "Supabase", "Stripe"],
     faqs: [
       {
-        question: "Is Palentrix a software house in Pakistan?",
+        question: "Is Palentrix a software house in the USA?",
         answer:
-          "Yes. Palentrix is a software house based in Karachi, Pakistan, building SaaS products, custom software, web apps, and AI-enabled platforms for local and international clients.",
+          "Yes. Palentrix is a software house based in Parsippany, New Jersey, USA, building SaaS products, custom software, web apps, and AI-enabled platforms for local and international clients.",
       },
       {
-        question: "Do you work with clients outside Pakistan?",
+        question: "Do you work with clients outside the USA?",
         answer:
           "Yes. We work remotely with founders, agencies, and businesses in multiple markets and use clear milestones, async updates, and regular calls to keep delivery transparent.",
       },
@@ -56,7 +56,7 @@ export const seoPages: SeoPage[] = [
           "We build SaaS platforms, marketplaces, dashboards, portals, custom business software, AI web apps, automation systems, and integrations.",
       },
     ],
-    keywords: ["software house Pakistan", "software development company Pakistan", "software house Karachi"],
+    keywords: ["software house USA", "software development company USA", "software house New Jersey"],
   },
   {
     slug: "saas-mvp-development",
@@ -224,7 +224,7 @@ export const seoPages: SeoPage[] = [
           "Yes. Admin dashboards, internal tools, reporting systems, and role-based portals are a core part of our custom software work.",
       },
     ],
-    keywords: ["custom software development", "business software development", "software development company Pakistan"],
+    keywords: ["custom software development", "business software development", "software development company USA"],
   },
 ];
 
@@ -247,8 +247,8 @@ export function serviceJsonLd(page: SeoPage) {
           url: siteConfig.url,
         },
         areaServed: [
-          { "@type": "Country", name: "Pakistan" },
-          { "@type": "City", name: "Karachi" },
+          { "@type": "Country", name: "United States" },
+          { "@type": "City", name: "Parsippany" },
         ],
         serviceType: page.title,
         url: absoluteUrl(`/${page.slug}`),

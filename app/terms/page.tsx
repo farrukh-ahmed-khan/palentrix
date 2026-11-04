@@ -66,7 +66,7 @@ const sections = [
   {
     title: "Governing law",
     body: [
-      "These terms are governed by the laws of Pakistan, unless a separate written agreement states otherwise.",
+      "These terms are governed by the laws of the State of New Jersey, United States, unless a separate written agreement states otherwise.",
       "If any part of these terms is found unenforceable, the remaining sections will continue to apply.",
     ],
   },
