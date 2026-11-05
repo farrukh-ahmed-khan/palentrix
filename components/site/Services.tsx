@@ -71,6 +71,7 @@ export function Services() {
           {services.map((s, i) => (
             <motion.article
               key={s.num}
+              data-ribbon-crossing
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-80px" }}
@@ -115,14 +116,9 @@ export function Services() {
                 </div>
               </div>
 
-              {/* framed media (Lusion) */}
-              <div className="relative md:col-span-3 md:col-start-2 lg:col-span-1 lg:col-start-auto">
-                <div className="overflow-hidden rounded-[20px] border border-border bg-void shadow-[0_30px_80px_-50px_rgba(67,180,255,0.6)] transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:-translate-y-1 group-hover:scale-[1.02]">
-                  <div className="flex items-center gap-1.5 border-b border-border px-4 py-2.5">
-                    <span className="h-1.5 w-1.5 rounded-full bg-ink/20" />
-                    <span className="h-1.5 w-1.5 rounded-full bg-ink/20" />
-                    <span className="h-1.5 w-1.5 rounded-full" style={{ background: s.borderColor }} />
-                  </div>
+              {/* Device photography */}
+              <div className="relative min-w-0 md:col-span-2 md:col-start-2 lg:col-span-1 lg:col-start-auto">
+                <div className="overflow-hidden rounded-[20px] border border-border bg-void shadow-[0_18px_40px_-24px_rgba(0,0,0,0.65)] transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] motion-safe:group-hover:-translate-y-1">
                   <s.Visual />
                 </div>
               </div>

@@ -70,7 +70,7 @@ export function DeferredHomeSections() {
   return (
     <>
       <ReelSection />
-      {/* one continuous ribbon weaves through these sections on scroll */}
+      {/* The ribbon weaves between both sides through measured content gaps. */}
       <div ref={ribbonRef} className="relative">
         <ScrollRibbon targetRef={ribbonRef} />
         <Services />
