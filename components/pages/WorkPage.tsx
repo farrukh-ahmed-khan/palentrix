@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { useMemo, useState } from "react";
@@ -28,7 +29,7 @@ export function WorkPage() {
       <PageHero
         label="Selected Work"
         title="Case Studies with Real Product Context."
-        subtitle="Detailed examples of SaaS platforms, AI products, healthcare portals, and commerce systems Palentrix has shipped."
+        subtitle="Detailed examples of SaaS platforms, AI products, healthcare platforms, and mobile apps Palentrix has shipped."
       />
 
       <section className="rb-section pb-28">
@@ -59,10 +60,22 @@ export function WorkPage() {
                 variants={fadeUp}
                 whileHover={{ y: -4, borderColor: "rgba(67,180,255,0.35)" }}
                 transition={{ duration: 0.2 }}
-                className="rb-card group rounded-2xl border bg-slate p-8"
+                className="rb-card group overflow-hidden rounded-[22px] border bg-slate"
                 style={{ borderColor: "var(--border-color)" }}
               >
                 <Link href={`/work/${item.slug}`} className="block">
+                  {item.image ? (
+                    <div className="relative aspect-[16/10] overflow-hidden border-b border-border">
+                      <Image
+                        src={item.image}
+                        alt={`${item.client} website homepage`}
+                        fill
+                        sizes="(min-width: 768px) 50vw, 100vw"
+                        className="object-cover object-top transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.04]"
+                      />
+                    </div>
+                  ) : null}
+                  <div className="p-8">
                   <div className="flex flex-wrap items-center justify-between gap-4">
                     <span className="rounded-full border border-indigo/30 bg-indigo/5 px-3 py-1 font-mono text-[11px] uppercase tracking-[0.15em] text-indigo">
                       {item.category}
@@ -79,7 +92,7 @@ export function WorkPage() {
                     {item.stack.slice(0, 5).map((tool) => (
                       <span
                         key={tool}
-                        className="rounded-full border border-indigo/15 bg-white/70 px-3 py-1 font-mono text-[10px] uppercase tracking-[0.1em] text-muted"
+                        className="rounded-full border border-indigo/15 bg-ink/[0.03] px-3 py-1 font-mono text-[10px] uppercase tracking-[0.1em] text-muted"
                       >
                         {tool}
                       </span>
@@ -88,6 +101,7 @@ export function WorkPage() {
                   <div className="mt-8 inline-flex items-center gap-2 text-[14px] font-medium text-indigo">
                     Read case study
                     <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
+                  </div>
                   </div>
                 </Link>
               </motion.div>

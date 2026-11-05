@@ -11,128 +11,121 @@ export type CaseStudy = {
   outcomes: string[];
   stack: string[];
   url?: string;
+  /** Homepage screenshot in /public/work */
+  image?: string;
+  /** App store listings for projects that ship a mobile app */
+  stores?: { label: "App Store" | "Google Play"; href: string }[];
 };
 
 export const caseStudies: CaseStudy[] = [
   {
-    slug: "gofer-assistants-marketplace",
-    title: "Gofer Assistants Multi-Tenant Marketplace",
-    client: "Gofer Assistants",
+    slug: "cuelogic-tournament-platform",
+    title: "CueLogic Billiards Tournament Platform & Mobile Scorekeeper",
+    client: "CueLogic",
     category: "SaaS",
     summary:
-      "A multi-tenant SaaS marketplace with vendor onboarding, role-based access, booking workflows, admin operations, and Stripe Connect payouts.",
+      "A billiards tournament platform and companion mobile scorekeeper covering bracket engines, live scoring, rankings, billing, and messaging, shipped to the web, the App Store, and Google Play.",
     challenge:
-      "The product needed to support multiple vendors, customers, admins, bookings, and payout flows without becoming hard to operate as usage grew.",
+      "Tournament directors needed to run single-elimination, double-elimination, and round-robin events with live scores, table assignments, disputes, and payouts, without juggling spreadsheets and group chats.",
     solution:
-      "Palentrix built a full-stack marketplace architecture with tenant-aware workflows, RBAC, admin controls, booking management, and Stripe Connect payment flows.",
+      "Palentrix built a React 19 and Vite web platform on Node.js, Express, Prisma, and PostgreSQL with automated bracket generation, scheduling, byes, live scoring, dispute handling, and ELO rankings, then shipped a React Native and Expo companion app with deep links, live match dashboards, and pinch-to-zoom venue maps.",
     outcomes: [
-      "Vendor onboarding and marketplace operations in one platform",
-      "Stripe Connect payout foundation for multi-party payments",
-      "Admin dashboard for operational visibility",
-      "Scalable SaaS structure ready for future feature expansion",
+      "Single-elimination, double-elimination, and round-robin engines with automated brackets",
+      "Role-based organizer, player, and super-admin experiences",
+      "Stripe billing, SMS and email messaging, and analytics",
+      "Companion mobile app live on the App Store and Google Play",
     ],
-    stack: ["NestJS", "Next.js", "PostgreSQL", "Stripe Connect"],
-    url: "https://goferassistants.com",
+    stack: ["React 19", "Vite", "Tailwind CSS", "Node.js", "Express", "Prisma", "PostgreSQL", "React Native", "Expo"],
+    url: "https://cuelogic.app",
+    image: "/work/cuelogic.jpg",
+    stores: [
+      { label: "App Store", href: "https://apps.apple.com/us/app/cuelogic/id6755575023" },
+      { label: "Google Play", href: "https://play.google.com/store/apps/details?id=info.cuelogic.app" },
+    ],
+  },
+  {
+    slug: "outfitiq-ai-styling-assistant",
+    title: "OutfitIQ AI Personal Styling & Wardrobe Assistant",
+    client: "OutfitIQ",
+    category: "AI",
+    summary:
+      "An AI personal styling and wardrobe assistant that turns occasion, skin tone, and garment preferences into outfit, color-palette, and makeup recommendations with generated fashion visuals.",
+    challenge:
+      "Styling advice had to feel personal and reliable: uploaded clothing photos needed validating and understanding, and generated looks had to stay on-brief even when AI responses were slow or inconsistent.",
+    solution:
+      "Palentrix built a Next.js 15 and TypeScript app using Google Gemini text and vision models for multimodal wardrobe analysis, Gemini 2.5 Flash Image for multi-look visuals with retries, timeouts, and graceful fallbacks, and a deterministic rule-based engine backed by MongoDB.",
+    outcomes: [
+      "Multimodal wardrobe analysis that identifies garments, colors, and textures",
+      "Generated multi-look fashion visuals with resilient fallbacks",
+      "AI output combined with a deterministic recommendation engine",
+      "Favorites, look comparison, and client-side image compression",
+    ],
+    stack: ["Next.js 15", "React", "TypeScript", "Gemini API", "MongoDB", "Mongoose"],
+    url: "https://outfit-iq-ai.vercel.app",
+    image: "/work/outfitiq.jpg",
   },
   {
     slug: "zelos-financial-literacy-platform",
-    title: "Zelos Youth Financial Literacy Platform",
-    client: "Zelos",
+    title: "Zelos Foundation Financial Literacy & Mentorship Platform",
+    client: "Zelos Foundation",
     category: "SaaS",
     summary:
-      "A full-stack education and youth development platform with role-based dashboards, scholarships, community, events, online store, billing, and content management.",
+      "A nonprofit financial literacy and mentorship platform with role-based access, school-scoped learning content, subscriptions, school licensing, and merch fulfilment.",
     challenge:
-      "Zelos needed one platform for students, schools, mentors, admins, subscribers, learning content, community features, and commerce.",
+      "Zelos needed one platform for mentees, families, schools, moderators, and admins, each with different content, permissions, and billing, plus school licensing with seat limits.",
     solution:
-      "Palentrix delivered a role-based product architecture with dashboards, video library, scholarship workflows, forums, events, store functionality, Stripe billing, and admin content tools.",
+      "Palentrix built it on Next.js 16 App Router, React 19, TypeScript, Ant Design, and MongoDB with JWT authentication in HTTP-only cookies, audience- and school-scoped content libraries with drip unlocking and completion tracking, and Stripe checkout, subscriptions, promo codes, and gift cards with Printify fulfilment and AWS S3 uploads.",
     outcomes: [
-      "Multiple user roles supported through dedicated dashboards",
-      "Scholarship and community workflows connected to learning content",
-      "Stripe billing and online store foundation",
-      "Admin content management for platform operations",
+      "Role and permission-based access for mentees, families, schools, moderators, and admins",
+      "Drip-unlocked content libraries with completion tracking",
+      "School licensing with seat limits and invitation workflows",
+      "Stripe subscriptions, gift cards, and Printify merch fulfilment",
     ],
-    stack: ["Next.js", "TypeScript", "MongoDB", "Stripe"],
-    url: "https://zelos.vercel.app",
-  },
-  {
-    slug: "aegisiq-investor-portal",
-    title: "AegisIQ Investor Screening Portal",
-    client: "PatientTrac Limited",
-    category: "SaaS",
-    summary:
-      "A financial intelligence and screening platform with investor onboarding, gated document access, authentication, and payment processing.",
-    challenge:
-      "The platform needed secure onboarding and document access for investors while keeping payment and user management flows clean.",
-    solution:
-      "Palentrix built the portal with Clerk authentication, Neon PostgreSQL, gated document workflows, onboarding screens, and payment processing.",
-    outcomes: [
-      "Investor onboarding flow with protected access",
-      "Gated documents and user-specific portal experience",
-      "Payment-enabled access model",
-      "Modern Next.js 14 implementation",
-    ],
-    stack: ["Next.js 14", "TypeScript", "Neon PostgreSQL", "Clerk"],
-    url: "https://aegisiqfintech.com",
-  },
-  {
-    slug: "saas-ai-platform",
-    title: "Multi-Model SaaS AI Platform",
-    client: "SaaS AI Platform",
-    category: "AI",
-    summary:
-      "An AI SaaS platform supporting chat, code, and image generation with model integrations, user accounts, usage flows, and Stripe billing.",
-    challenge:
-      "The product needed to expose multiple AI capabilities while keeping the interface usable and the business model subscription-ready.",
-    solution:
-      "Palentrix implemented a Next.js and Supabase platform integrating OpenAI and Claude APIs with product flows for chat, code, image generation, and billing.",
-    outcomes: [
-      "Multi-model AI feature set in one product",
-      "Subscription-ready SaaS foundation",
-      "Reusable architecture for adding future AI tools",
-      "User-facing workflows for chat, code, and image generation",
-    ],
-    stack: ["Next.js", "TypeScript", "Supabase", "Stripe", "OpenAI", "Claude"],
-    url: "https://saas-ai-azure.vercel.app",
+    stack: ["Next.js 16", "React 19", "TypeScript", "Tailwind CSS", "Ant Design", "MongoDB", "Stripe", "AWS S3"],
+    url: "https://zelosfoundation.org",
+    image: "/work/zelos.jpg",
   },
   {
     slug: "texas-center-wellness-portal",
-    title: "Texas Center Wellness Patient Portal",
+    title: "Texas Center Wellness Healthcare Booking Platform",
     client: "Texas Center Wellness",
     category: "Healthcare",
     summary:
-      "A healthcare portal and patient dashboard with multi-role access, sensitive data handling, and structured patient-facing workflows.",
+      "A healthcare booking platform covering services, providers, blog, and scheduling, integrated with CharmHealth EHR, Square payments, and QuickBooks Online.",
     challenge:
-      "The healthcare workflow needed clear role separation, careful data handling, and a simple dashboard experience for patients and operators.",
+      "Patients needed to find providers and book, reschedule, or cancel appointments online, with payments and accounting flowing through the clinic's existing EHR and finance tools.",
     solution:
-      "Palentrix built a React and Node.js portal with role-based access, dashboard views, and secure handling patterns for sensitive user information.",
+      "Palentrix built a Next.js 15 and React 19 site integrated with CharmHealth EHR for availability, patient creation, questionnaires, and appointments, plus Square payments and refunds and QuickBooks Online invoicing via OAuth, webhooks, and automated token refresh on Express 5 APIs with MySQL.",
     outcomes: [
-      "Multi-role portal experience",
-      "Patient dashboard workflows",
-      "Healthcare-focused data handling patterns",
-      "Cleaner digital access for operational teams",
+      "Online booking, rescheduling, and cancellation through CharmHealth EHR",
+      "Square payments and refunds with QuickBooks Online invoicing",
+      "Dynamic metadata, structured data, canonical tags, and generated sitemaps",
+      "Google Analytics for ongoing measurement",
     ],
-    stack: ["React", "Node.js"],
+    stack: ["Next.js 15", "React 19", "TypeScript", "Tailwind CSS", "Express 5", "MySQL", "Sequelize", "Square", "QuickBooks Online"],
     url: "https://texascenterwellness.com",
+    image: "/work/texas-center-wellness.jpg",
   },
   {
-    slug: "jstyle-ecommerce-platform",
-    title: "JStyle Fashion E-Commerce Platform",
-    client: "JStyle",
-    category: "E-commerce",
+    slug: "gofer-assistants-marketplace",
+    title: "Gofer Assistants Service Marketplace",
+    client: "Gofer Assistants",
+    category: "SaaS",
     summary:
-      "A full-stack fashion e-commerce platform with cart, checkout, admin dashboard, order management, and MySQL-backed operations.",
+      "A service marketplace connecting customers with freelance assistants for pet care, cleaning, and home services.",
     challenge:
-      "The brand needed an online store that could manage products, customers, orders, and checkout without relying on a rigid template.",
+      "The business needed customers to find and book trusted assistants, take payments and pay out freelancers, and give operators control over listings and bookings.",
     solution:
-      "Palentrix delivered a Laravel-based commerce platform with storefront flows, checkout, admin controls, and order management.",
+      "Palentrix developed secure Laravel REST APIs for authentication, service listings, bookings, and payments on a MySQL schema, integrated Stripe for booking charges and payouts, and shipped an admin panel with payment webhooks and email notifications.",
     outcomes: [
-      "Custom storefront for fashion commerce",
-      "Cart and checkout flow",
-      "Admin dashboard for order operations",
-      "MySQL-backed product and order management",
+      "Service listings and booking flows for customers and assistants",
+      "Stripe booking charges and freelancer payouts",
+      "Admin panel for marketplace operations",
+      "Production deployment with payment webhooks and email notifications",
     ],
-    stack: ["Laravel", "PHP", "MySQL"],
-    url: "https://jstyle.pk",
+    stack: ["Laravel", "PHP", "MySQL", "Stripe"],
+    url: "https://goferassistants.com",
+    image: "/work/gofer-assistants.jpg",
   },
 ];
 

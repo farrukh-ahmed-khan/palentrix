@@ -50,7 +50,7 @@ const ease = [0.16, 1, 0.3, 1] as const;
 
 export function Services() {
   return (
-    <section className="relative overflow-hidden bg-void py-28 md:py-40">
+    <section className="relative overflow-hidden py-28 md:py-40">
       {/* soft aurora edge */}
       <div className="pointer-events-none absolute -left-40 top-20 h-[520px] w-[520px] rounded-full bg-[rgba(47,125,255,0.14)] blur-[140px]" />
       <div className="pointer-events-none absolute -right-40 bottom-10 h-[420px] w-[420px] rounded-full bg-[rgba(62,242,208,0.07)] blur-[140px]" />

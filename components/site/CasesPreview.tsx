@@ -1,10 +1,13 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
 import { ArrowUpRight, Lock } from "lucide-react";
 import { Reveal } from "./Reveal";
 import { CTAButton } from "./CTAButton";
+
+type StoreLink = { label: string; href: string };
 
 type Project = {
   title: string;
@@ -15,106 +18,61 @@ type Project = {
   url?: string;
   urlLabel: string;
   privateLink?: boolean;
+  /** Homepage screenshot in /public/work */
+  image?: string;
+  /** App store listings for projects that ship a mobile app */
+  stores?: StoreLink[];
 };
 
 const projects: Project[] = [
   {
-    title: "Gofer Assistants",
-    tag: "Marketplace SaaS",
-    desc: "Multi-tenant vendor marketplace with onboarding, RBAC, bookings, admin dashboard, and Stripe Connect payouts.",
-    stack: ["NestJS", "Next.js", "PostgreSQL", "Stripe Connect"],
-    url: "https://goferassistants.com",
-    urlLabel: "goferassistants.com",
-  },
-  {
-    title: "Zelos",
-    tag: "EdTech + FinTech",
-    desc: "Financial literacy and youth development platform with role dashboards, video, scholarships, forums, events, store, and billing.",
-    stack: ["Next.js", "TypeScript", "MongoDB", "Stripe"],
-    url: "https://zelos.vercel.app",
-    urlLabel: "zelos.vercel.app",
-  },
-  {
-    title: "AegisIQ",
-    client: "PatientTrac Limited",
-    tag: "Investor Portal",
-    desc: "Financial intelligence and screening platform with investor onboarding, gated documents, and payment processing.",
-    stack: ["Next.js 14", "TypeScript", "Neon", "Clerk"],
-    url: "https://aegisiqfintech.com",
-    urlLabel: "aegisiqfintech.com",
-  },
-  {
-    title: "VELOOSH",
-    tag: "Career Intelligence",
-    desc: "Assessment platform MVP for learners across MENA and Africa with quiz modes, readiness scoring, dashboards, and history.",
-    stack: ["Next.js", "Supabase"],
-    url: "https://veloosh.com",
-    urlLabel: "veloosh.com",
-  },
-  {
-    title: "SaaS AI Platform",
-    tag: "AI SaaS",
-    desc: "Multi-model AI platform supporting chat, code, and image generation through OpenAI and Claude APIs.",
-    stack: ["Next.js", "TypeScript", "Supabase", "Stripe"],
-    url: "https://saas-ai-azure.vercel.app",
-    urlLabel: "saas-ai-azure.vercel.app",
+    title: "CueLogic",
+    tag: "Tournament SaaS + Mobile",
+    desc: "Billiards tournament platform with single-elimination, double-elimination, and round-robin engines, live scoring, ELO rankings, Stripe billing, and a companion mobile scorekeeper on iOS and Android.",
+    stack: ["React 19", "Node.js", "PostgreSQL", "React Native", "Expo"],
+    url: "https://cuelogic.app",
+    urlLabel: "cuelogic.app",
+    image: "/work/cuelogic.jpg",
+    stores: [
+      { label: "App Store", href: "https://apps.apple.com/us/app/cuelogic/id6755575023" },
+      { label: "Google Play", href: "https://play.google.com/store/apps/details?id=info.cuelogic.app" },
+    ],
   },
   {
     title: "OutfitIQ",
     tag: "AI Fashion",
-    desc: "AI styling app with multi-step outfit suggestions, Gemini image generation, and wardrobe uploads.",
-    stack: ["Next.js", "Gemini API", "MongoDB"],
-    urlLabel: "Client-owned",
-    privateLink: true,
+    desc: "AI styling assistant that analyzes wardrobe photos with Gemini vision, generates multi-look fashion visuals, and recommends outfits, color palettes, and makeup.",
+    stack: ["Next.js 15", "TypeScript", "Gemini API", "MongoDB"],
+    url: "https://outfit-iq-ai.vercel.app",
+    urlLabel: "outfit-iq-ai.vercel.app",
+    image: "/work/outfitiq.jpg",
+  },
+  {
+    title: "Zelos Foundation",
+    tag: "EdTech + FinTech",
+    desc: "Financial literacy and mentorship platform with role-based access, school licensing, drip-unlocked content, Stripe subscriptions and gift cards, and Printify fulfilment.",
+    stack: ["Next.js 16", "TypeScript", "MongoDB", "Stripe"],
+    url: "https://zelosfoundation.org",
+    urlLabel: "zelosfoundation.org",
+    image: "/work/zelos.jpg",
   },
   {
     title: "Texas Center Wellness",
-    tag: "Healthcare Portal",
-    desc: "Patient dashboard and healthcare portal with multi-role access and sensitive data handling.",
-    stack: ["React", "Node.js"],
+    tag: "Healthcare Booking",
+    desc: "Healthcare booking platform integrated with CharmHealth EHR, Square payments, and QuickBooks Online, with structured data and full technical SEO.",
+    stack: ["Next.js 15", "Express", "MySQL", "Square"],
     url: "https://texascenterwellness.com",
     urlLabel: "texascenterwellness.com",
+    image: "/work/texas-center-wellness.jpg",
   },
   {
-    title: "JStyle",
-    tag: "E-commerce",
-    desc: "Fashion commerce platform with cart, checkout, admin dashboard, and order management.",
-    stack: ["Laravel", "PHP", "MySQL"],
-    url: "https://jstyle.pk",
-    urlLabel: "jstyle.pk",
-  },
-  {
-    title: "Kepka House",
-    tag: "Corporate Website",
-    desc: "Clean responsive company website with interactive UI and smooth navigation.",
-    stack: ["Next.js"],
-    url: "https://kepkahouse.com",
-    urlLabel: "kepkahouse.com",
-  },
-  {
-    title: "Lavanya Suresh",
-    client: "Speaker Kit",
-    tag: "Personal Brand",
-    desc: "Speaker website with photo gallery, video embeds, and downloadable PDF media kit.",
-    stack: ["Next.js"],
-    url: "https://lavanya-suresh.vercel.app",
-    urlLabel: "lavanya-suresh.vercel.app",
-  },
-  {
-    title: "Peptide MD",
-    tag: "Health Landing Page",
-    desc: "Minimal health-brand product landing page tuned for clean presentation and fast load performance.",
-    stack: ["Next.js"],
-    url: "https://brandon-rosy.vercel.app",
-    urlLabel: "brandon-rosy.vercel.app",
-  },
-  {
-    title: "LMIL",
-    tag: "Animated Marketing",
-    desc: "Animated marketing landing page with scroll effects, GSAP motion, and CSS transitions.",
-    stack: ["GSAP", "CSS", "Landing Page"],
-    urlLabel: "Launch-ready",
-    privateLink: true,
+    title: "Gofer Assistants",
+    tag: "Service Marketplace",
+    desc: "Marketplace connecting customers with freelance assistants for pet care, cleaning, and home services, with bookings, Stripe payments and payouts, and an admin panel.",
+    stack: ["Laravel", "PHP", "MySQL", "Stripe"],
+    url: "https://goferassistants.com",
+    urlLabel: "goferassistants.com",
+    image: "/work/gofer-assistants.jpg",
   },
 ];
 
@@ -133,15 +91,46 @@ function ProjectLink({ project, className = "" }: { project: Project; className?
     );
   }
   return (
-    <a
-      href={project.url}
-      target="_blank"
-      rel="noopener noreferrer"
-      className={`group/link inline-flex items-center gap-2 text-[13px] font-semibold text-ink transition-colors hover:text-glow ${className}`}
-    >
-      {project.urlLabel}
-      <ArrowUpRight size={15} className="transition-transform duration-300 group-hover/link:-translate-y-0.5 group-hover/link:translate-x-0.5" />
-    </a>
+    <div className={`flex flex-wrap items-center gap-x-5 gap-y-3 ${className}`}>
+      <a
+        href={project.url}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="group/link inline-flex items-center gap-2 text-[13px] font-semibold text-ink transition-colors hover:text-glow"
+      >
+        {project.urlLabel}
+        <ArrowUpRight size={15} className="transition-transform duration-300 group-hover/link:-translate-y-0.5 group-hover/link:translate-x-0.5" />
+      </a>
+      {project.stores?.map((store) => (
+        <a
+          key={store.href}
+          href={store.href}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={`${project.title} on ${store.label}`}
+          className="pill h-8 border border-ink/20 px-3.5 text-[12px] text-ink hover:border-ink hover:bg-ink hover:text-void"
+        >
+          {store.label === "App Store" ? <AppleGlyph /> : <PlayGlyph />}
+          {store.label}
+        </a>
+      ))}
+    </div>
+  );
+}
+
+function AppleGlyph() {
+  return (
+    <svg width="12" height="14" viewBox="0 0 384 512" fill="currentColor" aria-hidden="true">
+      <path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z" />
+    </svg>
+  );
+}
+
+function PlayGlyph() {
+  return (
+    <svg width="12" height="13" viewBox="0 0 512 512" fill="currentColor" aria-hidden="true">
+      <path d="M325.3 234.3 104.6 13l280.8 161.2-60.1 60.1zM47 0C34 6.8 25.3 19.2 25.3 35.3v441.3c0 16.1 8.7 28.5 21.7 35.3l256.6-256L47 0zm425.2 225.6-58.9-34.1-65.7 64.5 65.7 64.5 60.1-34.1c18-14.3 18-46.5-1.2-60.8zM104.6 499l280.8-161.2-60.1-60.1L104.6 499z" />
+    </svg>
   );
 }
 
@@ -150,8 +139,19 @@ export function CasesPreview() {
   const current = projects[active];
   const tint = tints[active % tints.length];
 
+  // Warm the cache so hovering through the list swaps screenshots instantly (desktop only).
+  useEffect(() => {
+    if (!window.matchMedia("(min-width: 768px)").matches) return;
+    projects.forEach((project) => {
+      if (project.image) {
+        const img = new window.Image();
+        img.src = project.image;
+      }
+    });
+  }, []);
+
   return (
-    <section className="relative overflow-hidden bg-void py-28 md:py-40">
+    <section className="relative overflow-hidden py-28 md:py-40">
       <div className="mx-auto max-w-[1320px] px-6">
         <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
           <div>
@@ -191,6 +191,17 @@ export function CasesPreview() {
 
                   {/* mobile details (no hover on touch) */}
                   <div className="col-span-2 mt-3 pl-[64px] md:hidden">
+                    {project.image ? (
+                      <div className="relative -ml-[64px] mb-4 aspect-[16/10] w-[calc(100%+64px)] overflow-hidden rounded-[14px] border border-border">
+                        <Image
+                          src={project.image}
+                          alt={`${project.title} website homepage`}
+                          fill
+                          sizes="90vw"
+                          className="object-cover object-top"
+                        />
+                      </div>
+                    ) : null}
                     <div className="font-mono text-[10px] uppercase tracking-[0.16em] text-glow/80">{project.tag}</div>
                     {project.client ? <div className="mt-1 text-[13px] text-muted">{project.client}</div> : null}
                     <p className="mt-2 text-[14px] leading-[1.7] text-ink/65">{project.desc}</p>
@@ -221,21 +232,43 @@ export function CasesPreview() {
                     transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
                     className="absolute inset-0"
                   >
-                    <div
-                      className="glow-blob"
-                      style={{
-                        width: "85%",
-                        height: "70%",
-                        background: `radial-gradient(closest-side, ${tint}cc, ${tint}33 60%, transparent)`,
-                        filter: "blur(40px)",
-                      }}
-                    />
-                    <div className="noise" style={{ opacity: 0.08 }} />
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <span className="font-display text-[clamp(120px,16vw,220px)] font-extrabold leading-none tracking-[-0.06em] text-outline">
-                        {pad(active)}
-                      </span>
-                    </div>
+                    {current.image ? (
+                      <>
+                        {/* browser chrome */}
+                        <div className="absolute inset-x-0 top-0 z-10 flex h-9 items-center gap-1.5 border-b border-border bg-[#081130]/90 px-4 backdrop-blur">
+                          <span className="h-2 w-2 rounded-full bg-ink/20" />
+                          <span className="h-2 w-2 rounded-full bg-ink/20" />
+                          <span className="h-2 w-2 rounded-full" style={{ background: tint }} />
+                          <span className="ml-3 truncate font-mono text-[10.5px] text-ink/50">{current.urlLabel}</span>
+                        </div>
+                        <Image
+                          src={current.image}
+                          alt={`${current.title} website homepage`}
+                          fill
+                          unoptimized
+                          className="object-cover object-top pt-9"
+                        />
+                        <div className="absolute inset-0 bg-[linear-gradient(180deg,transparent_55%,rgba(3,6,26,0.92)_100%)]" />
+                      </>
+                    ) : (
+                      <>
+                        <div
+                          className="glow-blob"
+                          style={{
+                            width: "85%",
+                            height: "70%",
+                            background: `radial-gradient(closest-side, ${tint}cc, ${tint}33 60%, transparent)`,
+                            filter: "blur(40px)",
+                          }}
+                        />
+                        <div className="noise" style={{ opacity: 0.08 }} />
+                        <div className="absolute inset-0 flex items-center justify-center">
+                          <span className="font-display text-[clamp(120px,16vw,220px)] font-extrabold leading-none tracking-[-0.06em] text-outline">
+                            {pad(active)}
+                          </span>
+                        </div>
+                      </>
+                    )}
                     <div className="absolute bottom-5 left-6 right-6 flex items-end justify-between">
                       <span className="font-display text-[22px] font-bold tracking-[-0.02em] text-snow">{current.title}</span>
                       <span className="rounded-full border border-ink/20 bg-void/40 px-3 py-1 font-mono text-[10px] uppercase tracking-[0.16em] text-ink/80 backdrop-blur">

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft, CheckCircle, ExternalLink } from "lucide-react";
 import { CTABanner } from "@/components/site/CTABanner";
@@ -60,25 +61,64 @@ export default async function Page({ params }: PageProps) {
               <ArrowLeft size={16} />
               Back to work
             </Link>
-            <div className="mt-8 font-mono text-[12px] uppercase tracking-[0.16em] text-indigo">
-              [ {study.category} Case Study ]
-            </div>
-            <h1 className="mt-5 font-display text-3xl font-bold leading-tight tracking-normal md:text-5xl">
+            <h1 className="mt-8 font-display text-3xl font-bold leading-tight tracking-normal md:text-5xl">
               {study.title}
             </h1>
             <p className="mt-6 text-[17px] leading-[1.8] text-muted">{study.summary}</p>
-            {study.url ? (
-              <a
-                href={study.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-6 inline-flex items-center gap-2 text-[14px] font-medium text-indigo hover:text-violet"
-              >
-                Visit project
-                <ExternalLink size={15} />
-              </a>
-            ) : null}
+            <div className="mt-7 flex flex-wrap items-center gap-3">
+              {study.url ? (
+                <a
+                  href={study.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="pill btn-teal h-11 px-5 text-[14px]"
+                >
+                  Visit project
+                  <ExternalLink size={15} />
+                </a>
+              ) : null}
+              {study.stores?.map((store) => (
+                <a
+                  key={store.href}
+                  href={store.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`${study.client} on ${store.label}`}
+                  className="pill h-11 border border-ink/20 px-5 text-[14px] text-ink hover:border-ink hover:bg-ink hover:text-void"
+                >
+                  {store.label}
+                  <ExternalLink size={14} />
+                </a>
+              ))}
+            </div>
           </div>
+
+          {study.image ? (
+            <div className="mx-auto mt-14 max-w-[1100px] px-6">
+              <div className="overflow-hidden rounded-[24px] border border-border bg-[#060c22] shadow-[0_40px_120px_-50px_rgba(47,107,255,0.6)]">
+                <div className="flex h-10 items-center gap-1.5 border-b border-border px-4">
+                  <span className="h-2 w-2 rounded-full bg-ink/20" />
+                  <span className="h-2 w-2 rounded-full bg-ink/20" />
+                  <span className="h-2 w-2 rounded-full bg-glow" />
+                  {study.url ? (
+                    <span className="ml-3 truncate font-mono text-[11px] text-ink/50">
+                      {study.url.replace(/^https?:\/\//, "")}
+                    </span>
+                  ) : null}
+                </div>
+                <div className="relative aspect-[16/10]">
+                  <Image
+                    src={study.image}
+                    alt={`${study.client} website homepage`}
+                    fill
+                    priority
+                    sizes="(min-width: 1100px) 1100px, 100vw"
+                    className="object-cover object-top"
+                  />
+                </div>
+              </div>
+            </div>
+          ) : null}
         </section>
 
         <section className="rb-section py-20">

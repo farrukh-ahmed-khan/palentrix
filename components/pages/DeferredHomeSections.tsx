@@ -1,7 +1,13 @@
 "use client";
 
 import dynamic from "next/dynamic";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { ScrollRibbon } from "@/components/site/ScrollRibbon";
+
+const ReelSection = dynamic(
+  () => import("@/components/site/ReelSection").then((mod) => mod.ReelSection),
+  { ssr: false },
+);
 
 const Services = dynamic(() => import("@/components/site/Services").then((mod) => mod.Services), {
   ssr: false,
@@ -33,6 +39,7 @@ const interactionEvents = ["scroll", "wheel", "touchstart", "pointerdown", "keyd
 
 export function DeferredHomeSections() {
   const [shouldLoad, setShouldLoad] = useState(false);
+  const ribbonRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (shouldLoad) {
@@ -62,11 +69,16 @@ export function DeferredHomeSections() {
 
   return (
     <>
-      <Services />
-      <CasesPreview />
-      <TechTicker />
-      <Process />
-      <Testimonials />
+      <ReelSection />
+      {/* one continuous ribbon weaves through these sections on scroll */}
+      <div ref={ribbonRef} className="relative">
+        <ScrollRibbon targetRef={ribbonRef} />
+        <Services />
+        <CasesPreview />
+        <TechTicker />
+        <Process />
+        <Testimonials />
+      </div>
       <CTABanner />
     </>
   );

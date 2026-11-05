@@ -57,7 +57,7 @@ export function Testimonials() {
   const showPrevious = () => setActiveIndex((c) => (c - 1 + items.length) % items.length);
 
   return (
-    <section className="relative overflow-hidden bg-void py-28 md:py-40">
+    <section className="relative overflow-hidden py-28 md:py-40">
       <div className="pointer-events-none absolute left-1/2 top-1/3 h-[480px] w-[760px] -translate-x-1/2 rounded-full bg-[rgba(47,125,255,0.12)] blur-[140px]" />
 
       <div className="relative mx-auto max-w-[1320px] px-6">

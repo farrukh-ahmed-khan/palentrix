@@ -59,28 +59,7 @@ const ease = [0.16, 1, 0.3, 1] as const;
 
 export function Process() {
   return (
-    <section className="relative overflow-hidden bg-void py-28 md:py-40">
-      {/* flowing light ribbon (Lusion) */}
-      <svg
-        aria-hidden="true"
-        className="pointer-events-none absolute -right-20 top-10 h-[520px] w-[900px] opacity-60"
-        viewBox="0 0 900 520"
-        fill="none"
-      >
-        <defs>
-          <linearGradient id="proc-ribbon" x1="0" y1="0" x2="1" y2="0">
-            <stop offset="0%" stopColor="#2f7dff" stopOpacity="0" />
-            <stop offset="45%" stopColor="#43b4ff" />
-            <stop offset="100%" stopColor="#3ef2d0" />
-          </linearGradient>
-        </defs>
-        <path
-          d="M0 420 C 180 420, 220 120, 420 160 S 700 460, 900 80"
-          stroke="url(#proc-ribbon)"
-          strokeWidth="10"
-          strokeLinecap="round"
-        />
-      </svg>
+    <section className="relative overflow-hidden py-28 md:py-40">
 
       <div className="relative mx-auto max-w-[1320px] px-6">
         <div className="grid gap-8 md:grid-cols-[1fr_0.8fr] md:items-end">

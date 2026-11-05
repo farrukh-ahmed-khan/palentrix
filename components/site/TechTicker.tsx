@@ -37,7 +37,7 @@ function Band({ items, reverse, outline }: { items: string[]; reverse?: boolean;
 
 export function TechTicker() {
   return (
-    <section className="marquee-pause relative overflow-hidden bg-void py-24 md:py-32">
+    <section className="marquee-pause relative overflow-hidden py-24 md:py-32">
       <div className="pointer-events-none absolute left-1/2 top-1/2 h-[300px] w-[70%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[rgba(47,125,255,0.16)] blur-[120px]" />
       <p className="relative mb-12 text-center font-mono text-[11px] uppercase tracking-[0.3em] text-ink/50">
         Built with
