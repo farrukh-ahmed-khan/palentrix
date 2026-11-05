@@ -215,7 +215,7 @@ export function BlogAdmin() {
           <aside className="rb-panel rounded-2xl p-4">
             <button
               onClick={newPost}
-              className="mb-4 inline-flex w-full items-center justify-center gap-2 rounded-md border border-indigo/50 px-4 py-2.5 text-sm font-semibold text-indigo transition-colors hover:bg-indigo hover:text-white"
+              className="mb-4 inline-flex w-full items-center justify-center gap-2 rounded-md border border-indigo/50 px-4 py-2.5 text-sm font-semibold text-indigo transition-colors hover:bg-indigo hover:text-void"
             >
               <FilePlus size={16} />
               New post
@@ -263,7 +263,7 @@ export function BlogAdmin() {
                     <div className="mt-2 text-sm text-muted">No cover image selected.</div>
                   )}
                 </div>
-                <label className="inline-flex cursor-pointer items-center justify-center gap-2 rounded-md border border-indigo/50 px-4 py-2.5 text-sm font-semibold text-indigo transition-colors hover:bg-indigo hover:text-white">
+                <label className="inline-flex cursor-pointer items-center justify-center gap-2 rounded-md border border-indigo/50 px-4 py-2.5 text-sm font-semibold text-indigo transition-colors hover:bg-indigo hover:text-void">
                   <Upload size={16} />
                   Upload cover
                   <input

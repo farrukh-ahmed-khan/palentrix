@@ -29,13 +29,10 @@ export function ContactPage() {
         <Noise />
         <div className="relative mx-auto max-w-[1200px] px-6 grid gap-16 md:grid-cols-2 md:items-start">
           <Reveal>
-            <div className="font-mono text-[12px] uppercase tracking-[0.15em] text-indigo mb-6">
-              [ Get in Touch ]
-            </div>
             <h1 className="font-display font-bold text-3xl md:text-5xl tracking-normal leading-[1.1]">
               Tell us what you're building.
             </h1>
-            <p className="mt-6 text-white/90 text-[17px] leading-relaxed max-w-[480px]">
+            <p className="mt-6 text-ink/90 text-[17px] leading-relaxed max-w-[480px]">
               We read every message and respond within 4 hours during working
               hours. No autoresponders, no sales sequence: a real engineer
               replies.

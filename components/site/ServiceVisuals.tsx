@@ -77,7 +77,7 @@ export function AutomationVisual() {
         <line x1="88" y1="65" x2="108" y2="50" stroke="#0B5FAA" strokeWidth="0.8" markerEnd="url(#sv-ah)" className="pv-flow" style={{ animationDelay: ".6s" }} />
         <rect x="108" y="30" width="44" height="26" rx="4" fill="#071B33" stroke="rgba(67,180,255,0.3)" strokeWidth="0.5" />
         <text x="130" y="41" fontSize="8" fill="#43B4FF" textAnchor="middle" fontFamily="monospace">Webhook</text>
-        <text x="130" y="51" fontSize="7" fill="#003B78" textAnchor="middle" fontFamily="monospace">Dispatch</text>
+        <text x="130" y="51" fontSize="7" fill="#7AD0FF" textAnchor="middle" fontFamily="monospace">Dispatch</text>
         <circle cx="20" cy="14" r="3" fill="none" stroke="#43B4FF" strokeWidth="0.8" className="pv-dot" />
         <circle cx="130" cy="76" r="3" fill="none" stroke="#0B5FAA" strokeWidth="0.8" className="pv-dot" style={{ animationDelay: ".8s" }} />
       </svg>

@@ -240,7 +240,7 @@ export function RichTextEditor({ value, onChange, token }: RichTextEditorProps) 
           <button
             type="button"
             onClick={insertLink}
-            className="rounded bg-indigo px-3 py-1 text-xs font-semibold text-white transition-colors hover:opacity-90"
+            className="rounded bg-indigo px-3 py-1 text-xs font-semibold text-void transition-colors hover:opacity-90"
           >
             Insert
           </button>
@@ -268,7 +268,7 @@ export function RichTextEditor({ value, onChange, token }: RichTextEditorProps) 
           <button
             type="button"
             onClick={insertImageUrl}
-            className="rounded bg-indigo px-3 py-1 text-xs font-semibold text-white transition-colors hover:opacity-90"
+            className="rounded bg-indigo px-3 py-1 text-xs font-semibold text-void transition-colors hover:opacity-90"
           >
             Insert
           </button>
@@ -308,7 +308,7 @@ function Btn({
       disabled={disabled}
       onClick={onClick}
       className={`flex h-7 w-7 items-center justify-center rounded transition-colors disabled:opacity-40 ${
-        active ? "bg-indigo text-white" : "text-muted hover:bg-slate-light hover:text-ink"
+        active ? "bg-indigo text-void" : "text-muted hover:bg-slate-light hover:text-ink"
       }`}
     >
       {children}

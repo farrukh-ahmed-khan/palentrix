@@ -10,9 +10,7 @@ import {
   ShieldCheck,
   Sparkles,
 } from "lucide-react";
-import { Reveal, StaggerGroup, fadeUp } from "./Reveal";
-import { GridBg } from "./GridBg";
-import { SectionLabel } from "./SectionLabel";
+import { Reveal } from "./Reveal";
 
 const steps = [
   {
@@ -28,7 +26,7 @@ const steps = [
     title: "Architecture",
     desc: "We plan the system before writing a line of code.",
     Icon: GitBranch,
-    accent: "#0B5FAA",
+    accent: "#4D9DFF",
     note: "System map",
   },
   {
@@ -36,7 +34,7 @@ const steps = [
     title: "Build",
     desc: "Iterative delivery with you in the loop at every milestone.",
     Icon: Sparkles,
-    accent: "#178BD2",
+    accent: "#7AD0FF",
     note: "Weekly drops",
   },
   {
@@ -44,7 +42,7 @@ const steps = [
     title: "Review",
     desc: "You test it. We fix everything before it ships.",
     Icon: ShieldCheck,
-    accent: "#0B5FAA",
+    accent: "#4D9DFF",
     note: "QA pass",
   },
   {
@@ -52,134 +50,147 @@ const steps = [
     title: "Ship & Support",
     desc: "Deployed, monitored, and backed by us post-launch.",
     Icon: Rocket,
-    accent: "#43B4FF",
+    accent: "#3EF2D0",
     note: "Launch ready",
   },
 ];
 
+const ease = [0.16, 1, 0.3, 1] as const;
+
 export function Process() {
   return (
-    <section className="relative bg-void py-24 md:py-28 overflow-hidden">
-      <GridBg />
-      <div className="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-[rgba(11,95,170,0.06)] to-transparent" />
-      <div className="absolute left-1/2 top-28 h-[420px] w-[420px] -translate-x-1/2 rounded-full bg-indigo/5 blur-[120px]" />
+    <section className="relative overflow-hidden bg-void py-28 md:py-40">
+      {/* flowing light ribbon (Lusion) */}
+      <svg
+        aria-hidden="true"
+        className="pointer-events-none absolute -right-20 top-10 h-[520px] w-[900px] opacity-60"
+        viewBox="0 0 900 520"
+        fill="none"
+      >
+        <defs>
+          <linearGradient id="proc-ribbon" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stopColor="#2f7dff" stopOpacity="0" />
+            <stop offset="45%" stopColor="#43b4ff" />
+            <stop offset="100%" stopColor="#3ef2d0" />
+          </linearGradient>
+        </defs>
+        <path
+          d="M0 420 C 180 420, 220 120, 420 160 S 700 460, 900 80"
+          stroke="url(#proc-ribbon)"
+          strokeWidth="10"
+          strokeLinecap="round"
+        />
+      </svg>
 
-      <div className="relative mx-auto max-w-[1200px] px-6">
-        <div className="grid gap-8 md:grid-cols-[0.95fr_1fr] md:items-end">
+      <div className="relative mx-auto max-w-[1320px] px-6">
+        <div className="grid gap-8 md:grid-cols-[1fr_0.8fr] md:items-end">
           <div>
             <Reveal>
-              <SectionLabel>03 - How We Work</SectionLabel>
-            </Reveal>
-            <Reveal delay={0.05}>
-              <h2 className="mt-4 max-w-[680px] font-display font-bold text-[30px] md:text-[44px] leading-[1.08] tracking-normal">
-                No Surprises. <span className="text-gradient-indigo">No Excuses.</span>
+              <h2 className="font-display text-[40px] font-extrabold leading-[0.98] tracking-[-0.035em] md:text-[76px]">
+                No Surprises.{" "}
+                <span className="serif-accent font-normal text-gradient-indigo">No Excuses.</span>
               </h2>
             </Reveal>
           </div>
           <Reveal delay={0.1}>
-            <p className="max-w-[520px] text-muted text-[15px] md:text-[16px] leading-[1.8] md:ml-auto">
+            <p className="max-w-[460px] text-[15px] leading-[1.8] text-ink/65 md:ml-auto md:text-[16px]">
               A clean build rhythm from first call to launch: visible decisions, weekly progress,
               and no mystery work hiding between milestones.
             </p>
           </Reveal>
         </div>
 
-        <div className="mt-14 grid gap-6 lg:grid-cols-[0.82fr_1.18fr] lg:items-start">
-          <Reveal>
-            <div className="relative overflow-hidden rounded-2xl border border-[rgba(11,95,170,0.24)] bg-white p-7 shadow-[0_24px_70px_-58px_rgba(11,95,170,0.55)] md:p-8">
-              <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_18%,rgba(11,95,170,0.06),transparent_34%),radial-gradient(circle_at_20%_70%,rgba(23,139,210,0.06),transparent_42%)]" />
-              <div className="absolute inset-x-8 top-28 h-px bg-gradient-to-r from-transparent via-indigo/30 to-transparent" />
-
-              <div className="relative">
-                <div className="inline-flex items-center gap-2 rounded-full border border-indigo/25 bg-indigo/5 px-3 py-1.5 font-mono text-[11px] uppercase tracking-[0.14em] text-indigo">
-                  <CheckCircle2 size={14} />
-                  Delivery map
+        <div className="mt-20 grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16">
+          {/* Delivery map */}
+          <div>
+            <Reveal>
+              <div className="glass relative overflow-hidden rounded-[24px] p-7 md:p-9 lg:sticky lg:top-28">
+                <div className="pointer-events-none absolute -right-20 -top-20 h-64 w-64 rounded-full bg-[rgba(67,180,255,0.22)] blur-[80px]" />
+                <div className="relative">
+                  <div className="inline-flex items-center gap-2 rounded-full border border-glow/30 bg-glow/5 px-3 py-1.5 font-mono text-[11px] uppercase tracking-[0.14em] text-glow">
+                    <CheckCircle2 size={14} />
+                    Delivery map
+                  </div>
+                  <h3 className="mt-8 font-display text-[24px] font-bold leading-[1.2] tracking-[-0.02em] md:text-[30px]">
+                    Every phase has a decision, a deliverable, and a clear owner.
+                  </h3>
+                  <p className="mt-4 text-[15px] leading-[1.7] text-ink/65">
+                    You always know what is being built, why it matters, and what will be ready
+                    next.
+                  </p>
                 </div>
-                <h3 className="mt-8 font-display font-bold text-[24px] md:text-[30px] leading-[1.2] tracking-normal">
-                  Every phase has a decision, a deliverable, and a clear owner.
-                </h3>
-                <p className="mt-4 text-muted text-[15px] leading-[1.7]">
-                  You always know what is being built, why it matters, and what will be ready
-                  next.
-                </p>
-              </div>
 
-              <div className="relative mt-10 grid grid-cols-5 gap-2">
-                {steps.map((s, i) => (
-                  <div key={s.n} className="relative">
-                    {i < steps.length - 1 && (
-                      <div className="absolute left-[52%] right-[-48%] top-5 h-px bg-gradient-to-r from-indigo/50 to-violet/20" />
-                    )}
-                    <div
-                      className="relative z-10 mx-auto flex h-10 w-10 items-center justify-center rounded-full border bg-void font-mono text-[11px]"
-                      style={{ borderColor: `${s.accent}88`, color: s.accent }}
-                    >
-                      {s.n}
+                <div className="relative mt-10 grid grid-cols-5 gap-2">
+                  {steps.map((s, i) => (
+                    <div key={s.n} className="relative">
+                      {i < steps.length - 1 && (
+                        <div className="absolute left-[52%] right-[-48%] top-5 h-px bg-gradient-to-r from-indigo/70 to-glow/30" />
+                      )}
+                      <div
+                        className="relative z-10 mx-auto flex h-10 w-10 items-center justify-center rounded-full border bg-void font-mono text-[11px]"
+                        style={{ borderColor: `${s.accent}99`, color: s.accent, boxShadow: `0 0 18px -4px ${s.accent}` }}
+                      >
+                        {s.n}
+                      </div>
                     </div>
-                  </div>
-                ))}
-              </div>
+                  ))}
+                </div>
 
-              <div className="relative mt-10 grid grid-cols-2 gap-3">
-                {["Estimate", "Milestones", "QA", "Launch"].map((label) => (
-                  <div
-                    key={label}
-                    className="rounded-xl border border-[rgba(11,95,170,0.16)] bg-slate/60 px-4 py-3"
-                  >
-                    <div className="font-mono text-[10px] uppercase tracking-[0.16em] text-muted">
-                      {label}
+                <div className="relative mt-10 grid grid-cols-2 gap-3">
+                  {["Estimate", "Milestones", "QA", "Launch"].map((label) => (
+                    <div key={label} className="rounded-2xl border border-border bg-void/40 px-4 py-3">
+                      <div className="font-mono text-[10px] uppercase tracking-[0.16em] text-muted">{label}</div>
+                      <div className="mt-2 h-1 rounded-full bg-[linear-gradient(90deg,#2f7dff,#43b4ff,#3ef2d0)]" />
                     </div>
-                    <div className="mt-1 h-1.5 rounded-full bg-[linear-gradient(90deg,rgba(11,95,170,0.9),rgba(67,180,255,0.6))]" />
-                  </div>
-                ))}
+                  ))}
+                </div>
               </div>
-            </div>
-          </Reveal>
+            </Reveal>
+          </div>
 
-          <StaggerGroup className="grid gap-4 sm:grid-cols-2">
+          {/* Steps — giant numerals (fromanother) */}
+          <ol className="border-t border-border">
             {steps.map((s, i) => (
-              <motion.div
+              <motion.li
                 key={s.n}
-                variants={fadeUp}
-                whileHover={{ y: -5 }}
-                transition={{ duration: 0.22 }}
-                className={i === steps.length - 1 ? "sm:col-span-2" : ""}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-60px" }}
+                transition={{ duration: 0.8, ease, delay: i * 0.04 }}
+                className="group relative grid grid-cols-[auto_1fr] items-center gap-6 border-b border-border py-8 md:gap-10 md:py-10"
               >
-                <div className="rb-step group relative h-full overflow-hidden rounded-2xl border border-[rgba(11,95,170,0.16)] bg-white p-5 md:p-6">
-                  <div
-                    className="absolute inset-x-0 top-0 h-px opacity-70"
-                    style={{
-                      background: `linear-gradient(90deg, transparent, ${s.accent}, transparent)`,
-                    }}
-                  />
-                  <div className="flex items-start justify-between gap-4">
-                    <div
-                      className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border bg-void/80"
+                <span
+                  className="font-display text-[72px] font-extrabold leading-none tracking-[-0.06em] text-outline transition-all duration-700 md:text-[120px]"
+                  style={{ ["--accent" as never]: s.accent }}
+                >
+                  <span className="transition-colors duration-700 group-hover:text-[var(--accent)]">{s.n}</span>
+                </span>
+                <div>
+                  <div className="flex items-center justify-between gap-4">
+                    <h3 className="font-display text-[24px] font-bold tracking-[-0.025em] text-snow md:text-[32px]">
+                      {s.title}
+                    </h3>
+                    <span
+                      className="hidden h-10 w-10 shrink-0 items-center justify-center rounded-full border sm:flex"
                       style={{ borderColor: `${s.accent}55`, color: s.accent }}
                     >
-                      <s.Icon size={20} />
-                    </div>
-                    <div className="font-display text-[34px] leading-none text-ink/[0.07]">
-                      {s.n}
-                    </div>
+                      <s.Icon size={17} />
+                    </span>
                   </div>
-
-                  <h3 className="mt-5 font-display font-bold text-[19px] tracking-normal text-ink">{s.title}</h3>
-                  <p className="mt-2 text-muted text-[14px] leading-[1.65]">{s.desc}</p>
-
-                  <div className="mt-5 flex items-center justify-between gap-3">
-                    <span className="rounded-full border border-[rgba(11,95,170,0.16)] bg-slate-light/50 px-3 py-1 font-mono text-[11px] text-muted">
+                  <p className="mt-2 max-w-[460px] text-[15px] leading-[1.7] text-ink/65">{s.desc}</p>
+                  <div className="mt-4 flex items-center gap-3">
+                    <span className="rounded-full border border-border px-3 py-1 font-mono text-[11px] text-ink/60">
                       {s.note}
                     </span>
                     <ArrowRight
                       size={16}
-                      className="text-indigo opacity-60 transition-transform group-hover:translate-x-1 group-hover:opacity-100"
+                      className="text-glow opacity-0 transition-all duration-500 group-hover:translate-x-1 group-hover:opacity-100"
                     />
                   </div>
                 </div>
-              </motion.div>
+              </motion.li>
             ))}
-          </StaggerGroup>
+          </ol>
         </div>
       </div>
     </section>

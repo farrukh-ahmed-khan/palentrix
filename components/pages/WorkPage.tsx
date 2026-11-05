@@ -43,7 +43,7 @@ export function WorkPage() {
                 onClick={() => setFilter(item)}
                 className={`rounded-full border px-4 py-2 font-mono text-[13px] uppercase tracking-wider transition-colors ${
                   filter === item
-                    ? "border-indigo bg-indigo text-white"
+                    ? "border-indigo bg-indigo text-void"
                     : "border-[var(--border-color)] text-muted hover:border-indigo/40 hover:text-ink"
                 }`}
               >

@@ -11,18 +11,32 @@ type CTAButtonProps = {
   | { href: string; to?: never }
 );
 
+/* Pill buttons with a status dot, in the style of Lusion's "Let's talk ●" */
 export function CTAButton({ to, href, children, variant = "teal" }: CTAButtonProps) {
-  const base = "inline-flex h-12 w-full sm:w-auto items-center justify-center gap-1.5 px-6 rounded-xl font-display font-semibold text-[14.5px]";
-  const cls = variant === "teal"
-    ? `${base} btn-teal`
-    : `${base} border border-ink/15 bg-white/80 text-ink shadow-[0_1px_2px_rgba(7,23,43,0.05)] backdrop-blur hover:-translate-y-px hover:border-indigo/40 hover:text-indigo hover:shadow-[0_0_0_3px_rgba(11,95,170,0.08),0_10px_24px_-14px_rgba(11,95,170,0.45)] active:translate-y-0 transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)]`;
+  const base =
+    "pill h-12 w-full sm:w-auto justify-center px-6 text-[14.5px]";
+  const cls =
+    variant === "teal"
+      ? `${base} btn-teal`
+      : `${base} border border-ink/20 bg-ink/[0.03] text-ink backdrop-blur hover:border-ink/60 hover:bg-ink hover:text-void`;
+
+  const content = (
+    <>
+      <span>{children}</span>
+      <span className="pill-dot" aria-hidden="true" />
+    </>
+  );
 
   return (
     <span className="inline-flex">
       {href ? (
-        <a href={href} target="_blank" rel="noopener noreferrer" className={cls}>{children}</a>
+        <a href={href} target="_blank" rel="noopener noreferrer" className={cls}>
+          {content}
+        </a>
       ) : (
-        <Link href={to ?? "/"} className={cls}>{children}</Link>
+        <Link href={to ?? "/"} className={cls}>
+          {content}
+        </Link>
       )}
     </span>
   );

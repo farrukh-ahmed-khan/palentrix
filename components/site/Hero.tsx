@@ -1,19 +1,9 @@
-"use client";
-
+import type { ReactNode } from "react";
 import { CTAButton } from "./CTAButton";
-import { Noise } from "./Noise";
 import { CountUp } from "./CountUp";
-import { HeroVisuals } from "./HeroVisuals";
-import Link from "next/link";
+import { GlowField } from "./GlowField";
 
-const headlineWords = ["Software", "Development", "Company", "in", "the", "USA."];
 const calendlyUrl = "https://calendly.com/palentrix/30min";
-const seoLinks = [
-  { href: "/software-house-usa", label: "Software House USA" },
-  { href: "/saas-mvp-development", label: "SaaS MVP Development" },
-  { href: "/nextjs-development", label: "Next.js Agency" },
-  { href: "/ai-web-app-development", label: "AI App Development" },
-];
 
 const heroStats = [
   { n: 50, suf: "+", label: "Projects shipped" },
@@ -22,93 +12,87 @@ const heroStats = [
   { n: 24, suf: "hrs", label: "Avg response" },
 ];
 
+/* Staggered editorial lines — same words as before: "Software Development Company in the USA." */
+const lines: { text: ReactNode; indent: string }[] = [
+  { text: "Software", indent: "md:-translate-x-[14%]" },
+  { text: <span className="text-gradient-indigo">Development</span>, indent: "md:translate-x-[6%]" },
+  { text: "Company", indent: "md:-translate-x-[10%]" },
+  {
+    text: (
+      <>
+        <span className="serif-accent text-[0.92em] text-indigo-dim">in the</span> USA.
+      </>
+    ),
+    indent: "md:translate-x-[12%]",
+  },
+];
+
 export function Hero() {
   return (
-    <section className="relative min-h-screen flex flex-col bg-void overflow-hidden">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_22%_18%,rgba(67,180,255,0.12),transparent_30%),radial-gradient(circle_at_78%_20%,rgba(23,139,210,0.14),transparent_34%),linear-gradient(135deg,rgba(11,95,170,0.08),transparent_42%)]" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_42%,rgba(255,255,255,0.05)_0%,rgba(241,246,252,0.35)_40%,rgba(255,255,255,0.72)_72%,rgba(255,255,255,0.92)_100%)]" />
-      <div className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-white to-transparent" />
-      <Noise />
+    <section className="relative flex min-h-[100svh] flex-col overflow-hidden bg-void">
+      <GlowField />
+      <div className="absolute inset-x-0 bottom-0 h-56 bg-gradient-to-t from-void to-transparent" />
 
-      <div className="relative flex-1 flex items-center w-full">
-        <div className="mx-auto max-w-[1240px] px-6 w-full py-28 grid lg:grid-cols-[1.15fr_1fr] gap-16 items-center">
-          <div className="text-center lg:text-left">
-            <div className="hero-rise inline-flex items-center gap-2.5 font-mono text-[11px] uppercase tracking-[0.18em] text-indigo border border-indigo/20 rounded-full pl-3 pr-4 py-1.5 bg-white/80 shadow-[0_1px_2px_rgba(7,23,43,0.04),0_6px_16px_-10px_rgba(11,95,170,0.35)] backdrop-blur">
-              <span className="relative flex h-1.5 w-1.5">
-                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-x-blue opacity-60" />
-                <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-indigo" />
+      {/* headline */}
+      <div className="relative flex flex-1 items-center pt-24 md:pt-28">
+        <div className="mx-auto w-full max-w-[1320px] px-6 py-14">
+          <h1
+            aria-label="Software Development Company in the USA."
+            className="mx-auto flex max-w-[1100px] flex-col items-center text-center font-display font-extrabold uppercase leading-[0.92] tracking-[-0.04em] text-snow text-[clamp(38px,9vw,128px)]"
+          >
+            {lines.map((line, i) => (
+              <span key={i} aria-hidden="true" className={`block overflow-hidden pb-[0.06em] ${line.indent}`}>
+                <span className="line-up" style={{ animationDelay: `${120 + i * 110}ms` }}>
+                  {line.text}
+                </span>
               </span>
-              Software House - Parsippany, NJ, USA
-            </div>
+            ))}
+          </h1>
 
-            <h1
-              className="hero-rise mt-7 font-display font-extrabold text-[40px] sm:text-[48px] md:text-[60px] leading-[1.04] tracking-normal"
-              style={{ animationDelay: "80ms" }}
-            >
-              <span className="flex flex-wrap justify-center lg:justify-start gap-x-[0.24em] gap-y-0">
-                {headlineWords.map((word, index) => (
-                  <span key={word} className="inline-block overflow-hidden pb-1">
-                    <span className={`inline-block ${index === 0 || index === 4 ? "text-gradient-indigo" : ""}`}>
-                      {word}
-                    </span>
-                  </span>
-                ))}
-              </span>
-            </h1>
-
+          <div className="mx-auto mt-14 grid max-w-[1100px] items-end gap-8 md:grid-cols-[1fr_auto]">
             <p
-              className="hero-rise mt-7 text-muted text-[16px] md:text-[18px] max-w-[560px] mx-auto lg:mx-0 leading-[1.7]"
-              style={{ animationDelay: "160ms" }}
+              className="hero-rise mx-auto max-w-[520px] text-center text-[15px] leading-[1.75] text-ink/70 md:mx-0 md:text-left md:text-[16px]"
+              style={{ animationDelay: "600ms" }}
             >
               Palentrix is a software development company and software house in Parsippany, New Jersey, USA building SaaS MVPs, custom web apps, AI products, dashboards, and business automation systems for clients worldwide.
             </p>
-
             <div
-              className="hero-rise mt-10 flex flex-col sm:flex-row gap-3 justify-center lg:justify-start"
-              style={{ animationDelay: "240ms" }}
+              className="hero-rise flex flex-col justify-center gap-3 sm:flex-row"
+              style={{ animationDelay: "720ms" }}
             >
-              <CTAButton href={calendlyUrl}>Book a free call </CTAButton>
+              <CTAButton href={calendlyUrl}>Book a free call</CTAButton>
               <CTAButton to="/work" variant="ghost">
                 See our work
               </CTAButton>
             </div>
-
-            <div
-              className="hero-rise mt-8 flex flex-wrap justify-center gap-2 lg:justify-start"
-              style={{ animationDelay: "320ms" }}
-            >
-              {seoLinks.map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className="rounded-full border border-indigo/15 bg-white/70 px-3 py-1.5 text-[12px] font-medium text-muted transition-all duration-200 hover:-translate-y-px hover:border-indigo/40 hover:bg-white hover:text-indigo"
-                >
-                  {link.label}
-                </Link>
-              ))}
-            </div>
-          </div>
-
-          <div className="hero-rise hidden lg:block" style={{ animationDelay: "200ms" }}>
-            <HeroVisuals />
           </div>
         </div>
       </div>
 
+      {/* scroll marker row (Lusion) */}
+      <div className="relative mx-auto hidden w-full max-w-[1320px] items-center justify-between px-6 pb-6 md:flex">
+        <span className="crosshair" />
+        <span className="crosshair" />
+        <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-ink/50">Scroll to explore</span>
+        <span className="crosshair" />
+        <span className="crosshair" />
+      </div>
+
+      {/* stats */}
       <div
-        className="hero-rise relative w-full border-t border-[rgba(11,95,170,0.12)] bg-white/60 backdrop-blur-sm"
-        style={{ animationDelay: "420ms" }}
+        className="hero-rise relative w-full border-t border-border"
+        style={{ animationDelay: "860ms" }}
       >
-        <div className="mx-auto max-w-[1240px] px-6 py-7 md:py-8 grid grid-cols-2 gap-y-6 md:grid-cols-4">
+        <div className="mx-auto grid max-w-[1320px] grid-cols-2 gap-y-6 px-6 py-7 md:grid-cols-4 md:py-8">
           {heroStats.map((stat, index) => (
             <div
               key={stat.label}
-              className={`text-center md:px-6 ${index > 0 ? "md:border-l border-[rgba(11,95,170,0.14)]" : ""}`}
+              className={`text-center md:px-6 md:text-left ${index > 0 ? "md:border-l md:border-border" : ""}`}
             >
-              <div className="font-display font-extrabold text-[30px] md:text-[40px] leading-none tracking-normal text-ink">
+              <div className="font-display text-[30px] font-extrabold leading-none tracking-normal text-snow md:text-[44px]">
                 <CountUp to={stat.n} suffix={stat.suf} />
               </div>
-              <div className="mt-2.5 font-mono text-[10.5px] md:text-[11px] uppercase tracking-[0.15em] text-muted">
+              <div className="mt-2.5 font-mono text-[10.5px] uppercase tracking-[0.15em] text-muted md:text-[11px]">
                 {stat.label}
               </div>
             </div>
