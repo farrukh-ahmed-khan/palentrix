@@ -96,17 +96,8 @@ export function Hero() {
         </div>
       </div>
 
-      {/* scroll marker row (Lusion) */}
-      <div className="relative mx-auto hidden w-full max-w-[1320px] items-center justify-between px-6 py-6 md:flex">
-        <span className="crosshair" />
-        <span className="crosshair" />
-        <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-ink/50">Scroll to explore</span>
-        <span className="crosshair" />
-        <span className="crosshair" />
-      </div>
-
       {/* stats */}
-      <div className="hero-rise relative mt-6 w-full border-t border-border md:mt-0" style={{ animationDelay: "860ms" }}>
+      <div className="hero-rise relative mt-8 w-full border-t border-border md:mt-10" style={{ animationDelay: "860ms" }}>
         <div className="mx-auto grid max-w-[1320px] grid-cols-2 gap-y-6 px-6 py-7 md:grid-cols-4 md:py-8">
           {heroStats.map((stat, index) => (
             <div

@@ -10,6 +10,7 @@ import {
   Color,
   DirectionalLight,
   DynamicDrawUsage,
+  Fog,
   InstancedMesh,
   LatheGeometry,
   Matrix4,
@@ -27,6 +28,28 @@ import {
 import { RoomEnvironment } from "three/examples/jsm/environments/RoomEnvironment.js";
 import { mergeGeometries } from "three/examples/jsm/utils/BufferGeometryUtils.js";
 
+export type PaletteEntry = { color: string; share: number; roughness: number; metalness: number };
+
+/**
+ * Opt-in "floating" look: airy spacing, mixed sizes, idle drift and spin,
+ * a slow swirl around the attractor and depth fog. Leave it out for the
+ * classic packed cluster (the reel relies on that staying deterministic).
+ */
+export type FloatOptions = {
+  /** Collision radius multiplier — >1 leaves air between pieces. */
+  spacing?: number;
+  /** Random per-piece scale range. */
+  scale?: [number, number];
+  /** Strength of the slow wandering force on each piece. */
+  drift?: number;
+  /** Orbit speed around the attractor's vertical axis. */
+  swirl?: number;
+  /** Pieces keep turning at roughly this angular speed instead of stopping. */
+  idleSpin?: number;
+  /** Fog colour that distant pieces fade into. */
+  fog?: string;
+};
+
 export type CrossFieldOptions = {
   count?: number;
   seed?: number;
@@ -34,6 +57,8 @@ export type CrossFieldOptions = {
   preserveDrawingBuffer?: boolean;
   /** Initial spread; larger = pieces fly in from further away. */
   spread?: number;
+  palette?: PaletteEntry[];
+  float?: FloatOptions;
 };
 
 export type CrossField = {
@@ -53,7 +78,7 @@ export type CrossField = {
   dispose: () => void;
 };
 
-const PALETTE = [
+const PALETTE: PaletteEntry[] = [
   { color: "#2f6bff", share: 0.46, roughness: 0.32, metalness: 0.05 }, // brand blue
   { color: "#eef2fb", share: 0.3, roughness: 0.38, metalness: 0.0 }, // white
   { color: "#0b1024", share: 0.24, roughness: 0.26, metalness: 0.25 }, // ink
@@ -113,12 +138,20 @@ type Body = {
   w: Vector3; // angular velocity
   mesh: number;
   slot: number;
+  s: number; // uniform scale
+  phase: Vector3; // drift phase offsets
+  baseW: Vector3; // resting spin (float mode)
 };
 
 export function createCrossField(canvas: HTMLCanvasElement, options: CrossFieldOptions = {}): CrossField {
   const count = options.count ?? 34;
   const rand = mulberry32(options.seed ?? 7);
+  // separate stream so float-mode extras never shift the main sequence
+  const randFloat = mulberry32((options.seed ?? 7) + 9973);
   const spread = options.spread ?? 7;
+  const float = options.float;
+  const palette = options.palette ?? PALETTE;
+  let time = 0;
 
   const renderer = new WebGLRenderer({
     canvas,
@@ -149,21 +182,29 @@ export function createCrossField(canvas: HTMLCanvasElement, options: CrossFieldO
   rim.position.set(-10, -4, -6);
   scene.add(rim);
 
+  if (float?.fog) {
+    // pieces further back melt into the backdrop for depth
+    scene.fog = new Fog(new Color(float.fog), 24, 40);
+    const fill = new DirectionalLight(new Color("#3ef2d0"), 0.6);
+    fill.position.set(8, -8, 6);
+    scene.add(fill);
+  }
+
   const geometry = crossGeometry();
 
   // Split the pieces across the palette.
-  const counts = PALETTE.map((entry) => Math.round(entry.share * count));
+  const counts = palette.map((entry) => Math.round(entry.share * count));
   counts[0] += count - counts.reduce((a, b) => a + b, 0);
 
-  const materials = PALETTE.map(
+  const materials = palette.map(
     (entry) =>
       new MeshPhysicalMaterial({
         color: new Color(entry.color),
         roughness: entry.roughness,
         metalness: entry.metalness,
-        clearcoat: 0.6,
-        clearcoatRoughness: 0.25,
-        envMapIntensity: 0.9,
+        clearcoat: float ? 1 : 0.6,
+        clearcoatRoughness: float ? 0.12 : 0.25,
+        envMapIntensity: float ? 1.15 : 0.9,
       }),
   );
   const meshes = materials.map((material, i) => {
@@ -189,7 +230,22 @@ export function createCrossField(canvas: HTMLCanvasElement, options: CrossFieldO
         w: new Vector3((rand() - 0.5) * 0.6, (rand() - 0.5) * 0.6, (rand() - 0.5) * 0.6),
         mesh: meshIndex,
         slot,
+        s: 1,
+        phase: new Vector3(),
+        baseW: new Vector3(),
       });
+      if (float) {
+        const body = bodies[bodies.length - 1];
+        const [lo, hi] = float.scale ?? [1, 1];
+        body.s = lo + randFloat() * (hi - lo);
+        body.phase.set(randFloat() * 6.28, randFloat() * 6.28, randFloat() * 6.28);
+        const spinSpeed = (float.idleSpin ?? 0) * (0.6 + randFloat() * 0.8);
+        body.baseW
+          .set(randFloat() - 0.5, randFloat() - 0.5, randFloat() - 0.5)
+          .normalize()
+          .multiplyScalar(spinSpeed);
+        body.w.copy(body.baseW);
+      }
     }
   });
 
@@ -206,7 +262,8 @@ export function createCrossField(canvas: HTMLCanvasElement, options: CrossFieldO
   const tmp2 = new Vector3();
   const dq = new Quaternion();
   const m = new Matrix4();
-  const one = new Vector3(1, 1, 1);
+  const scaleVec = new Vector3(1, 1, 1);
+  const spacing = float?.spacing ?? 1;
 
   function updatePointerWorld() {
     // project pointer onto the z = 0 plane
@@ -225,11 +282,30 @@ export function createCrossField(canvas: HTMLCanvasElement, options: CrossFieldO
 
     const damping = Math.exp(-h * 2.4);
     const spin = Math.exp(-h * 1.2);
+    time += h;
 
     for (const b of bodies) {
       // gather toward the attractor
       tmp.copy(attractor).sub(b.p);
       b.v.addScaledVector(tmp, h * 2.2 * gather);
+
+      if (float) {
+        // slow wander so the cluster breathes instead of sitting packed
+        const drift = float.drift ?? 0;
+        if (drift) {
+          b.v.x += Math.sin(time * 0.55 + b.phase.x) * drift * h;
+          b.v.y += Math.cos(time * 0.47 + b.phase.y) * drift * h;
+          b.v.z += Math.sin(time * 0.39 + b.phase.z) * drift * h * 0.6;
+        }
+        // gentle orbit around the attractor's vertical axis
+        const swirl = float.swirl ?? 0;
+        if (swirl) {
+          const rx = b.p.x - attractor.x;
+          const rz = b.p.z - attractor.z;
+          b.v.x += -rz * swirl * h;
+          b.v.z += rx * swirl * h;
+        }
+      }
 
       // pointer push
       if (pointerActive) {
@@ -247,7 +323,12 @@ export function createCrossField(canvas: HTMLCanvasElement, options: CrossFieldO
       }
 
       b.v.multiplyScalar(damping);
-      b.w.multiplyScalar(spin);
+      if (float?.idleSpin) {
+        // relax toward the resting spin rather than stopping dead
+        b.w.multiplyScalar(spin).addScaledVector(b.baseW, 1 - spin);
+      } else {
+        b.w.multiplyScalar(spin);
+      }
     }
 
     // pairwise collisions (soft)
@@ -257,7 +338,7 @@ export function createCrossField(canvas: HTMLCanvasElement, options: CrossFieldO
         const b = bodies[j];
         tmp.copy(a.p).sub(b.p);
         const d2 = tmp.lengthSq();
-        const min = RADIUS * 2;
+        const min = RADIUS * spacing * (a.s + b.s);
         if (d2 < min * min && d2 > 1e-6) {
           const d = Math.sqrt(d2);
           const overlap = (min - d) * 0.5;
@@ -285,7 +366,8 @@ export function createCrossField(canvas: HTMLCanvasElement, options: CrossFieldO
         dq.setFromAxisAngle(tmp.copy(b.w).normalize(), angle);
         b.q.premultiply(dq);
       }
-      m.compose(b.p, b.q, one);
+      scaleVec.setScalar(b.s);
+      m.compose(b.p, b.q, scaleVec);
       meshes[b.mesh].setMatrixAt(b.slot, m);
     }
     for (const mesh of meshes) mesh.instanceMatrix.needsUpdate = true;

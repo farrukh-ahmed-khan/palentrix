@@ -94,12 +94,6 @@ export function ReelSection() {
           <motion.span style={{ x: rightX }}>Reel</motion.span>
         </motion.div>
 
-        {/* Lusion crosshair corners */}
-        <div className="pointer-events-none absolute inset-x-6 bottom-6 hidden items-center justify-between md:flex">
-          <span className="crosshair" />
-          <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-ink/45">Showreel — 2026</span>
-          <span className="crosshair" />
-        </div>
       </div>
 
       {open ? (

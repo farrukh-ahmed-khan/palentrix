@@ -24,10 +24,25 @@ export function HeroCrosses() {
       let field: ReturnType<typeof createCrossField>;
       try {
         field = createCrossField(canvas, {
-          count: small ? 20 : 34,
+          count: small ? 16 : 26,
           pixelRatio: Math.min(window.devicePixelRatio, small ? 1.5 : 2),
           seed: 11,
+          palette: [
+            { color: "#3b6cff", share: 0.38, roughness: 0.22, metalness: 0.05 }, // brand blue
+            { color: "#f4f6fb", share: 0.3, roughness: 0.3, metalness: 0 }, // porcelain
+            { color: "#9ad7ff", share: 0.17, roughness: 0.24, metalness: 0 }, // glacier
+            { color: "#101731", share: 0.15, roughness: 0.18, metalness: 0.35 }, // ink
+          ],
+          float: {
+            spacing: 1.26,
+            scale: [0.58, 1.12],
+            drift: 0.9,
+            swirl: 0.12,
+            idleSpin: 0.35,
+            fog: "#060c22",
+          },
         });
+        field.setGather(0.55);
       } catch {
         return; // no WebGL — the frame's gradient stays as the backdrop
       }
