@@ -23,12 +23,11 @@ export function CTAButton({ to, href, children, variant = "teal" }: CTAButtonPro
   const content = (
     <>
       <span>{children}</span>
-      <span className="pill-dot" aria-hidden="true" />
     </>
   );
 
   return (
-    <span className="inline-flex">
+    <span className="flex w-full sm:inline-flex sm:w-auto">
       {href ? (
         <a href={href} target="_blank" rel="noopener noreferrer" className={cls}>
           {content}

@@ -3,7 +3,7 @@
 import { useEffect, useRef } from "react";
 
 /** Lusion-style interactive 3D cluster that lives inside the hero banner frame. */
-export function HeroCrosses() {
+export function HeroCrosses({ className = "absolute inset-0" }: { className?: string }) {
   const wrapRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
@@ -54,14 +54,15 @@ export function HeroCrosses() {
         const { width, height } = wrap.getBoundingClientRect();
         field.resize(width, height);
         const aspect = width / Math.max(1, height);
-        if (aspect >= 1) {
+        if (aspect >= 1.25 && window.innerWidth >= 1024) {
+          // wide banner: cluster on the right, headline on the left
           const halfH = 24 * Math.tan((16 * Math.PI) / 180);
           base.x = halfH * aspect * 0.42;
           base.y = halfH * 0.08;
         } else {
-          const halfH = 24 * Math.tan((25 * Math.PI) / 180);
+          // phones/tablets: the canvas gets its own area above the text, so centre it
           base.x = 0;
-          base.y = halfH * 0.36;
+          base.y = 0;
         }
         field.setAttractor(base.x, base.y, 0);
         field.render();
@@ -139,7 +140,7 @@ export function HeroCrosses() {
   }, []);
 
   return (
-    <div ref={wrapRef} className="pointer-events-none absolute inset-0">
+    <div ref={wrapRef} className={`pointer-events-none ${className}`}>
       <canvas ref={canvasRef} className="hero-canvas block h-full w-full" aria-hidden="true" />
     </div>
   );

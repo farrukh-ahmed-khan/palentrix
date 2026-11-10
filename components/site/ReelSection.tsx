@@ -13,7 +13,6 @@ const REEL_POSTER = "/video/palentrix-reel-poster.jpg";
  */
 export function ReelSection() {
   const sectionRef = useRef<HTMLElement>(null);
-  const videoRef = useRef<HTMLVideoElement>(null);
   const [open, setOpen] = useState(false);
 
   const { scrollYProgress } = useScroll({ target: sectionRef, offset: ["start start", "end end"] });
@@ -24,22 +23,25 @@ export function ReelSection() {
   const rightX = useTransform(scrollYProgress, [0, 0.75], ["0vw", "30vw"]);
   const wordOpacity = useTransform(scrollYProgress, [0.45, 0.75], [1, 0]);
 
-  // Only play the inline loop while it is on screen.
+  // Only play an inline loop while it is on screen (the hidden layout never intersects).
   useEffect(() => {
-    const video = videoRef.current;
-    if (!video) return;
+    const videos = sectionRef.current?.querySelectorAll<HTMLVideoElement>("video[data-inline]");
+    if (!videos?.length) return;
     const io = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          if (video.preload !== "auto") video.preload = "auto";
-          video.play().catch(() => undefined);
-        } else {
-          video.pause();
+      (entries) => {
+        for (const entry of entries) {
+          const video = entry.target as HTMLVideoElement;
+          if (entry.isIntersecting) {
+            if (video.preload !== "auto") video.preload = "auto";
+            video.play().catch(() => undefined);
+          } else {
+            video.pause();
+          }
         }
       },
       { threshold: 0.15 },
     );
-    io.observe(video);
+    videos.forEach((video) => io.observe(video));
     return () => io.disconnect();
   }, []);
 
@@ -58,8 +60,37 @@ export function ReelSection() {
   }, [open]);
 
   return (
-    <section ref={sectionRef} aria-label="Palentrix showreel" className="relative h-[220vh] bg-void">
-      <div className="sticky top-0 flex h-[100svh] items-center justify-center overflow-hidden px-3 py-20 md:px-6 md:py-24">
+    <section ref={sectionRef} aria-label="Palentrix showreel" className="relative bg-void md:h-[220vh]">
+      {/* phones: a simple 16:9 card — the scroll-grow stage needs a wide screen */}
+      <div className="px-4 py-16 sm:px-6 md:hidden">
+        <div className="mb-5 flex items-end justify-between font-display text-[clamp(48px,15vw,88px)] font-extrabold uppercase leading-none tracking-[-0.05em] text-snow">
+          <span>Play</span>
+          <span className="text-gradient-indigo">Reel</span>
+        </div>
+        <button
+          type="button"
+          onClick={() => setOpen(true)}
+          aria-label="Play the Palentrix showreel"
+          className="group relative block aspect-video w-full overflow-hidden rounded-[18px] border border-border bg-[#060c22] shadow-[0_30px_80px_-40px_rgba(47,107,255,0.6)]"
+        >
+          <video
+            data-inline
+            className="absolute inset-0 h-full w-full object-cover"
+            src={REEL_SRC}
+            poster={REEL_POSTER}
+            muted
+            loop
+            playsInline
+            preload="none"
+            aria-hidden="true"
+          />
+          <span className="absolute left-1/2 top-1/2 flex h-14 w-14 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-snow text-void shadow-[0_10px_40px_-10px_rgba(67,180,255,0.8)]">
+            <Play size={20} fill="currentColor" className="translate-x-[2px]" />
+          </span>
+        </button>
+      </div>
+
+      <div className="sticky top-0 hidden h-[100svh] items-center justify-center overflow-hidden px-6 py-24 md:flex">
         <motion.button
           type="button"
           onClick={() => setOpen(true)}
@@ -68,7 +99,7 @@ export function ReelSection() {
           className="group relative z-10 min-h-[220px] min-w-[280px] max-w-[1320px] overflow-hidden border border-border bg-[#060c22] shadow-[0_40px_120px_-40px_rgba(47,107,255,0.6)]"
         >
           <video
-            ref={videoRef}
+            data-inline
             className="absolute inset-0 h-full w-full object-cover"
             src={REEL_SRC}
             poster={REEL_POSTER}
@@ -88,7 +119,7 @@ export function ReelSection() {
         <motion.div
           aria-hidden="true"
           style={{ opacity: wordOpacity }}
-          className="pointer-events-none absolute inset-x-0 top-1/2 z-20 flex -translate-y-1/2 items-center justify-center gap-[24vw] font-display text-[clamp(56px,11vw,180px)] font-extrabold uppercase leading-none tracking-[-0.05em] text-snow mix-blend-difference"
+          className="pointer-events-none absolute inset-x-0 top-1/2 z-20 flex -translate-y-1/2 items-center justify-center gap-[24vw] font-display text-[clamp(56px,11vw,180px)] font-extrabold uppercase leading-none tracking-[-0.05em] text-snow [text-shadow:0_10px_40px_rgba(3,6,26,0.65)]"
         >
           <motion.span style={{ x: leftX }}>Play</motion.span>
           <motion.span style={{ x: rightX }}>Reel</motion.span>

@@ -166,19 +166,19 @@ export function Testimonials() {
               </motion.div>
             </AnimatePresence>
 
-            <div className="mt-8 flex items-center justify-between gap-4">
+            <div className="mt-8 flex flex-col-reverse gap-5 sm:flex-row sm:items-center sm:justify-between sm:gap-4">
               <a
                 href={upworkProfileUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 font-mono text-[10.5px] uppercase tracking-[0.16em] text-ink/70 transition-colors hover:text-glow"
+                className="inline-flex items-center gap-2 whitespace-nowrap font-mono text-[10.5px] uppercase tracking-[0.16em] text-ink/70 transition-colors hover:text-glow"
                 aria-label={`View ${t.name}'s testimonial on Upwork`}
               >
                 View Upwork profile
                 <ExternalLink size={13} />
               </a>
               <div className="flex items-center gap-2">
-                <span className="mr-2 font-mono text-[11px] tracking-[0.2em] text-ink/40">
+                <span className="mr-2 whitespace-nowrap font-mono text-[11px] tracking-[0.2em] text-ink/40">
                   0{activeIndex + 1} / 0{items.length}
                 </span>
                 <button

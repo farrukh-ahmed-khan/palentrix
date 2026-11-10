@@ -189,51 +189,50 @@ p.font-light,
 .crosshair::before { left: 5px; top: 0; width: 1px; height: 11px; }
 .crosshair::after { top: 5px; left: 0; height: 1px; width: 11px; }
 
-/* Pill buttons (Lusion) */
-.pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.55rem;
-  border-radius: 999px;
-  font-family: var(--font-manrope), var(--font-inter), system-ui, sans-serif;
-  font-weight: 600;
-  transition:
-    background 0.35s var(--ease-out),
-    color 0.35s var(--ease-out),
-    border-color 0.35s var(--ease-out),
-    transform 0.35s var(--ease-out);
-}
-.pill-dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 999px;
-  background: currentColor;
-  transition: transform 0.35s var(--ease-out);
-}
-.pill:hover .pill-dot { transform: scale(1.6); }
+/*
+ * Component classes live in the components layer so Tailwind utilities
+ * (hidden, lg:hidden, max-md:text-snow, …) can still override them.
+ */
+@layer components {
+  /* Pill buttons (Lusion) */
+  .pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    border-radius: 999px;
+    font-family: var(--font-manrope), var(--font-inter), system-ui, sans-serif;
+    font-weight: 600;
+    white-space: nowrap;
+    transition:
+      background 0.35s var(--ease-out),
+      color 0.35s var(--ease-out),
+      border-color 0.35s var(--ease-out),
+      transform 0.35s var(--ease-out);
+  }
 
-/* Giant outlined text (fromanother tilted list / Lusion statement) */
-.text-outline {
-  color: transparent;
-  -webkit-text-stroke: 1px rgba(170, 200, 255, 0.35);
-}
+  /* Giant outlined text (fromanother tilted list / Lusion statement) */
+  .text-outline {
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(170, 200, 255, 0.35);
+  }
 
-/* Faded list rows that light up (Dogstudio project list) */
-.fade-row {
-  color: rgba(238, 243, 255, 0.16);
-  transition: color 0.5s var(--ease-out), transform 0.6s var(--ease-out);
-}
-.fade-row[data-active="true"],
-.fade-row:hover {
-  color: var(--ink);
-}
+  /* Faded list rows that light up (Dogstudio project list) */
+  .fade-row {
+    color: rgba(238, 243, 255, 0.16);
+    transition: color 0.5s var(--ease-out), transform 0.6s var(--ease-out);
+  }
+  .fade-row[data-active="true"],
+  .fade-row:hover {
+    color: var(--ink);
+  }
 
-/* Glass surface on dark */
-.glass {
-  background: linear-gradient(180deg, rgba(20, 34, 72, 0.55), rgba(10, 19, 46, 0.55));
-  border: 1px solid var(--border-color);
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
+  /* Glass surface on dark */
+  .glass {
+    background: linear-gradient(180deg, rgba(20, 34, 72, 0.55), rgba(10, 19, 46, 0.55));
+    border: 1px solid var(--border-color);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+  }
 }
 
 /* Fullscreen menu (fromanother) */

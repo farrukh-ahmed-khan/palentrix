@@ -31,7 +31,7 @@ export function Hero() {
     <section className="relative flex flex-col overflow-hidden bg-void">
       <div className="relative mx-auto w-full max-w-[1440px] px-3 pt-[84px] md:px-5 md:pt-[92px]">
         <div
-          className="relative flex min-h-[640px] flex-col overflow-hidden rounded-[22px] border border-border md:h-[calc(100svh-112px)] md:min-h-[600px] md:rounded-[30px]"
+          className="relative flex min-h-[640px] flex-col overflow-hidden rounded-[22px] border border-border md:rounded-[30px] lg:h-[calc(100svh-112px)] lg:min-h-[600px]"
           style={{
             background:
               "radial-gradient(ellipse 50% 60% at 70% 48%, rgba(47,107,255,0.28), transparent 70%), radial-gradient(ellipse 60% 50% at 15% 100%, rgba(62,242,208,0.08), transparent 60%), linear-gradient(180deg, #071029, #03061a)",
@@ -50,20 +50,20 @@ export function Hero() {
             }}
           />
 
-          <HeroCrosses />
+          <HeroCrosses className="absolute inset-x-0 top-0 h-[340px] sm:h-[420px] lg:inset-0 lg:h-auto" />
 
           {/* keeps the headline readable where pieces drift behind it */}
           <div
             aria-hidden="true"
-            className="pointer-events-none absolute inset-0 bg-[linear-gradient(0deg,rgba(3,6,26,0.85)_0%,rgba(3,6,26,0.25)_45%,transparent_70%)] md:bg-[linear-gradient(90deg,rgba(3,6,26,0.75)_0%,rgba(3,6,26,0.35)_40%,transparent_62%)]"
+            className="pointer-events-none absolute inset-0 bg-[linear-gradient(0deg,rgba(3,6,26,0.85)_0%,rgba(3,6,26,0.25)_45%,transparent_70%)] lg:bg-[linear-gradient(90deg,rgba(3,6,26,0.75)_0%,rgba(3,6,26,0.35)_40%,transparent_62%)]"
           />
           <div className="noise" style={{ opacity: 0.06 }} />
 
           {/* headline + intro (pointer events pass through to the 3D except on links) */}
-          <div className="pointer-events-none relative mt-auto flex flex-col gap-8 p-6 pt-[46svh] md:p-12 md:pt-12 lg:p-14">
+          <div className="pointer-events-none relative mt-auto flex flex-col gap-8 p-6 pt-[330px] sm:p-10 sm:pt-[410px] lg:p-14 lg:pt-14">
             <h1
               aria-label="Software Development Company in the USA."
-              className="max-w-[760px] font-display text-[clamp(40px,6.4vw,104px)] font-extrabold uppercase leading-[0.92] tracking-[-0.045em] text-snow"
+              className="max-w-[760px] font-display text-[clamp(40px,9vw,72px)] lg:text-[clamp(56px,6.4vw,104px)] font-extrabold uppercase leading-[0.92] tracking-[-0.045em] text-snow"
             >
               {lines.map((line, i) => (
                 <span key={i} aria-hidden="true" className="block overflow-hidden pb-[0.06em]">

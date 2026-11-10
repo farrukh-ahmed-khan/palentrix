@@ -90,7 +90,7 @@ export function Footer() {
 
       {/* giant wordmark */}
       <div aria-hidden="true" className="relative mt-6 select-none overflow-hidden">
-        <div className="text-outline translate-y-[18%] text-center font-brand text-[18vw] font-semibold leading-none tracking-[0.06em]">
+        <div className="text-outline translate-y-[18%] whitespace-nowrap text-center font-brand text-[10.4vw] font-semibold leading-none tracking-[0.04em]">
           PALENTRIX
         </div>
       </div>

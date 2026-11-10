@@ -105,7 +105,6 @@ export function Nav() {
               className="pill btn-teal hidden h-10 px-5 text-[13px] sm:inline-flex"
             >
               Book a call
-              <span className="pill-dot" aria-hidden="true" />
             </a>
             <button
               type="button"
@@ -187,7 +186,6 @@ export function Nav() {
                 className="pill btn-teal h-12 justify-center px-6 text-[15px]"
               >
                 Book a call
-                <span className="pill-dot" aria-hidden="true" />
               </a>
             </div>
           </div>
