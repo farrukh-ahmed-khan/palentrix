@@ -1,19 +1,9 @@
-"use client";
-
+import type { ReactNode } from "react";
 import { CTAButton } from "./CTAButton";
-import { Noise } from "./Noise";
 import { CountUp } from "./CountUp";
-import { HeroVisuals } from "./HeroVisuals";
-import Link from "next/link";
+import { HeroCrosses } from "./HeroCrosses";
 
-const headlineWords = ["Software", "Development", "Company", "in", "the", "USA."];
 const calendlyUrl = "https://calendly.com/palentrix/30min";
-const seoLinks = [
-  { href: "/software-house-usa", label: "Software House USA" },
-  { href: "/saas-mvp-development", label: "SaaS MVP Development" },
-  { href: "/nextjs-development", label: "Next.js Agency" },
-  { href: "/ai-web-app-development", label: "AI App Development" },
-];
 
 const heroStats = [
   { n: 50, suf: "+", label: "Projects shipped" },
@@ -22,93 +12,102 @@ const heroStats = [
   { n: 24, suf: "hrs", label: "Avg response" },
 ];
 
+/* Same words as before: "Software Development Company in the USA." */
+const lines: ReactNode[] = [
+  "Software",
+  <span key="dev" className="text-gradient-indigo">Development</span>,
+  "Company",
+  <>
+    <span className="serif-accent text-[0.95em] text-indigo-dim">in the</span> USA.
+  </>,
+];
+
+/**
+ * Lusion-style hero banner: one large framed stage on the first screen with
+ * the interactive 3D cluster on the right and the headline on the left.
+ */
 export function Hero() {
   return (
-    <section className="relative min-h-screen flex flex-col bg-void overflow-hidden">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_22%_18%,rgba(67,180,255,0.12),transparent_30%),radial-gradient(circle_at_78%_20%,rgba(23,139,210,0.14),transparent_34%),linear-gradient(135deg,rgba(11,95,170,0.08),transparent_42%)]" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_42%,rgba(255,255,255,0.05)_0%,rgba(241,246,252,0.35)_40%,rgba(255,255,255,0.72)_72%,rgba(255,255,255,0.92)_100%)]" />
-      <div className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-white to-transparent" />
-      <Noise />
+    <section className="relative flex flex-col overflow-hidden bg-void">
+      <div className="relative mx-auto w-full max-w-[1440px] px-3 pt-[84px] md:px-5 md:pt-[92px]">
+        <div
+          className="relative flex min-h-[640px] flex-col overflow-hidden rounded-[22px] border border-border md:rounded-[30px] lg:h-[calc(100svh-112px)] lg:min-h-[600px]"
+          style={{
+            background:
+              "radial-gradient(ellipse 50% 60% at 70% 48%, rgba(47,107,255,0.28), transparent 70%), radial-gradient(ellipse 60% 50% at 15% 100%, rgba(62,242,208,0.08), transparent 60%), linear-gradient(180deg, #071029, #03061a)",
+          }}
+        >
+          {/* faint grid */}
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-0 opacity-40"
+            style={{
+              backgroundImage:
+                "linear-gradient(rgba(150,185,255,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(150,185,255,0.06) 1px, transparent 1px)",
+              backgroundSize: "88px 88px",
+              maskImage: "radial-gradient(ellipse 75% 75% at 60% 50%, black, transparent)",
+              WebkitMaskImage: "radial-gradient(ellipse 75% 75% at 60% 50%, black, transparent)",
+            }}
+          />
 
-      <div className="relative flex-1 flex items-center w-full">
-        <div className="mx-auto max-w-[1240px] px-6 w-full py-28 grid lg:grid-cols-[1.15fr_1fr] gap-16 items-center">
-          <div className="text-center lg:text-left">
-            <div className="hero-rise inline-flex items-center gap-2.5 font-mono text-[11px] uppercase tracking-[0.18em] text-indigo border border-indigo/20 rounded-full pl-3 pr-4 py-1.5 bg-white/80 shadow-[0_1px_2px_rgba(7,23,43,0.04),0_6px_16px_-10px_rgba(11,95,170,0.35)] backdrop-blur">
-              <span className="relative flex h-1.5 w-1.5">
-                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-x-blue opacity-60" />
-                <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-indigo" />
-              </span>
-              Software House - Parsippany, NJ, USA
-            </div>
+          <HeroCrosses className="absolute inset-x-0 top-0 h-[340px] sm:h-[420px] lg:inset-0 lg:h-auto" />
 
+          {/* keeps the headline readable where pieces drift behind it */}
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-0 bg-[linear-gradient(0deg,rgba(3,6,26,0.85)_0%,rgba(3,6,26,0.25)_45%,transparent_70%)] lg:bg-[linear-gradient(90deg,rgba(3,6,26,0.75)_0%,rgba(3,6,26,0.35)_40%,transparent_62%)]"
+          />
+          <div className="noise" style={{ opacity: 0.06 }} />
+
+          {/* headline + intro (pointer events pass through to the 3D except on links) */}
+          <div className="pointer-events-none relative mt-auto flex flex-col gap-8 p-6 pt-[330px] sm:p-10 sm:pt-[410px] lg:p-14 lg:pt-14">
             <h1
-              className="hero-rise mt-7 font-display font-extrabold text-[40px] sm:text-[48px] md:text-[60px] leading-[1.04] tracking-normal"
-              style={{ animationDelay: "80ms" }}
+              aria-label="Software Development Company in the USA."
+              className="max-w-[760px] font-display text-[clamp(40px,9vw,72px)] lg:text-[clamp(56px,6.4vw,104px)] font-extrabold uppercase leading-[0.92] tracking-[-0.045em] text-snow"
             >
-              <span className="flex flex-wrap justify-center lg:justify-start gap-x-[0.24em] gap-y-0">
-                {headlineWords.map((word, index) => (
-                  <span key={word} className="inline-block overflow-hidden pb-1">
-                    <span className={`inline-block ${index === 0 || index === 4 ? "text-gradient-indigo" : ""}`}>
-                      {word}
-                    </span>
+              {lines.map((line, i) => (
+                <span key={i} aria-hidden="true" className="block overflow-hidden pb-[0.06em]">
+                  <span className="line-up" style={{ animationDelay: `${120 + i * 110}ms` }}>
+                    {line}
                   </span>
-                ))}
-              </span>
+                </span>
+              ))}
             </h1>
 
-            <p
-              className="hero-rise mt-7 text-muted text-[16px] md:text-[18px] max-w-[560px] mx-auto lg:mx-0 leading-[1.7]"
-              style={{ animationDelay: "160ms" }}
-            >
-              Palentrix is a software development company and software house in Parsippany, New Jersey, USA building SaaS MVPs, custom web apps, AI products, dashboards, and business automation systems for clients worldwide.
-            </p>
-
-            <div
-              className="hero-rise mt-10 flex flex-col sm:flex-row gap-3 justify-center lg:justify-start"
-              style={{ animationDelay: "240ms" }}
-            >
-              <CTAButton href={calendlyUrl}>Book a free call </CTAButton>
-              <CTAButton to="/work" variant="ghost">
-                See our work
-              </CTAButton>
-            </div>
-
-            <div
-              className="hero-rise mt-8 flex flex-wrap justify-center gap-2 lg:justify-start"
-              style={{ animationDelay: "320ms" }}
-            >
-              {seoLinks.map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className="rounded-full border border-indigo/15 bg-white/70 px-3 py-1.5 text-[12px] font-medium text-muted transition-all duration-200 hover:-translate-y-px hover:border-indigo/40 hover:bg-white hover:text-indigo"
-                >
-                  {link.label}
-                </Link>
-              ))}
+            <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+              <p
+                className="hero-rise max-w-[480px] text-[15px] leading-[1.75] text-ink/75 md:text-[16px]"
+                style={{ animationDelay: "600ms" }}
+              >
+                Palentrix is a software development company and software house in Parsippany, New Jersey, USA building SaaS MVPs, custom web apps, AI products, dashboards, and business automation systems for clients worldwide.
+              </p>
+              <div
+                className="hero-rise pointer-events-auto flex flex-col gap-3 sm:flex-row"
+                style={{ animationDelay: "720ms" }}
+              >
+                <CTAButton href={calendlyUrl}>Book a free call</CTAButton>
+                <CTAButton to="/work" variant="ghost">
+                  See our work
+                </CTAButton>
+              </div>
             </div>
           </div>
 
-          <div className="hero-rise hidden lg:block" style={{ animationDelay: "200ms" }}>
-            <HeroVisuals />
-          </div>
         </div>
       </div>
 
-      <div
-        className="hero-rise relative w-full border-t border-[rgba(11,95,170,0.12)] bg-white/60 backdrop-blur-sm"
-        style={{ animationDelay: "420ms" }}
-      >
-        <div className="mx-auto max-w-[1240px] px-6 py-7 md:py-8 grid grid-cols-2 gap-y-6 md:grid-cols-4">
+      {/* stats */}
+      <div className="hero-rise relative mt-8 w-full border-t border-border md:mt-10" style={{ animationDelay: "860ms" }}>
+        <div className="mx-auto grid max-w-[1320px] grid-cols-2 gap-y-6 px-6 py-7 md:grid-cols-4 md:py-8">
           {heroStats.map((stat, index) => (
             <div
               key={stat.label}
-              className={`text-center md:px-6 ${index > 0 ? "md:border-l border-[rgba(11,95,170,0.14)]" : ""}`}
+              className={`text-center md:px-6 md:text-left ${index > 0 ? "md:border-l md:border-border" : ""}`}
             >
-              <div className="font-display font-extrabold text-[30px] md:text-[40px] leading-none tracking-normal text-ink">
+              <div className="font-display text-[30px] font-extrabold leading-none tracking-normal text-snow md:text-[44px]">
                 <CountUp to={stat.n} suffix={stat.suf} />
               </div>
-              <div className="mt-2.5 font-mono text-[10.5px] md:text-[11px] uppercase tracking-[0.15em] text-muted">
+              <div className="mt-2.5 font-mono text-[10.5px] uppercase tracking-[0.15em] text-muted md:text-[11px]">
                 {stat.label}
               </div>
             </div>

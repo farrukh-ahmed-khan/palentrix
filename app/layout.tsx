@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Inter, JetBrains_Mono, Manrope, Orbitron } from "next/font/google";
+import { Inter, Instrument_Serif, JetBrains_Mono, Manrope, Orbitron } from "next/font/google";
 import { Footer } from "@/components/site/Footer";
 import { GoogleTags } from "@/components/site/GoogleTags";
 import { Nav } from "@/components/site/Nav";
@@ -29,6 +29,15 @@ const orbitron = Orbitron({
   variable: "--font-orbitron",
 });
 
+// Editorial italic accent for single words inside headlines.
+const instrumentSerif = Instrument_Serif({
+  subsets: ["latin"],
+  weight: ["400"],
+  style: ["normal", "italic"],
+  display: "swap",
+  variable: "--font-instrument-serif",
+});
+
 const jetBrainsMono = JetBrains_Mono({
   subsets: ["latin"],
   weight: ["400", "500"],
@@ -39,7 +48,7 @@ const jetBrainsMono = JetBrains_Mono({
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  themeColor: "#07172b",
+  themeColor: "#050a1a",
 };
 
 export const metadata: Metadata = {
@@ -171,8 +180,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <body
+        id="top"
         suppressHydrationWarning
-        className={`${inter.variable} ${manrope.variable} ${orbitron.variable} ${jetBrainsMono.variable}`}
+        className={`${inter.variable} ${manrope.variable} ${orbitron.variable} ${instrumentSerif.variable} ${jetBrainsMono.variable}`}
       >
         <GoogleTags />
         <script

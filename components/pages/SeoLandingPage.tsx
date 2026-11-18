@@ -19,10 +19,7 @@ export function SeoLandingPage({ page }: { page: SeoPage }) {
         <section className="rb-section pt-32 pb-20">
           <div className="mx-auto grid max-w-[1200px] gap-12 px-6 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
             <div>
-              <div className="font-mono text-[12px] uppercase tracking-[0.16em] text-indigo">
-                [ {page.eyebrow} ]
-              </div>
-              <h1 className="mt-5 font-display text-3xl font-bold leading-tight tracking-normal md:text-5xl">
+              <h1 className="font-display text-3xl font-bold leading-tight tracking-normal md:text-5xl">
                 {page.h1}
               </h1>
               <p className="mt-6 max-w-[680px] text-[17px] leading-[1.8] text-muted">

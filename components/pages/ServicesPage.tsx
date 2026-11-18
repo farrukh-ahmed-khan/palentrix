@@ -128,9 +128,6 @@ export function ServicesPage() {
         <section key={block.title} className="rb-section py-28">
           <div className="mx-auto max-w-[1200px] px-6 grid gap-12 md:grid-cols-2 md:items-start">
             <Reveal>
-              <div className="font-mono text-[12px] uppercase tracking-[0.15em] mb-6 rb-section-label">
-                [ 0{index + 1} Service ]
-              </div>
               <block.Icon size={32} className="text-indigo" />
               <h2 className="mt-6 font-display font-bold text-2xl md:text-4xl tracking-normal leading-tight">
                 {block.title}
@@ -180,9 +177,6 @@ export function ServicesPage() {
       <section className="rb-section py-24">
         <div className="mx-auto max-w-[980px] px-6">
           <Reveal>
-            <div className="font-mono text-[12px] uppercase tracking-[0.15em] text-indigo mb-4">
-              [ FAQ ]
-            </div>
             <h2 className="font-display text-2xl font-bold tracking-normal md:text-4xl">
               Common questions about working with Palentrix.
             </h2>

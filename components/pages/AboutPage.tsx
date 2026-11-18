@@ -63,9 +63,6 @@ export function AboutPage() {
       <section className="rb-section py-24">
         <div className="mx-auto max-w-[1200px] px-6">
           <Reveal>
-            <div className="font-mono text-[12px] uppercase tracking-[0.15em] text-indigo mb-4">
-              [ The Partners ]
-            </div>
             <h2 className="font-display font-bold text-2xl md:text-4xl tracking-normal">
               The people you will actually be talking to.
             </h2>
@@ -80,7 +77,7 @@ export function AboutPage() {
                 className="rb-card bg-slate rounded-2xl p-8 border"
                 style={{ borderColor: "var(--border-color)" }}
               >
-                <div className="w-14 h-14 rounded-full bg-indigo-dim text-white flex items-center justify-center font-mono text-[15px]">
+                <div className="w-14 h-14 rounded-full bg-indigo-dim text-void flex items-center justify-center font-mono text-[15px]">
                   {member.initials}
                 </div>
                 <h3 className="mt-6 font-display font-bold text-[20px]">{member.name}</h3>
@@ -97,9 +94,6 @@ export function AboutPage() {
       <section className="rb-section py-28">
         <div className="mx-auto max-w-[1200px] px-6">
           <Reveal>
-            <div className="font-mono text-[12px] uppercase tracking-[0.15em] rb-section-label mb-4">
-              [ How We Think ]
-            </div>
             <h2 className="font-display font-bold text-2xl md:text-4xl tracking-normal">
               Four values, deeply enforced.
             </h2>
@@ -124,9 +118,6 @@ export function AboutPage() {
         <div className="mx-auto px-6 max-w-[820px]">
           <Reveal>
             <div className="rb-panel rounded-2xl p-8 md:p-10">
-              <div className="font-mono text-[12px] uppercase tracking-[0.15em] text-indigo mb-4">
-                [ Studio Story ]
-              </div>
               <h2 className="font-display font-bold text-2xl md:text-4xl tracking-normal">
                 Why we started Palentrix.
               </h2>
